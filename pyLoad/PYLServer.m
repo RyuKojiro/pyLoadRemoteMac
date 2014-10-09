@@ -41,6 +41,8 @@
 			return @"isCaptchaWaiting";
 		case PYLRequestTypeFetchDownloadsList:
 			return @"statusDownloads";
+		case PYLRequestTypeCheckFreeSpace:
+			return @"freeSpace";
 		default:
 			return nil;
 	}
@@ -55,6 +57,9 @@
 	}
 	if ([lastPathComponent isEqualToString:@"statusDownloads"]) {
 		return PYLRequestTypeFetchDownloadsList;
+	}
+	if ([lastPathComponent isEqualToString:@"freeSpace"]) {
+		return PYLRequestTypeCheckFreeSpace;
 	}
 	return PYLRequestTypeNone;
 }
@@ -120,6 +125,16 @@
 	[connection start];
 }
 
+- (void) checkFreeSpace {
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeCheckFreeSpace];
+	NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+	
+	[data release];
+	data = [[NSMutableData alloc] init];
+	
+	[connection start];
+}
+
 #pragma mark - NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -148,6 +163,14 @@
 				[_delegate serverHasCaptchaWaiting:self];
 			}
 		} break;
+		case PYLRequestTypeCheckFreeSpace: {
+			NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+			NSLog(@"Server has %@ free", [NSByteCountFormatter stringFromByteCount:[str integerValue] countStyle:NSByteCountFormatterCountStyleFile]);
+			[str release];
+		} break;
+		case PYLRequestTypeNone: {
+			NSLog(@"Connection %@ is of a type that we didn't expect.", connection);
+		}
 	}
 }
 

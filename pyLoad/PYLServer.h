@@ -23,6 +23,7 @@ typedef enum {
 	PYLRequestTypeLogin,
 	PYLRequestTypeFetchDownloadsList,
 	PYLRequestTypeCheckForCaptcha,
+	PYLRequestTypeCheckFreeSpace
 } PYLRequestType;
 
 @interface PYLServer : NSObject
@@ -40,6 +41,7 @@ typedef enum {
 
 - (void) refreshDownloadList;
 - (void) checkForCaptcha;
+- (void) checkFreeSpace;
 
 + (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req;
 - (NSMutableURLRequest *) mutableRequestForRequestType:(PYLRequestType)type;
