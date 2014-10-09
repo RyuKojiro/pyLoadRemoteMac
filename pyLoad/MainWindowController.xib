@@ -167,22 +167,15 @@
                             <action selector="presentLoginSheet:" target="-2" id="Xrn-P6-TVL"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="11306317-67E5-4BAA-8177-D63F05DB6872" label="BAM!" paletteLabel="BAM!" tag="-1" image="NSBonjour" id="ltZ-1i-WAp">
-                        <connections>
-                            <action selector="bam:" target="-2" id="Fzk-EE-sN2"/>
-                        </connections>
-                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="nmB-W1-iAJ"/>
                     <toolbarItem reference="AB3-5N-V11"/>
-                    <toolbarItem reference="ltZ-1i-WAp"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
     </objects>
     <resources>
-        <image name="NSBonjour" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSUser" width="32" height="32"/>
     </resources>

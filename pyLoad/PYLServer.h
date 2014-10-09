@@ -12,6 +12,7 @@
 
 @protocol PYLServerDelegate <NSObject>
 
+- (void) serverConnected:(PYLServer *)server;
 - (void) server:(PYLServer *)server didRefreshDownloadList:(NSArray *)list;
 
 @end

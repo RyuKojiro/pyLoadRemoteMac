@@ -49,14 +49,24 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
-- (IBAction)bam:(id)sender {
+- (void) poll {
 	[_server refreshDownloadList];
+
+	if ([_server isConnected]) {
+		[self performSelector:_cmd withObject:nil afterDelay:1.0f];
+	}
 }
 
 #pragma mark - PYLServerDelegate Methods
 
+- (void) serverConnected:(PYLServer *)server {
+	[self poll];
+}
+
 - (void) server:(PYLServer *)server didRefreshDownloadList:(NSArray *)list {
+	NSIndexSet *selectedRows = [_tableView selectedRowIndexes];
 	[_tableView reloadData];
+	[_tableView selectRowIndexes:selectedRows byExtendingSelection:NO];
 }
 
 #pragma mark - NSTableViewDataSource Methods

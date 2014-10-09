@@ -96,6 +96,8 @@
 	switch (_state) {
 		case PYLServerStateLoggingIn: {
 			NSLog(@"%@", connection);
+			_connected = YES;
+			[_delegate serverConnected:self];
 		} break;
 		case PYLServerStateFetchingDownloadsList: {
 			NSError *e = nil;
