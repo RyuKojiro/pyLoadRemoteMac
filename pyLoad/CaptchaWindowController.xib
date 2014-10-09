@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CaptchaWindowController">
+            <connections>
+                <outlet property="captchaImageView" destination="5MP-Lc-nOd" id="OM0-x5-V1Y"/>
+                <outlet property="solutionTextField" destination="ANg-r7-x80" id="GK8-AQ-2Tz"/>
+                <outlet property="solveButton" destination="Fqs-u6-sAi" id="cAb-oW-McF"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Captcha" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="263"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="263"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="BkA-7v-tML">
+                        <rect key="frame" x="224" y="155" width="32" height="32"/>
+                    </progressIndicator>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5MP-Lc-nOd">
+                        <rect key="frame" x="0.0" y="79" width="480" height="184"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="2hb-no-g9P"/>
+                    </imageView>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ANg-r7-x80">
+                        <rect key="frame" x="20" y="49" width="440" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Qan-y1-ipJ">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fqs-u6-sAi">
+                        <rect key="frame" x="393" y="13" width="73" height="32"/>
+                        <buttonCell key="cell" type="push" title="Solve" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1S7-GX-zOZ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zr0-Om-qes">
+                        <rect key="frame" x="311" y="13" width="82" height="32"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G1d-a8-Mx4">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ANg-r7-x80" firstAttribute="centerX" secondItem="5MP-Lc-nOd" secondAttribute="centerX" id="0EO-go-brj"/>
+                    <constraint firstItem="zr0-Om-qes" firstAttribute="top" secondItem="ANg-r7-x80" secondAttribute="bottom" constant="8" symbolic="YES" id="9xU-SP-b38"/>
+                    <constraint firstItem="5MP-Lc-nOd" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="J4b-5P-gc3"/>
+                    <constraint firstItem="ANg-r7-x80" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="PwH-9U-jak"/>
+                    <constraint firstItem="Fqs-u6-sAi" firstAttribute="leading" secondItem="zr0-Om-qes" secondAttribute="trailing" constant="12" symbolic="YES" id="bEG-yY-pEo"/>
+                    <constraint firstItem="ANg-r7-x80" firstAttribute="top" secondItem="5MP-Lc-nOd" secondAttribute="bottom" constant="8" symbolic="YES" id="boX-Re-ytz"/>
+                    <constraint firstAttribute="trailing" secondItem="ANg-r7-x80" secondAttribute="trailing" constant="20" symbolic="YES" id="gRb-ml-vHt"/>
+                    <constraint firstItem="zr0-Om-qes" firstAttribute="baseline" secondItem="Fqs-u6-sAi" secondAttribute="baseline" id="pp6-dp-8yu"/>
+                    <constraint firstItem="5MP-Lc-nOd" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="sh1-Vu-TB8"/>
+                    <constraint firstItem="ANg-r7-x80" firstAttribute="trailing" secondItem="Fqs-u6-sAi" secondAttribute="trailing" id="uDz-yt-0MF"/>
+                    <constraint firstAttribute="bottom" secondItem="zr0-Om-qes" secondAttribute="bottom" constant="20" symbolic="YES" id="zMh-Me-TIk"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="374" y="389.5"/>
+        </window>
+    </objects>
+</document>

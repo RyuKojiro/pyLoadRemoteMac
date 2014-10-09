@@ -14,6 +14,8 @@
 		E6194CC119E614F100930613 /* pyLoadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6194CC019E614F100930613 /* pyLoadTests.m */; };
 		E6194CCD19E61D6E00930613 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6194CCB19E61D6E00930613 /* MainWindowController.m */; };
 		E6194CCE19E61D6E00930613 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6194CCC19E61D6E00930613 /* MainWindowController.xib */; };
+		E61AF2F719E740B3008161DB /* CaptchaWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E61AF2F519E740B3008161DB /* CaptchaWindowController.m */; };
+		E61AF2F819E740B3008161DB /* CaptchaWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AF2F619E740B3008161DB /* CaptchaWindowController.xib */; };
 		E65B69DC19E6256300EB83CA /* PYLServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DB19E6256300EB83CA /* PYLServer.m */; };
 		E65B69E019E627B300EB83CA /* LoginSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DE19E627B300EB83CA /* LoginSheetController.m */; };
 		E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E65B69DF19E627B300EB83CA /* LoginSheetController.xib */; };
@@ -44,6 +46,9 @@
 		E6194CCA19E61D6E00930613 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		E6194CCB19E61D6E00930613 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		E6194CCC19E61D6E00930613 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
+		E61AF2F419E740B3008161DB /* CaptchaWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptchaWindowController.h; sourceTree = "<group>"; };
+		E61AF2F519E740B3008161DB /* CaptchaWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptchaWindowController.m; sourceTree = "<group>"; };
+		E61AF2F619E740B3008161DB /* CaptchaWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaptchaWindowController.xib; sourceTree = "<group>"; };
 		E65B69DA19E6256300EB83CA /* PYLServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYLServer.h; sourceTree = "<group>"; };
 		E65B69DB19E6256300EB83CA /* PYLServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYLServer.m; sourceTree = "<group>"; };
 		E65B69DD19E627B300EB83CA /* LoginSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSheetController.h; sourceTree = "<group>"; };
@@ -92,6 +97,7 @@
 		E6194CA919E614F100930613 /* pyLoad */ = {
 			isa = PBXGroup;
 			children = (
+				E61AF2F319E74031008161DB /* Captcha */,
 				E65B69E519E6464E00EB83CA /* Server */,
 				E65B69E419E627D700EB83CA /* Application */,
 				E65B69E319E627C600EB83CA /* LoginSheet */,
@@ -125,6 +131,16 @@
 				E6194CBF19E614F100930613 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E61AF2F319E74031008161DB /* Captcha */ = {
+			isa = PBXGroup;
+			children = (
+				E61AF2F419E740B3008161DB /* CaptchaWindowController.h */,
+				E61AF2F519E740B3008161DB /* CaptchaWindowController.m */,
+				E61AF2F619E740B3008161DB /* CaptchaWindowController.xib */,
+			);
+			name = Captcha;
 			sourceTree = "<group>";
 		};
 		E65B69E219E627B800EB83CA /* MainWindow */ = {
@@ -252,6 +268,7 @@
 				E6194CB219E614F100930613 /* Images.xcassets in Resources */,
 				E6194CCE19E61D6E00930613 /* MainWindowController.xib in Resources */,
 				E6194CB519E614F100930613 /* MainMenu.xib in Resources */,
+				E61AF2F819E740B3008161DB /* CaptchaWindowController.xib in Resources */,
 				E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +293,7 @@
 				E6194CB019E614F100930613 /* AppDelegate.m in Sources */,
 				E65B69DC19E6256300EB83CA /* PYLServer.m in Sources */,
 				E6194CAD19E614F100930613 /* main.m in Sources */,
+				E61AF2F719E740B3008161DB /* CaptchaWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

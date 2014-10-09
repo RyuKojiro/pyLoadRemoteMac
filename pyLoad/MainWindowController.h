@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "LoginSheetController.h"
 #import "PYLServer.h"
+#import "CaptchaWindowController.h"
 
-@interface MainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, LoginSheetDelegate, PYLServerDelegate>
+@interface MainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, LoginSheetDelegate, PYLServerDelegate, NSUserNotificationCenterDelegate>
 
 @property (retain) PYLServer *server;
 @property (assign) IBOutlet NSTableView *tableView;

@@ -29,7 +29,8 @@ typedef enum {
 	PYLRequestTypeCheckForCaptcha,
 	PYLRequestTypeCheckFreeSpace,
 	PYLRequestTypeRestartFailed,
-	PYLRequestTypeUpdateStatus
+	PYLRequestTypeUpdateStatus,
+	PYLRequestTypeFetchCaptcha
 } PYLRequestType;
 
 @interface PYLServer : NSObject
@@ -52,6 +53,7 @@ typedef enum {
 - (void) checkFreeSpace;
 - (void) restartFailed;
 - (void) updateStatus;
+- (void) fetchCaptchaWithCompletionHandler:(void (^)(NSUInteger captchaId, NSImage *image))handler;
 
 + (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req;
 - (NSMutableURLRequest *) mutableRequestForRequestType:(PYLRequestType)type;

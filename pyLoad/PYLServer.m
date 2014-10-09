@@ -43,6 +43,8 @@
 			return @"/api/restartFailed";
 		case PYLRequestTypeUpdateStatus:
 			return @"/json/status";
+		case PYLRequestTypeFetchCaptcha:
+			return @"/json/set_captcha";
 		default:
 			return nil;
 	}
@@ -160,6 +162,23 @@
 - (void) restartFailed {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeRestartFailed];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){}];
+}
+
+- (void) fetchCaptchaWithCompletionHandler:(void (^)(NSUInteger captchaId, NSImage *image))handler {
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchCaptcha];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		NSError *e = nil;
+		NSDictionary *dictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
+		
+		NSImage *result = nil;
+		NSUInteger captchaId = 0;
+		if ([dictionary[@"captcha"] boolValue]) {
+			captchaId = [dictionary[@"id"] integerValue];
+			
+//			NSData *imageData = []
+		}
+		handler(captchaId, result);
+	}];
 }
 
 @end

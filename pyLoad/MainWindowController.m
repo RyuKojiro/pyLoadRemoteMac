@@ -16,6 +16,7 @@
 
 @implementation MainWindowController {
 	LoginSheetController *loginSheetController;
+	CaptchaWindowController *captchaWindowController;
 }
 
 #pragma mark - Login Sheet Management
@@ -66,6 +67,7 @@
 }
 
 - (void) dealloc {
+	[captchaWindowController release];
 	[loginSheetController release];
 	[super dealloc];
 }
@@ -91,6 +93,38 @@
 - (IBAction)restartFailed:(id)sender {
 	[_server restartFailed];
 }
+
+- (IBAction)presentCaptchaSolver:(id)sender {
+	if (!captchaWindowController) {
+		captchaWindowController = [[CaptchaWindowController alloc] initWithWindowNibName:@"CaptchaWindowController"];
+		//captchaWindowController.delegate = self;
+	}
+	
+	// Recycle the window
+	captchaWindowController.captchaImageView.image = nil;
+	captchaWindowController.solutionTextField.stringValue = @"";
+	captchaWindowController.delegate = self;
+	
+	// Populate it on demand
+	[_server fetchCaptchaWithCompletionHandler:^(NSUInteger captchaId, NSImage *image) {
+		captchaWindowController.captchaImageView.image = image;
+		captchaWindowController.captchaId = captchaId;
+		[captchaWindowController.solveButton setEnabled:YES];
+	}];
+	
+	[NSApp beginSheet:captchaWindowController.window
+	   modalForWindow:self.window
+		modalDelegate:nil
+	   didEndSelector:nil
+		  contextInfo:self];
+}
+
+#pragma mark - CaptchaWindowDelegate Methods
+
+- (void) captchaWindowController:(CaptchaWindowController *)controller didGetSolution:(NSString *)solution forId:(NSUInteger)captchaId{
+	
+}
+
 
 #pragma mark - List Actions
 
@@ -119,7 +153,12 @@
 	notification.actionButtonTitle = @"Solve";
 	
 	[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self]; // FIXME: We need to do something different for multi-server
 	[notification release];
+}
+
+- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
+	[self presentCaptchaSolver:self];
 }
 
 - (void) server:(PYLServer *)server didUpdateFreeSpace:(NSUInteger)bytesFree {
