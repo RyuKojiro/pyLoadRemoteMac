@@ -31,13 +31,52 @@
 	return self;
 }
 
+#pragma mark - Request Convenience Methods
+
++ (NSString *) lastPathComponentForRequestType:(PYLRequestType)type {
+	switch (type) {
+		case PYLRequestTypeLogin:
+			return @"login";
+		case PYLRequestTypeCheckForCaptcha:
+			return @"isCaptchaWaiting";
+		case PYLRequestTypeFetchDownloadsList:
+			return @"statusDownloads";
+		default:
+			return nil;
+	}
+}
+
++ (PYLRequestType) requestTypeForLastPathComponent:(NSString *)lastPathComponent {
+	if ([lastPathComponent isEqualToString:@"login"]) {
+		return PYLRequestTypeLogin;
+	}
+	if ([lastPathComponent isEqualToString:@"isCaptchaWaiting"]) {
+		return PYLRequestTypeCheckForCaptcha;
+	}
+	if ([lastPathComponent isEqualToString:@"statusDownloads"]) {
+		return PYLRequestTypeFetchDownloadsList;
+	}
+	return PYLRequestTypeNone;
+}
+
++ (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req {
+	return [PYLServer requestTypeForLastPathComponent:[[req URL] lastPathComponent]];
+}
+
+- (NSMutableURLRequest *) mutableRequestForRequestType:(PYLRequestType)type {
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[self urlWithLastPathComponent:[PYLServer lastPathComponentForRequestType:type]]];
+	[request setHTTPMethod:@"POST"];
+
+	return [request autorelease];
+}
+
+#pragma mark - Requests
+
 - (void) connectWithUsername:(NSString *)username password:(NSString *)password {
-	if(_state != PYLServerStateIdle) return;	// TODO: queue it up
 	self.username = username;
 	
 	// POST urlencoded data
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[self urlWithLastPathComponent:@"login"]];
-	[request setHTTPMethod:@"POST"];
+	NSMutableURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeLogin];
 	[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
  
 	NSMutableData *postBody = [[NSMutableData alloc] init];
@@ -48,11 +87,9 @@
 	[postBody release];
 	
 	NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-	[request release];
 	
 	[data release];
 	data = [[NSMutableData alloc] init];
-	_state = PYLServerStateLoggingIn;
 	
 	[connection start];
 }
@@ -64,37 +101,21 @@
 }
 
 - (void) refreshDownloadList {
-	if(_state != PYLServerStateIdle) return;	// TODO: queue it up
-	
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[self urlWithLastPathComponent:@"statusDownloads"]];
-	[request setHTTPMethod:@"POST"];
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchDownloadsList];
 	NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-	[request release];
 	
 	[data release];
 	data = [[NSMutableData alloc] init];
-	_state = PYLServerStateFetchingDownloadsList;
 	
 	[connection start];
 }
 
-- (void) waitUntilIdle {
-	while (_state != PYLServerStateIdle) {
-		usleep(100);
-	}
-}
-
 - (void) checkForCaptcha {
-	if(_state != PYLServerStateIdle) return;	// TODO: queue it up
-	
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[self urlWithLastPathComponent:@"isCaptchaWaiting"]];
-	[request setHTTPMethod:@"POST"];
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeCheckForCaptcha];
 	NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-	[request release];
 	
 	[data release];
 	data = [[NSMutableData alloc] init];
-	_state = PYLServerStateCheckingForCaptcha;
 	
 	[connection start];
 }
@@ -102,11 +123,7 @@
 #pragma mark - NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	switch (_state) {
-		case PYLServerStateLoggingIn: {
-			NSLog(@"%@", connection);
-		} break;
-	}
+		//NSLog(@"Response: %@", connection);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)d {
@@ -114,30 +131,27 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	switch (_state) {
-		case PYLServerStateLoggingIn: {
+	switch ([PYLServer requestTypeForRequest:[connection originalRequest]]) {
+		case PYLRequestTypeLogin: {
 			NSLog(@"%@", connection);
 			_connected = YES;
 			[_delegate serverConnected:self];
 		} break;
-		case PYLServerStateFetchingDownloadsList: {
+		case PYLRequestTypeFetchDownloadsList: {
 			NSError *e = nil;
 			[_downloadList release];
 			_downloadList = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
 			[_delegate server:self didRefreshDownloadList:_downloadList];
 		} break;
-		case PYLServerStateCheckingForCaptcha: {
+		case PYLRequestTypeCheckForCaptcha: {
 			if ([data length] == 4) { // "true"
 				[_delegate serverHasCaptchaWaiting:self];
 			}
 		} break;
 	}
-	
-	_state = PYLServerStateIdle;
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	_state = PYLServerStateError;
 	NSLog(@"Connection %@ failed with error %@.", connection, error);
 }
 

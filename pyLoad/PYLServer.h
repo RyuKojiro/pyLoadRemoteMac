@@ -19,12 +19,11 @@
 @end
 
 typedef enum {
-	PYLServerStateIdle,
-	PYLServerStateError,
-	PYLServerStateLoggingIn,
-	PYLServerStateFetchingDownloadsList,
-	PYLServerStateCheckingForCaptcha,
-} PYLServerState;
+	PYLRequestTypeNone,
+	PYLRequestTypeLogin,
+	PYLRequestTypeFetchDownloadsList,
+	PYLRequestTypeCheckForCaptcha,
+} PYLRequestType;
 
 @interface PYLServer : NSObject
 
@@ -32,7 +31,6 @@ typedef enum {
 @property (readwrite) NSUInteger port;
 @property (copy) NSString *username;
 @property (readonly, getter=isConnected) BOOL connected;
-@property (readonly) PYLServerState state;
 @property (readonly) NSArray *downloadList;
 @property (assign) id <PYLServerDelegate> delegate;
 
@@ -40,9 +38,10 @@ typedef enum {
 - (void) connectWithUsername:(NSString *)username password:(NSString *)password;
 - (void) disconnect;
 
-- (void) waitUntilIdle;
-
 - (void) refreshDownloadList;
 - (void) checkForCaptcha;
+
++ (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req;
+- (NSMutableURLRequest *) mutableRequestForRequestType:(PYLRequestType)type;
 
 @end
