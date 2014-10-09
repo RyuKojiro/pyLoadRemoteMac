@@ -102,7 +102,7 @@
 #pragma mark - NSTableViewDataSource Methods
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
-	return [[_server downloadList] count];
+	return _server.downloadList.count;
 }
 
 #pragma mark - NSTableViewDelegate Methods

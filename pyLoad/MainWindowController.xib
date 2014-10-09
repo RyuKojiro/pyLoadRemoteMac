@@ -64,19 +64,14 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSFolder" id="Ayf-uY-eyp"/>
                                                         </imageView>
                                                         <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="3UD-2h-bTV">
-                                                            <rect key="frame" x="56" y="24" width="420" height="12"/>
+                                                            <rect key="frame" x="56" y="24" width="392" height="12"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="12" id="CSP-Zv-li0"/>
+                                                            </constraints>
                                                         </progressIndicator>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-CH-I1F">
                                                             <rect key="frame" x="54" y="5" width="170" height="11"/>
                                                             <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Downloading… 0 KB / 2.5 GB (0 KB/s)" id="1NL-pa-qc0">
-                                                                <font key="font" metaFont="miniSystem"/>
-                                                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1LE-nv-074">
-                                                            <rect key="frame" x="413" y="45" width="65" height="11"/>
-                                                            <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="PackageName" id="3Jz-xk-ZYF">
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -90,21 +85,45 @@
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1LE-nv-074">
+                                                            <rect key="frame" x="413" y="45" width="65" height="11"/>
+                                                            <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="PackageName" id="3Jz-xk-ZYF">
+                                                                <font key="font" metaFont="miniSystem"/>
+                                                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="x5T-ux-o1I">
+                                                            <rect key="frame" x="456" y="23" width="15" height="15"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="15" id="Taj-lH-eZP"/>
+                                                            </constraints>
+                                                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="xButton" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="9gB-6W-E4D">
+                                                                <behavior key="behavior" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                                            </buttonCell>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="trailing" secondItem="YXk-S7-0k6" secondAttribute="trailing" id="FjH-yy-DdC"/>
-                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="weg-iy-Ik1" secondAttribute="trailing" constant="8" symbolic="YES" id="GbC-iL-qqM"/>
-                                                        <constraint firstAttribute="trailing" secondItem="3UD-2h-bTV" secondAttribute="trailing" constant="3" id="ML1-bg-2tU"/>
-                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="trailing" secondItem="1LE-nv-074" secondAttribute="trailing" id="QIm-Rz-ERQ"/>
-                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="leading" secondItem="rya-e7-BqI" secondAttribute="leading" constant="16" id="TjH-4J-OL9"/>
-                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="centerY" secondItem="rya-e7-BqI" secondAttribute="centerY" id="WDr-WU-jai"/>
-                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="leading" secondItem="4NL-CH-I1F" secondAttribute="leading" id="Xbc-2a-DUI"/>
-                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" constant="8" symbolic="YES" id="ckb-Ip-pNZ"/>
-                                                        <constraint firstItem="1LE-nv-074" firstAttribute="baseline" secondItem="Byb-Q4-Nd3" secondAttribute="baseline" id="faR-PZ-29Z"/>
-                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="leading" id="lkW-Jt-TKh"/>
-                                                        <constraint firstItem="YXk-S7-0k6" firstAttribute="top" secondItem="3UD-2h-bTV" secondAttribute="bottom" constant="8" symbolic="YES" id="pw8-CS-ENJ"/>
-                                                        <constraint firstItem="4NL-CH-I1F" firstAttribute="top" secondItem="3UD-2h-bTV" secondAttribute="bottom" constant="8" symbolic="YES" id="y3U-Kh-VOY"/>
-                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="rya-e7-BqI" secondAttribute="top" constant="28" id="zNh-AO-Nxk"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1LE-nv-074" secondAttribute="trailing" constant="3" id="2Lu-qE-dQo"/>
+                                                        <constraint firstItem="1LE-nv-074" firstAttribute="trailing" secondItem="YXk-S7-0k6" secondAttribute="trailing" id="6xf-Qb-oQL"/>
+                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="top" secondItem="rya-e7-BqI" secondAttribute="top" constant="3" id="8l3-Ul-WYd"/>
+                                                        <constraint firstItem="x5T-ux-o1I" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="trailing" constant="8" symbolic="YES" id="EJE-Ot-qdP"/>
+                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" constant="8" symbolic="YES" id="KtW-fK-9VI"/>
+                                                        <constraint firstItem="4NL-CH-I1F" firstAttribute="baseline" secondItem="YXk-S7-0k6" secondAttribute="baseline" id="S5a-AQ-w2F"/>
+                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="leading" secondItem="rya-e7-BqI" secondAttribute="leading" constant="16" id="V5V-8q-gPg"/>
+                                                        <constraint firstAttribute="trailing" secondItem="x5T-ux-o1I" secondAttribute="trailing" constant="8" id="VuJ-Wz-hF1"/>
+                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="centerY" secondItem="rya-e7-BqI" secondAttribute="centerY" id="XmC-P3-G2q"/>
+                                                        <constraint firstItem="4NL-CH-I1F" firstAttribute="top" secondItem="3UD-2h-bTV" secondAttribute="bottom" constant="8" symbolic="YES" id="YoM-ni-Fyf"/>
+                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="leading" id="bwV-Tc-Jbe"/>
+                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="weg-iy-Ik1" secondAttribute="trailing" constant="8" symbolic="YES" id="cc3-h4-sLs"/>
+                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="baseline" secondItem="1LE-nv-074" secondAttribute="baseline" id="cnP-PU-4ge"/>
+                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="leading" secondItem="4NL-CH-I1F" secondAttribute="leading" id="iPR-gD-E3q"/>
+                                                        <constraint firstItem="x5T-ux-o1I" firstAttribute="top" secondItem="1LE-nv-074" secondAttribute="bottom" constant="7" id="l4A-fr-WR1"/>
+                                                        <constraint firstItem="x5T-ux-o1I" firstAttribute="centerY" secondItem="3UD-2h-bTV" secondAttribute="centerY" id="wYf-cO-cxk"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="icon" destination="weg-iy-Ik1" id="DFF-kN-j5h"/>
@@ -191,5 +210,6 @@
     <resources>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSUser" width="32" height="32"/>
+        <image name="xButton" width="14" height="14"/>
     </resources>
 </document>
