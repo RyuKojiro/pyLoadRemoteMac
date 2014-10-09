@@ -7,7 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "LoginSheetController.h"
+#import "PYLServer.h"
 
-@interface MainWindowController : NSWindowController
+@interface MainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, LoginSheetDelegate>
+
+@property (retain) PYLServer *server;
+
+- (IBAction)presentLoginSheet:(id)sender;
 
 @end

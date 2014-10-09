@@ -14,6 +14,9 @@
 		E6194CC119E614F100930613 /* pyLoadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6194CC019E614F100930613 /* pyLoadTests.m */; };
 		E6194CCD19E61D6E00930613 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6194CCB19E61D6E00930613 /* MainWindowController.m */; };
 		E6194CCE19E61D6E00930613 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6194CCC19E61D6E00930613 /* MainWindowController.xib */; };
+		E65B69DC19E6256300EB83CA /* PYLServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DB19E6256300EB83CA /* PYLServer.m */; };
+		E65B69E019E627B300EB83CA /* LoginSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DE19E627B300EB83CA /* LoginSheetController.m */; };
+		E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E65B69DF19E627B300EB83CA /* LoginSheetController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,11 @@
 		E6194CCA19E61D6E00930613 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		E6194CCB19E61D6E00930613 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		E6194CCC19E61D6E00930613 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
+		E65B69DA19E6256300EB83CA /* PYLServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYLServer.h; sourceTree = "<group>"; };
+		E65B69DB19E6256300EB83CA /* PYLServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYLServer.m; sourceTree = "<group>"; };
+		E65B69DD19E627B300EB83CA /* LoginSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSheetController.h; sourceTree = "<group>"; };
+		E65B69DE19E627B300EB83CA /* LoginSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSheetController.m; sourceTree = "<group>"; };
+		E65B69DF19E627B300EB83CA /* LoginSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginSheetController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +89,12 @@
 		E6194CA919E614F100930613 /* pyLoad */ = {
 			isa = PBXGroup;
 			children = (
-				E6194CAE19E614F100930613 /* AppDelegate.h */,
-				E6194CAF19E614F100930613 /* AppDelegate.m */,
-				E6194CB119E614F100930613 /* Images.xcassets */,
-				E6194CB319E614F100930613 /* MainMenu.xib */,
+				E65B69E419E627D700EB83CA /* Application */,
+				E65B69E319E627C600EB83CA /* LoginSheet */,
+				E65B69E219E627B800EB83CA /* MainWindow */,
 				E6194CAA19E614F100930613 /* Supporting Files */,
-				E6194CCA19E61D6E00930613 /* MainWindowController.h */,
-				E6194CCB19E61D6E00930613 /* MainWindowController.m */,
-				E6194CCC19E61D6E00930613 /* MainWindowController.xib */,
+				E65B69DA19E6256300EB83CA /* PYLServer.h */,
+				E65B69DB19E6256300EB83CA /* PYLServer.m */,
 			);
 			path = pyLoad;
 			sourceTree = "<group>";
@@ -117,6 +123,37 @@
 				E6194CBF19E614F100930613 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E65B69E219E627B800EB83CA /* MainWindow */ = {
+			isa = PBXGroup;
+			children = (
+				E6194CCA19E61D6E00930613 /* MainWindowController.h */,
+				E6194CCB19E61D6E00930613 /* MainWindowController.m */,
+				E6194CCC19E61D6E00930613 /* MainWindowController.xib */,
+			);
+			name = MainWindow;
+			sourceTree = "<group>";
+		};
+		E65B69E319E627C600EB83CA /* LoginSheet */ = {
+			isa = PBXGroup;
+			children = (
+				E65B69DD19E627B300EB83CA /* LoginSheetController.h */,
+				E65B69DE19E627B300EB83CA /* LoginSheetController.m */,
+				E65B69DF19E627B300EB83CA /* LoginSheetController.xib */,
+			);
+			name = LoginSheet;
+			sourceTree = "<group>";
+		};
+		E65B69E419E627D700EB83CA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E6194CAE19E614F100930613 /* AppDelegate.h */,
+				E6194CAF19E614F100930613 /* AppDelegate.m */,
+				E6194CB119E614F100930613 /* Images.xcassets */,
+				E6194CB319E614F100930613 /* MainMenu.xib */,
+			);
+			name = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +239,7 @@
 				E6194CB219E614F100930613 /* Images.xcassets in Resources */,
 				E6194CCE19E61D6E00930613 /* MainWindowController.xib in Resources */,
 				E6194CB519E614F100930613 /* MainMenu.xib in Resources */,
+				E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,8 +257,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E65B69E019E627B300EB83CA /* LoginSheetController.m in Sources */,
 				E6194CCD19E61D6E00930613 /* MainWindowController.m in Sources */,
 				E6194CB019E614F100930613 /* AppDelegate.m in Sources */,
+				E65B69DC19E6256300EB83CA /* PYLServer.m in Sources */,
 				E6194CAD19E614F100930613 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
