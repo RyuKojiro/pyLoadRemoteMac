@@ -193,11 +193,17 @@ Gw
                             <action selector="restartFailed:" target="-2" id="Ez1-rA-F0c"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="AD0F024B-EC3B-4142-A35F-DF50FCF2E10F" label="Server Settings" paletteLabel="Server Settings" tag="-1" image="NSPreferencesGeneral" id="Sj2-M6-XgA">
+                        <connections>
+                            <action selector="serverSettings:" target="-2" id="1Us-QO-Wmy"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
-                    <toolbarItem reference="AB3-5N-V11"/>
                     <toolbarItem reference="HWQ-Lp-SyD"/>
                     <toolbarItem reference="RVf-6i-0Qh"/>
+                    <toolbarItem reference="AB3-5N-V11"/>
+                    <toolbarItem reference="Sj2-M6-XgA"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
@@ -216,6 +222,7 @@ Gw
     <resources>
         <image name="NSBonjour" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
+        <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="xButton" width="14" height="14"/>
     </resources>
 </document>

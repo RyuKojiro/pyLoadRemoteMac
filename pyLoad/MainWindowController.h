@@ -17,5 +17,6 @@
 @property (assign) IBOutlet NSTextField *freeSpaceField;
 
 - (IBAction)presentLoginSheet:(id)sender;
+- (IBAction)serverSettings:(id)sender;
 
 @end

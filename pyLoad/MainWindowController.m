@@ -83,6 +83,10 @@
 
 #pragma mark - Window Actions
 
+- (IBAction)serverSettings:(id)sender {
+	
+}
+
 - (IBAction)restartFailed:(id)sender {
 	
 }
