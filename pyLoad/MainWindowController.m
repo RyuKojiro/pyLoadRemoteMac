@@ -11,6 +11,9 @@
 
 #define kMainWindowCellIdentifier	@"DownloadListItem"
 
+#define kLastServerAddressKey		@"lastServerAddress"
+#define kLastServerPortKey		@"lastServerPort"
+
 @implementation MainWindowController {
 	LoginSheetController *loginSheetController;
 }
@@ -24,6 +27,9 @@
 	_server.delegate = self;
 	[_server connectWithUsername:controller.usernameField.stringValue
 						password:controller.passwordField.stringValue];
+	
+	[[NSUserDefaults standardUserDefaults] setObject:controller.addressField.stringValue forKey:kLastServerAddressKey];
+	[[NSUserDefaults standardUserDefaults] setObject:controller.portField.stringValue forKey:kLastServerPortKey];
 }
 
 - (IBAction)presentLoginSheet:(id)sender {
@@ -37,6 +43,17 @@
 		modalDelegate:nil
 	   didEndSelector:nil
 		  contextInfo:self];
+	
+	NSString *lastAddress = [[NSUserDefaults standardUserDefaults] stringForKey:kLastServerAddressKey];
+	if (lastAddress) {
+		loginSheetController.addressField.stringValue = lastAddress;
+	}
+	
+	NSString *lastPort = [[NSUserDefaults standardUserDefaults] stringForKey:kLastServerPortKey];
+	
+	if (lastPort) {
+		loginSheetController.portField.stringValue = lastPort;
+	}
 }
 
 #pragma mark - Window Lifecycle
