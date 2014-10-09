@@ -165,8 +165,9 @@
 		} break;
 		case PYLRequestTypeCheckFreeSpace: {
 			NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-			NSLog(@"Server has %@ free", [NSByteCountFormatter stringFromByteCount:[str integerValue] countStyle:NSByteCountFormatterCountStyleFile]);
+			[_delegate server:self didUpdateFreeSpace:[str integerValue]];
 			[str release];
+			
 		} break;
 		case PYLRequestTypeNone: {
 			NSLog(@"Connection %@ is of a type that we didn't expect.", connection);

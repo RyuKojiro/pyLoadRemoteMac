@@ -94,6 +94,11 @@
 	[notification release];
 }
 
+- (void) server:(PYLServer *)server didUpdateFreeSpace:(NSUInteger)bytesFree {
+	NSString *bytes = [NSByteCountFormatter stringFromByteCount:bytesFree countStyle:NSByteCountFormatterCountStyleFile];
+	_freeSpaceField.stringValue = [NSString stringWithFormat:@"%@ free", bytes];
+}
+
 #pragma mark - NSTableViewDataSource Methods
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {

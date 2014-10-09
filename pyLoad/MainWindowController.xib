@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
             <connections>
+                <outlet property="freeSpaceField" destination="gf0-bC-5Kf" id="o2x-aD-Ac3"/>
                 <outlet property="tableView" destination="e3O-kT-Mv1" id="i1H-lC-mdH"/>
                 <outlet property="window" destination="PxF-QJ-sAP" id="8cj-nQ-kjO"/>
             </connections>

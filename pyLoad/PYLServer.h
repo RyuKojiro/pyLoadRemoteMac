@@ -15,6 +15,7 @@
 - (void) serverConnected:(PYLServer *)server;
 - (void) server:(PYLServer *)server didRefreshDownloadList:(NSArray *)list;
 - (void) serverHasCaptchaWaiting:(PYLServer *)server;
+- (void) server:(PYLServer *)server didUpdateFreeSpace:(NSUInteger)bytesFree;
 
 @end
 

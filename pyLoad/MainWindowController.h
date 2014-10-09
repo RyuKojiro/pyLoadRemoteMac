@@ -14,6 +14,7 @@
 
 @property (retain) PYLServer *server;
 @property (assign) IBOutlet NSTableView *tableView;
+@property (assign) IBOutlet NSTextField *freeSpaceField;
 
 - (IBAction)presentLoginSheet:(id)sender;
 
