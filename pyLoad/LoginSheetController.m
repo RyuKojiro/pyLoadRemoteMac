@@ -15,11 +15,13 @@
 @implementation LoginSheetController
 
 - (IBAction)cancel:(id)sender {
+	[NSApp endSheet:self.window];
 	[self.window orderOut:sender];
 }
 
 - (IBAction)done:(id)sender {
 	[_delegate loginSheetCompleted:self];
+	[NSApp endSheet:self.window];
 	[self.window orderOut:sender];
 }
 
