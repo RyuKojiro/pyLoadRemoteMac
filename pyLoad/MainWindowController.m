@@ -81,7 +81,13 @@
 	}
 }
 
-#pragma mark - List Menu Actions
+#pragma mark - Window Actions
+
+- (IBAction)restartFailed:(id)sender {
+	
+}
+
+#pragma mark - List Actions
 
 - (IBAction)cancel:(id)sender {
 	

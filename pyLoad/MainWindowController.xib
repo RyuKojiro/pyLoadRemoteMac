@@ -60,7 +60,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="weg-iy-Ik1">
-                                                            <rect key="frame" x="16" y="16" width="32" height="32"/>
+                                                            <rect key="frame" x="13" y="16" width="32" height="32"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSFolder" id="Ayf-uY-eyp"/>
                                                         </imageView>
                                                         <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="3UD-2h-bTV">
@@ -114,12 +114,12 @@ Gw
                                                         <constraint firstItem="x5T-ux-o1I" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="trailing" constant="8" symbolic="YES" id="EJE-Ot-qdP"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" constant="8" symbolic="YES" id="KtW-fK-9VI"/>
                                                         <constraint firstItem="4NL-CH-I1F" firstAttribute="baseline" secondItem="YXk-S7-0k6" secondAttribute="baseline" id="S5a-AQ-w2F"/>
-                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="leading" secondItem="rya-e7-BqI" secondAttribute="leading" constant="16" id="V5V-8q-gPg"/>
+                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="leading" secondItem="rya-e7-BqI" secondAttribute="leading" constant="13" id="V5V-8q-gPg"/>
                                                         <constraint firstAttribute="trailing" secondItem="x5T-ux-o1I" secondAttribute="trailing" constant="8" id="VuJ-Wz-hF1"/>
                                                         <constraint firstItem="weg-iy-Ik1" firstAttribute="centerY" secondItem="rya-e7-BqI" secondAttribute="centerY" id="XmC-P3-G2q"/>
                                                         <constraint firstItem="4NL-CH-I1F" firstAttribute="top" secondItem="3UD-2h-bTV" secondAttribute="bottom" constant="8" symbolic="YES" id="YoM-ni-Fyf"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="leading" id="bwV-Tc-Jbe"/>
-                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="weg-iy-Ik1" secondAttribute="trailing" constant="8" symbolic="YES" id="cc3-h4-sLs"/>
+                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="weg-iy-Ik1" secondAttribute="trailing" constant="11" id="cc3-h4-sLs"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="baseline" secondItem="1LE-nv-074" secondAttribute="baseline" id="cnP-PU-4ge"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="leading" secondItem="4NL-CH-I1F" secondAttribute="leading" id="iPR-gD-E3q"/>
                                                         <constraint firstItem="x5T-ux-o1I" firstAttribute="top" secondItem="1LE-nv-074" secondAttribute="bottom" constant="7" id="l4A-fr-WR1"/>
@@ -183,15 +183,21 @@ Gw
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="pVB-Qx-uzC"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="AB3-5N-V11"/>
-                    <toolbarItem implicitItemIdentifier="56F7340A-09E1-4D4D-BD00-C0BA67FBA2B3" label="Login" paletteLabel="Login" tag="-1" image="NSUser" id="nmB-W1-iAJ">
+                    <toolbarItem implicitItemIdentifier="BF1B8CDA-5DF7-4EEE-B3D9-0ABE82F5FFFE" label="Cancel" paletteLabel="Cancel" tag="-1" image="NSBonjour" id="HWQ-Lp-SyD">
                         <connections>
-                            <action selector="presentLoginSheet:" target="-2" id="Xrn-P6-TVL"/>
+                            <action selector="cancel:" target="-1" id="a5T-r8-PwO"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="2E73DF99-780C-464E-8346-E06374A18872" label="Restart Failed" paletteLabel="Restart Failed" tag="-1" image="NSBonjour" id="RVf-6i-0Qh">
+                        <connections>
+                            <action selector="restartFailed:" target="-2" id="Ez1-rA-F0c"/>
                         </connections>
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
-                    <toolbarItem reference="nmB-W1-iAJ"/>
                     <toolbarItem reference="AB3-5N-V11"/>
+                    <toolbarItem reference="HWQ-Lp-SyD"/>
+                    <toolbarItem reference="RVf-6i-0Qh"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
@@ -208,8 +214,8 @@ Gw
         </menu>
     </objects>
     <resources>
+        <image name="NSBonjour" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
-        <image name="NSUser" width="32" height="32"/>
         <image name="xButton" width="14" height="14"/>
     </resources>
 </document>
