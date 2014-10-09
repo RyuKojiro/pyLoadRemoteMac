@@ -10,12 +10,6 @@
 
 @implementation PYLServer {
 	NSString *cookie;
-	NSMutableData *data;
-}
-
-- (void)dealloc {
-	[data release];
-	[super dealloc];
 }
 
 - (NSURL *) urlWithLastPathComponent:(NSString *)endpoint {
@@ -91,12 +85,10 @@
 	[request setHTTPBody:postBody];
 	[postBody release];
 	
-	NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-	
-	[data release];
-	data = [[NSMutableData alloc] init];
-	
-	[connection start];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		_connected = YES;
+		[_delegate serverConnected:self];
+	}];
 }
 
 - (void) disconnect {
@@ -107,76 +99,30 @@
 
 - (void) refreshDownloadList {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchDownloadsList];
-	NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-	
-	[data release];
-	data = [[NSMutableData alloc] init];
-	
-	[connection start];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		NSError *e = nil;
+		[_downloadList release];
+		_downloadList = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
+		[_delegate server:self didRefreshDownloadList:_downloadList];
+	}];
 }
 
 - (void) checkForCaptcha {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeCheckForCaptcha];
-	NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-	
-	[data release];
-	data = [[NSMutableData alloc] init];
-	
-	[connection start];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		if ([data length] == 4) { // "true"
+			[_delegate serverHasCaptchaWaiting:self];
+		}
+	}];
 }
 
 - (void) checkFreeSpace {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeCheckFreeSpace];
-	NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-	
-	[data release];
-	data = [[NSMutableData alloc] init];
-	
-	[connection start];
-}
-
-#pragma mark - NSURLConnection Delegate Methods
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-		//NSLog(@"Response: %@", connection);
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)d {
-	[data appendData:d];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	switch ([PYLServer requestTypeForRequest:[connection originalRequest]]) {
-		case PYLRequestTypeLogin: {
-			NSLog(@"%@", connection);
-			_connected = YES;
-			[_delegate serverConnected:self];
-		} break;
-		case PYLRequestTypeFetchDownloadsList: {
-			NSError *e = nil;
-			[_downloadList release];
-			_downloadList = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
-			[_delegate server:self didRefreshDownloadList:_downloadList];
-		} break;
-		case PYLRequestTypeCheckForCaptcha: {
-			if ([data length] == 4) { // "true"
-				[_delegate serverHasCaptchaWaiting:self];
-			}
-		} break;
-		case PYLRequestTypeCheckFreeSpace: {
-			NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-			[_delegate server:self didUpdateFreeSpace:[str integerValue]];
-			[str release];
-			
-		} break;
-		case PYLRequestTypeNone: {
-			NSLog(@"Connection %@ is of a type that we didn't expect.", connection);
-		}
-	}
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	NSLog(@"Connection %@ failed with error %@.", connection, error);
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		[_delegate server:self didUpdateFreeSpace:[str integerValue]];
+		[str release];
+	}];
 }
 
 @end
