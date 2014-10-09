@@ -97,6 +97,11 @@
 		case PYLServerStateLoggingIn: {
 			NSLog(@"%@", connection);
 		} break;
+		case PYLServerStateFetchingDownloadsList: {
+			NSError *e = nil;
+			_downloadList = [NSJSONSerialization JSONObjectWithData:data options:0 error:&e];
+			[_delegate server:self didRefreshDownloadList:_downloadList];
+		}
 	}
 	
 	_state = PYLServerStateIdle;

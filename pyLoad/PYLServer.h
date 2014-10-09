@@ -30,12 +30,13 @@ typedef enum {
 @property (copy) NSString *username;
 @property (readonly, getter=isConnected) BOOL connected;
 @property (readonly) PYLServerState state;
+@property (readonly) NSArray *downloadList;
+@property (assign) id <PYLServerDelegate> delegate;
 
 - (instancetype) initWithAddress:(NSString *)address port:(NSUInteger)port;
 - (void) connectWithUsername:(NSString *)username password:(NSString *)password;
 - (void) disconnect;
 
 - (void) refreshDownloadList;
-- (NSArray *) downloadList;
 
 @end
