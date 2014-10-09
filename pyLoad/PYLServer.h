@@ -14,6 +14,7 @@
 
 - (void) serverConnected:(PYLServer *)server;
 - (void) server:(PYLServer *)server didRefreshDownloadList:(NSArray *)list;
+- (void) serverHasCaptchaWaiting:(PYLServer *)server;
 
 @end
 
@@ -22,6 +23,7 @@ typedef enum {
 	PYLServerStateError,
 	PYLServerStateLoggingIn,
 	PYLServerStateFetchingDownloadsList,
+	PYLServerStateCheckingForCaptcha,
 } PYLServerState;
 
 @interface PYLServer : NSObject
@@ -38,6 +40,9 @@ typedef enum {
 - (void) connectWithUsername:(NSString *)username password:(NSString *)password;
 - (void) disconnect;
 
+- (void) waitUntilIdle;
+
 - (void) refreshDownloadList;
+- (void) checkForCaptcha;
 
 @end

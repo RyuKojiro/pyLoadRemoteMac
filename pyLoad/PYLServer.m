@@ -78,6 +78,27 @@
 	[connection start];
 }
 
+- (void) waitUntilIdle {
+	while (_state != PYLServerStateIdle) {
+		usleep(100);
+	}
+}
+
+- (void) checkForCaptcha {
+	if(_state != PYLServerStateIdle) return;	// TODO: queue it up
+	
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[self urlWithLastPathComponent:@"isCaptchaWaiting"]];
+	[request setHTTPMethod:@"POST"];
+	NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+	[request release];
+	
+	[data release];
+	data = [[NSMutableData alloc] init];
+	_state = PYLServerStateCheckingForCaptcha;
+	
+	[connection start];
+}
+
 #pragma mark - NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -104,7 +125,12 @@
 			[_downloadList release];
 			_downloadList = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
 			[_delegate server:self didRefreshDownloadList:_downloadList];
-		}
+		} break;
+		case PYLServerStateCheckingForCaptcha: {
+			if ([data length] == 4) { // "true"
+				[_delegate serverHasCaptchaWaiting:self];
+			}
+		} break;
 	}
 	
 	_state = PYLServerStateIdle;

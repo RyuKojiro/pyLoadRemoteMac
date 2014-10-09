@@ -51,7 +51,7 @@
 
 - (void) poll {
 	[_server refreshDownloadList];
-
+	
 	if ([_server isConnected]) {
 		[self performSelector:_cmd withObject:nil afterDelay:1.0f];
 	}
@@ -67,6 +67,18 @@
 	NSIndexSet *selectedRows = [_tableView selectedRowIndexes];
 	[_tableView reloadData];
 	[_tableView selectRowIndexes:selectedRows byExtendingSelection:NO];
+	[_server checkForCaptcha];
+}
+
+- (void) serverHasCaptchaWaiting:(PYLServer *)server {
+	NSUserNotification *notification = [[NSUserNotification alloc] init];
+	notification.title = @"Captcha Available";
+	notification.informativeText = @"Click this notification to solve the captcha. You have 10 seconds before the captcha check fails.";
+	notification.hasActionButton = YES;
+	notification.actionButtonTitle = @"Solve";
+	
+	[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+	[notification release];
 }
 
 #pragma mark - NSTableViewDataSource Methods
