@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
             <connections>
                 <outlet property="freeSpaceField" destination="gf0-bC-5Kf" id="o2x-aD-Ac3"/>
+                <outlet property="speedField" destination="tID-Pm-FJb" id="gGO-EI-Msq"/>
                 <outlet property="tableView" destination="e3O-kT-Mv1" id="i1H-lC-mdH"/>
                 <outlet property="window" destination="PxF-QJ-sAP" id="8cj-nQ-kjO"/>
             </connections>
@@ -158,11 +159,20 @@ Gw
                         </scroller>
                     </scrollView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-bC-5Kf">
-                        <rect key="frame" x="18" y="0.0" width="444" height="17"/>
+                        <rect key="frame" x="18" y="0.0" width="211" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="17" id="dJL-lk-NF5"/>
+                            <constraint firstAttribute="width" constant="207" id="kjX-Mp-zZL"/>
+                            <constraint firstAttribute="height" constant="17" id="vlx-vM-3rj"/>
                         </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Downloads" id="gHS-AJ-kjN">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Free Space" id="gHS-AJ-kjN">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tID-Pm-FJb">
+                        <rect key="frame" x="233" y="0.0" width="229" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Speed" id="RkU-fg-qNf">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -170,13 +180,16 @@ Gw
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="20" symbolic="YES" id="2hb-Zz-liJ"/>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="centerX" secondItem="WYJ-Fh-ZfZ" secondAttribute="centerX" id="9Zw-3s-oaX"/>
-                    <constraint firstAttribute="bottom" secondItem="gf0-bC-5Kf" secondAttribute="bottom" id="BPt-3n-R20"/>
-                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="top" secondItem="U1n-cX-gJi" secondAttribute="top" constant="-1" id="Idt-gy-s6w"/>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="WYJ-Fh-ZfZ" secondAttribute="bottom" constant="5" id="LML-bW-vym"/>
-                    <constraint firstAttribute="trailing" secondItem="gf0-bC-5Kf" secondAttribute="trailing" constant="20" symbolic="YES" id="Wbp-c2-APr"/>
-                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="-1" id="wre-5U-qjY"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="20" symbolic="YES" id="5Db-kn-Uvo"/>
+                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="-1" id="JOJ-RS-eQx"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="baseline" secondItem="tID-Pm-FJb" secondAttribute="baseline" id="W2C-vR-TrA"/>
+                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="centerX" secondItem="U1n-cX-gJi" secondAttribute="centerX" id="hVi-HN-UWc"/>
+                    <constraint firstItem="tID-Pm-FJb" firstAttribute="top" secondItem="gf0-bC-5Kf" secondAttribute="top" id="jNW-wE-GiQ"/>
+                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="top" secondItem="U1n-cX-gJi" secondAttribute="top" constant="-1" id="rBR-jc-08h"/>
+                    <constraint firstItem="tID-Pm-FJb" firstAttribute="leading" secondItem="gf0-bC-5Kf" secondAttribute="trailing" constant="8" symbolic="YES" id="vhg-BH-hDf"/>
+                    <constraint firstAttribute="bottom" secondItem="gf0-bC-5Kf" secondAttribute="bottom" id="xff-Dv-wDR"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="WYJ-Fh-ZfZ" secondAttribute="bottom" constant="5" id="zA0-U7-bDD"/>
+                    <constraint firstAttribute="trailing" secondItem="tID-Pm-FJb" secondAttribute="trailing" constant="20" symbolic="YES" id="zhj-da-7rb"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="B036A79B-9FCD-480C-938A-30E8503D7827" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="8cG-EV-raV">

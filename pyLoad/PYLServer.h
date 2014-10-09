@@ -14,8 +14,10 @@
 
 - (void) serverConnected:(PYLServer *)server;
 - (void) server:(PYLServer *)server didRefreshDownloadList:(NSArray *)list;
+- (void) server:(PYLServer *)server didRefreshQueue:(NSArray *)queue;
 - (void) serverHasCaptchaWaiting:(PYLServer *)server;
 - (void) server:(PYLServer *)server didUpdateFreeSpace:(NSUInteger)bytesFree;
+- (void) server:(PYLServer *)server didUpdateSpeed:(CGFloat)bytesPerSec;
 
 @end
 
@@ -23,8 +25,11 @@ typedef enum {
 	PYLRequestTypeNone,
 	PYLRequestTypeLogin,
 	PYLRequestTypeFetchDownloadsList,
+	PYLRequestTypeFetchQueue,
 	PYLRequestTypeCheckForCaptcha,
-	PYLRequestTypeCheckFreeSpace
+	PYLRequestTypeCheckFreeSpace,
+	PYLRequestTypeRestartFailed,
+	PYLRequestTypeUpdateStatus
 } PYLRequestType;
 
 @interface PYLServer : NSObject
@@ -34,6 +39,7 @@ typedef enum {
 @property (copy) NSString *username;
 @property (readonly, getter=isConnected) BOOL connected;
 @property (readonly) NSArray *downloadList;
+@property (readonly) NSArray *queue;
 @property (assign) id <PYLServerDelegate> delegate;
 
 - (instancetype) initWithAddress:(NSString *)address port:(NSUInteger)port;
@@ -41,8 +47,11 @@ typedef enum {
 - (void) disconnect;
 
 - (void) refreshDownloadList;
+- (void) refreshQueue;
 - (void) checkForCaptcha;
 - (void) checkFreeSpace;
+- (void) restartFailed;
+- (void) updateStatus;
 
 + (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req;
 - (NSMutableURLRequest *) mutableRequestForRequestType:(PYLRequestType)type;

@@ -74,7 +74,8 @@
 
 - (void) poll {
 	[_server refreshDownloadList];
-	[_server checkForCaptcha];
+	[_server updateStatus];
+	[_server refreshQueue];
 	
 	if ([_server isConnected]) {
 		[self performSelector:_cmd withObject:nil afterDelay:1.0f];
@@ -88,7 +89,7 @@
 }
 
 - (IBAction)restartFailed:(id)sender {
-	
+	[_server restartFailed];
 }
 
 #pragma mark - List Actions
@@ -124,6 +125,15 @@
 - (void) server:(PYLServer *)server didUpdateFreeSpace:(NSUInteger)bytesFree {
 	NSString *bytes = [NSByteCountFormatter stringFromByteCount:bytesFree countStyle:NSByteCountFormatterCountStyleFile];
 	_freeSpaceField.stringValue = [NSString stringWithFormat:@"%@ free", bytes];
+}
+
+- (void) server:(PYLServer *)server didRefreshQueue:(NSArray *)queue {
+	
+}
+
+- (void) server:(PYLServer *)server didUpdateSpeed:(CGFloat)bytesPerSec {
+	NSString *bytes = [NSByteCountFormatter stringFromByteCount:bytesPerSec countStyle:NSByteCountFormatterCountStyleFile];
+	_speedField.stringValue = [NSString stringWithFormat:@"%@/s", bytes];
 }
 
 #pragma mark - NSTableViewDataSource Methods

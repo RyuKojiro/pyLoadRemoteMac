@@ -13,7 +13,7 @@
 }
 
 - (NSURL *) urlWithLastPathComponent:(NSString *)endpoint {
-	NSString *string = [NSString stringWithFormat:@"http://%@:%lu/api/%@", self.address, (unsigned long)self.port, endpoint];
+	NSString *string = [NSString stringWithFormat:@"http://%@:%lu%@", self.address, (unsigned long)self.port, endpoint];
 	return [NSURL URLWithString:string];
 }
 
@@ -30,13 +30,19 @@
 + (NSString *) lastPathComponentForRequestType:(PYLRequestType)type {
 	switch (type) {
 		case PYLRequestTypeLogin:
-			return @"login";
+			return @"/api/login";
 		case PYLRequestTypeCheckForCaptcha:
-			return @"isCaptchaWaiting";
+			return @"/api/isCaptchaWaiting";
 		case PYLRequestTypeFetchDownloadsList:
-			return @"statusDownloads";
+			return @"/api/statusDownloads";
 		case PYLRequestTypeCheckFreeSpace:
-			return @"freeSpace";
+			return @"/api/freeSpace";
+		case PYLRequestTypeFetchQueue:
+			return @"/api/getQueue";
+		case PYLRequestTypeRestartFailed:
+			return @"/api/restartFailed";
+		case PYLRequestTypeUpdateStatus:
+			return @"/json/status";
 		default:
 			return nil;
 	}
@@ -107,6 +113,16 @@
 	}];
 }
 
+- (void) refreshQueue {
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchQueue];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		NSError *e = nil;
+		[_queue release];
+		_queue = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
+		[_delegate server:self didRefreshQueue:_queue];
+	}];
+}
+
 - (void) checkForCaptcha {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeCheckForCaptcha];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
@@ -123,6 +139,27 @@
 		[_delegate server:self didUpdateFreeSpace:[str integerValue]];
 		[str release];
 	}];
+}
+
+- (void) updateStatus {
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeUpdateStatus];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		NSError *e = nil;
+		NSDictionary *status = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
+		
+		[_delegate server:self didUpdateSpeed:[status[@"speed"] floatValue]];
+		
+		if ([status[@"captcha"] boolValue]) {
+			[_delegate serverHasCaptchaWaiting:self];
+		}
+		
+		NSLog(@"%@", status);
+	}];
+}
+
+- (void) restartFailed {
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeRestartFailed];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){}];
 }
 
 @end
