@@ -39,6 +39,4 @@ typedef enum {
 
 - (void) refreshDownloadList;
 
-+ (NSString *)extensionForString:(NSString *)file;
-
 @end

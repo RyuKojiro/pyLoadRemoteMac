@@ -17,4 +17,7 @@
 @property (assign) IBOutlet NSTextField *pluginLabel;
 @property (assign) IBOutlet NSTextField *packageLabel;
 
++ (NSString *) statusLabelTextForDictionary:(NSDictionary *)dict;
++ (NSString *) extensionForFile:(NSString *)file;
+
 @end

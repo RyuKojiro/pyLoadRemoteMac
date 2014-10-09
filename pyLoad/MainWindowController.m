@@ -70,14 +70,19 @@
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
 	DownloadListCellView *result = [tableView makeViewWithIdentifier:kMainWindowCellIdentifier owner:self];
 	
-	NSString *extension = [PYLServer extensionForString:_server.downloadList[row][@"name"]];
+	NSString *extension = [DownloadListCellView extensionForFile:_server.downloadList[row][@"name"]];
 	
 	result.nameLabel.stringValue = _server.downloadList[row][@"name"];
-	result.statusLabel.stringValue = _server.downloadList[row][@"statusmsg"];
+	result.statusLabel.stringValue = [DownloadListCellView statusLabelTextForDictionary:_server.downloadList[row]];
 	result.icon.image = [[NSWorkspace sharedWorkspace] iconForFileType:extension];
 	result.packageLabel.stringValue = _server.downloadList[row][@"packageName"];
 	result.pluginLabel.stringValue = _server.downloadList[row][@"plugin"];
-
+	result.progressBar.doubleValue = [_server.downloadList[row][@"percent"] doubleValue];
+	// TODO: A more reliable test here
+	if (result.progressBar.doubleValue) {
+		[result.progressBar setIndeterminate:NO];
+	}
+	
 	return result;
 }
 

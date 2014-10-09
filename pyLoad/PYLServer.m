@@ -113,14 +113,4 @@
 	NSLog(@"Connection %@ failed with error %@.", connection, error);
 }
 
-#pragma mark - Helper Methods
-
-+ (NSString *)extensionForString:(NSString *)file {
-	if ([[file pathExtension] isEqualToString:@"html"]) {
-		return [[file substringToIndex:[file length] - 5] pathExtension];
-	}
-	
-	return [file pathExtension];
-}
-
 @end
