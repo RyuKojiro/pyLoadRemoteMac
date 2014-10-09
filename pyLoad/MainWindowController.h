@@ -10,9 +10,10 @@
 #import "LoginSheetController.h"
 #import "PYLServer.h"
 
-@interface MainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, LoginSheetDelegate>
+@interface MainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, LoginSheetDelegate, PYLServerDelegate>
 
 @property (retain) PYLServer *server;
+@property (assign) IBOutlet NSTableView *tableView;
 
 - (IBAction)presentLoginSheet:(id)sender;
 

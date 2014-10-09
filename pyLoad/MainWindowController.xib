@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
             <connections>
+                <outlet property="tableView" destination="e3O-kT-Mv1" id="i1H-lC-mdH"/>
                 <outlet property="window" destination="PxF-QJ-sAP" id="8cj-nQ-kjO"/>
             </connections>
         </customObject>
@@ -45,7 +46,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="rya-e7-BqI">
+                                                <tableCellView identifier="DownloadListItem" id="rya-e7-BqI">
                                                     <rect key="frame" x="1" y="20" width="479" height="64"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -92,6 +93,10 @@
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-2" id="St8-OA-4qG"/>
+                                        <outlet property="delegate" destination="-2" id="bdC-4V-nk6"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -136,15 +141,22 @@
                             <action selector="presentLoginSheet:" target="-2" id="Xrn-P6-TVL"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="11306317-67E5-4BAA-8177-D63F05DB6872" label="BAM!" paletteLabel="BAM!" tag="-1" image="NSBonjour" id="ltZ-1i-WAp">
+                        <connections>
+                            <action selector="bam:" target="-2" id="Fzk-EE-sN2"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="nmB-W1-iAJ"/>
                     <toolbarItem reference="AB3-5N-V11"/>
+                    <toolbarItem reference="ltZ-1i-WAp"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
     </objects>
     <resources>
+        <image name="NSBonjour" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSUser" width="32" height="32"/>
     </resources>

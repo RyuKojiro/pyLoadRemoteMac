@@ -8,6 +8,8 @@
 
 #import "MainWindowController.h"
 
+#define kMainWindowCellIdentifier	@"DownloadListItem"
+
 @implementation MainWindowController {
 	LoginSheetController *loginSheetController;
 }
@@ -16,6 +18,7 @@
 	[_server release];
 	_server = [[PYLServer alloc] initWithAddress:controller.addressField.stringValue
 											port:controller.portField.integerValue];
+	_server.delegate = self;
 	[_server connectWithUsername:controller.usernameField.stringValue
 						password:controller.passwordField.stringValue];
 }
@@ -45,10 +48,29 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
+- (IBAction)bam:(id)sender {
+	[_server refreshDownloadList];
+}
+
+#pragma mark - PYLServerDelegate Methods
+
+- (void) server:(PYLServer *)server didRefreshDownloadList:(NSArray *)list {
+	[_tableView reloadData];
+}
+
 #pragma mark - NSTableViewDataSource Methods
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
+	return [[_server downloadList] count];
+}
 
 #pragma mark - NSTableViewDelegate Methods
 
-
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+	NSTextField *result = [tableView makeViewWithIdentifier:kMainWindowCellIdentifier owner:self];
+	
+	
+	return result;
+}
 
 @end
