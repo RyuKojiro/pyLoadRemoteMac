@@ -72,10 +72,12 @@
 	
 	NSString *extension = [PYLServer extensionForString:_server.downloadList[row][@"name"]];
 	
-	result.nameLabel.stringValue = _server.downloadList[row][@"packageName"];
+	result.nameLabel.stringValue = _server.downloadList[row][@"name"];
 	result.statusLabel.stringValue = _server.downloadList[row][@"statusmsg"];
 	result.icon.image = [[NSWorkspace sharedWorkspace] iconForFileType:extension];
-	
+	result.packageLabel.stringValue = _server.downloadList[row][@"packageName"];
+	result.pluginLabel.stringValue = _server.downloadList[row][@"plugin"];
+
 	return result;
 }
 

@@ -66,8 +66,24 @@
                                                             <rect key="frame" x="56" y="24" width="420" height="12"/>
                                                         </progressIndicator>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-CH-I1F">
-                                                            <rect key="frame" x="54" y="5" width="100" height="11"/>
-                                                            <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0 KB / 2.5 GB (0 KB/s)" id="1NL-pa-qc0">
+                                                            <rect key="frame" x="54" y="5" width="170" height="11"/>
+                                                            <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Downloading… 0 KB / 2.5 GB (0 KB/s)" id="1NL-pa-qc0">
+                                                                <font key="font" metaFont="miniSystem"/>
+                                                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1LE-nv-074">
+                                                            <rect key="frame" x="413" y="45" width="65" height="11"/>
+                                                            <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="PackageName" id="3Jz-xk-ZYF">
+                                                                <font key="font" metaFont="miniSystem"/>
+                                                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YXk-S7-0k6">
+                                                            <rect key="frame" x="422" y="5" width="56" height="11"/>
+                                                            <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="PluginName" id="GWy-wo-50O">
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -75,20 +91,26 @@
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="trailing" secondItem="YXk-S7-0k6" secondAttribute="trailing" id="FjH-yy-DdC"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="weg-iy-Ik1" secondAttribute="trailing" constant="8" symbolic="YES" id="GbC-iL-qqM"/>
-                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="top" secondItem="rya-e7-BqI" secondAttribute="top" constant="3" id="JSz-EJ-2hP"/>
-                                                        <constraint firstAttribute="trailing" secondItem="3UD-2h-bTV" secondAttribute="trailing" constant="3" id="Obr-Jp-OG7"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3UD-2h-bTV" secondAttribute="trailing" constant="3" id="ML1-bg-2tU"/>
+                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="trailing" secondItem="1LE-nv-074" secondAttribute="trailing" id="QIm-Rz-ERQ"/>
+                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="leading" secondItem="rya-e7-BqI" secondAttribute="leading" constant="16" id="TjH-4J-OL9"/>
+                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="centerY" secondItem="rya-e7-BqI" secondAttribute="centerY" id="WDr-WU-jai"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="leading" secondItem="4NL-CH-I1F" secondAttribute="leading" id="Xbc-2a-DUI"/>
-                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="leading" secondItem="rya-e7-BqI" secondAttribute="leading" constant="16" id="Y9e-lJ-IW8"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" constant="8" symbolic="YES" id="ckb-Ip-pNZ"/>
+                                                        <constraint firstItem="1LE-nv-074" firstAttribute="baseline" secondItem="Byb-Q4-Nd3" secondAttribute="baseline" id="faR-PZ-29Z"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="leading" id="lkW-Jt-TKh"/>
-                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="centerY" secondItem="rya-e7-BqI" secondAttribute="centerY" id="y03-2q-imK"/>
+                                                        <constraint firstItem="YXk-S7-0k6" firstAttribute="top" secondItem="3UD-2h-bTV" secondAttribute="bottom" constant="8" symbolic="YES" id="pw8-CS-ENJ"/>
                                                         <constraint firstItem="4NL-CH-I1F" firstAttribute="top" secondItem="3UD-2h-bTV" secondAttribute="bottom" constant="8" symbolic="YES" id="y3U-Kh-VOY"/>
+                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="rya-e7-BqI" secondAttribute="top" constant="28" id="zNh-AO-Nxk"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="icon" destination="weg-iy-Ik1" id="DFF-kN-j5h"/>
                                                         <outlet property="imageView" destination="weg-iy-Ik1" id="tsB-JR-mK4"/>
                                                         <outlet property="nameLabel" destination="Byb-Q4-Nd3" id="97Z-Yb-SGO"/>
+                                                        <outlet property="packageLabel" destination="1LE-nv-074" id="vaE-Tk-UOM"/>
+                                                        <outlet property="pluginLabel" destination="YXk-S7-0k6" id="pL3-tq-GcT"/>
                                                         <outlet property="progressBar" destination="3UD-2h-bTV" id="EqE-8j-b0h"/>
                                                         <outlet property="statusLabel" destination="4NL-CH-I1F" id="ceF-84-Nxw"/>
                                                         <outlet property="textField" destination="Byb-Q4-Nd3" id="nFQ-HD-gh0"/>
