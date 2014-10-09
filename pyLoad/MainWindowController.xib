@@ -122,6 +122,7 @@
                                     <connections>
                                         <outlet property="dataSource" destination="-2" id="St8-OA-4qG"/>
                                         <outlet property="delegate" destination="-2" id="bdC-4V-nk6"/>
+                                        <outlet property="menu" destination="7Ut-ky-GHm" id="enx-tQ-uTt"/>
                                     </connections>
                                 </tableView>
                             </subviews>
@@ -174,6 +175,17 @@
                 </defaultToolbarItems>
             </toolbar>
         </window>
+        <menu id="7Ut-ky-GHm">
+            <items>
+                <menuItem title="Cancel" id="8aO-qH-xSJ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="cancel:" target="-2" id="4oF-ru-I1T"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="573" y="8.5"/>
+        </menu>
     </objects>
     <resources>
         <image name="NSFolder" width="32" height="32"/>

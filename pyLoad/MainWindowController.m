@@ -15,6 +15,8 @@
 	LoginSheetController *loginSheetController;
 }
 
+#pragma mark - Login Sheet Management
+
 - (void) loginSheetCompleted:(LoginSheetController *)controller {
 	[_server release];
 	_server = [[PYLServer alloc] initWithAddress:controller.addressField.stringValue
@@ -22,11 +24,6 @@
 	_server.delegate = self;
 	[_server connectWithUsername:controller.usernameField.stringValue
 						password:controller.passwordField.stringValue];
-}
-
-- (void) dealloc {
-	[loginSheetController release];
-	[super dealloc];
 }
 
 - (IBAction)presentLoginSheet:(id)sender {
@@ -42,6 +39,8 @@
 		  contextInfo:self];
 }
 
+#pragma mark - Window Lifecycle
+
 - (void)windowDidLoad {
     [super windowDidLoad];
 	
@@ -49,12 +48,25 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
+- (void) dealloc {
+	[loginSheetController release];
+	[super dealloc];
+}
+
+#pragma mark - Server Polling
+
 - (void) poll {
 	[_server refreshDownloadList];
 	
 	if ([_server isConnected]) {
 		[self performSelector:_cmd withObject:nil afterDelay:1.0f];
 	}
+}
+
+#pragma mark - List Menu Actions
+
+- (IBAction)cancel:(id)sender {
+	
 }
 
 #pragma mark - PYLServerDelegate Methods
