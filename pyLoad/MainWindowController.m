@@ -7,6 +7,7 @@
 //
 
 #import "MainWindowController.h"
+#import "DownloadListCellView.h"
 
 #define kMainWindowCellIdentifier	@"DownloadListItem"
 
@@ -24,7 +25,7 @@
 }
 
 - (void) dealloc {
-	[LoginSheetController release];
+	[loginSheetController release];
 	[super dealloc];
 }
 
@@ -67,8 +68,13 @@
 #pragma mark - NSTableViewDelegate Methods
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-	NSTextField *result = [tableView makeViewWithIdentifier:kMainWindowCellIdentifier owner:self];
+	DownloadListCellView *result = [tableView makeViewWithIdentifier:kMainWindowCellIdentifier owner:self];
 	
+	NSString *extension = [PYLServer extensionForString:_server.downloadList[row][@"name"]];
+	
+	result.nameLabel.stringValue = _server.downloadList[row][@"packageName"];
+	result.statusLabel.stringValue = _server.downloadList[row][@"statusmsg"];
+	result.icon.image = [[NSWorkspace sharedWorkspace] iconForFileType:extension];
 	
 	return result;
 }

@@ -99,7 +99,8 @@
 		} break;
 		case PYLServerStateFetchingDownloadsList: {
 			NSError *e = nil;
-			_downloadList = [NSJSONSerialization JSONObjectWithData:data options:0 error:&e];
+			[_downloadList release];
+			_downloadList = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
 			[_delegate server:self didRefreshDownloadList:_downloadList];
 		}
 	}
@@ -110,6 +111,16 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	_state = PYLServerStateError;
 	NSLog(@"Connection %@ failed with error %@.", connection, error);
+}
+
+#pragma mark - Helper Methods
+
++ (NSString *)extensionForString:(NSString *)file {
+	if ([[file pathExtension] isEqualToString:@"html"]) {
+		return [[file substringToIndex:[file length] - 5] pathExtension];
+	}
+	
+	return [file pathExtension];
 }
 
 @end

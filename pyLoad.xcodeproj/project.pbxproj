@@ -17,6 +17,7 @@
 		E65B69DC19E6256300EB83CA /* PYLServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DB19E6256300EB83CA /* PYLServer.m */; };
 		E65B69E019E627B300EB83CA /* LoginSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DE19E627B300EB83CA /* LoginSheetController.m */; };
 		E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E65B69DF19E627B300EB83CA /* LoginSheetController.xib */; };
+		E676BBC119E6549E00144D23 /* DownloadListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = E676BBC019E6549E00144D23 /* DownloadListCellView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		E65B69DD19E627B300EB83CA /* LoginSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSheetController.h; sourceTree = "<group>"; };
 		E65B69DE19E627B300EB83CA /* LoginSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSheetController.m; sourceTree = "<group>"; };
 		E65B69DF19E627B300EB83CA /* LoginSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginSheetController.xib; sourceTree = "<group>"; };
+		E676BBBF19E6549E00144D23 /* DownloadListCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListCellView.h; sourceTree = "<group>"; };
+		E676BBC019E6549E00144D23 /* DownloadListCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				E6194CCA19E61D6E00930613 /* MainWindowController.h */,
 				E6194CCB19E61D6E00930613 /* MainWindowController.m */,
 				E6194CCC19E61D6E00930613 /* MainWindowController.xib */,
+				E676BBBF19E6549E00144D23 /* DownloadListCellView.h */,
+				E676BBC019E6549E00144D23 /* DownloadListCellView.m */,
 			);
 			name = MainWindow;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 			files = (
 				E65B69E019E627B300EB83CA /* LoginSheetController.m in Sources */,
 				E6194CCD19E61D6E00930613 /* MainWindowController.m in Sources */,
+				E676BBC119E6549E00144D23 /* DownloadListCellView.m in Sources */,
 				E6194CB019E614F100930613 /* AppDelegate.m in Sources */,
 				E65B69DC19E6256300EB83CA /* PYLServer.m in Sources */,
 				E6194CAD19E614F100930613 /* main.m in Sources */,
