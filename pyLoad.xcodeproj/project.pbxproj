@@ -89,12 +89,11 @@
 		E6194CA919E614F100930613 /* pyLoad */ = {
 			isa = PBXGroup;
 			children = (
+				E65B69E519E6464E00EB83CA /* Server */,
 				E65B69E419E627D700EB83CA /* Application */,
 				E65B69E319E627C600EB83CA /* LoginSheet */,
 				E65B69E219E627B800EB83CA /* MainWindow */,
 				E6194CAA19E614F100930613 /* Supporting Files */,
-				E65B69DA19E6256300EB83CA /* PYLServer.h */,
-				E65B69DB19E6256300EB83CA /* PYLServer.m */,
 			);
 			path = pyLoad;
 			sourceTree = "<group>";
@@ -154,6 +153,15 @@
 				E6194CB319E614F100930613 /* MainMenu.xib */,
 			);
 			name = Application;
+			sourceTree = "<group>";
+		};
+		E65B69E519E6464E00EB83CA /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				E65B69DA19E6256300EB83CA /* PYLServer.h */,
+				E65B69DB19E6256300EB83CA /* PYLServer.m */,
+			);
+			name = Server;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
