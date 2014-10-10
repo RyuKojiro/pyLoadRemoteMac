@@ -13,6 +13,7 @@
 @protocol LoginSheetDelegate <NSObject>
 
 - (void) loginSheetCompleted:(LoginSheetController *)controller;
+- (void) loginSheetCancelled:(LoginSheetController *)controller;
 
 @end
 

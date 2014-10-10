@@ -22,6 +22,10 @@
 
 #pragma mark - Login Sheet Management
 
+- (void) loginSheetCancelled:(LoginSheetController *)controller {
+	[self.window orderOut:self];
+}
+
 - (void) loginSheetCompleted:(LoginSheetController *)controller {
 	[_server release];
 	_server = [[PYLServer alloc] initWithAddress:controller.addressField.stringValue

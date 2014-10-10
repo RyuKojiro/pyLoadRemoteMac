@@ -15,6 +15,7 @@
 @implementation LoginSheetController
 
 - (IBAction)cancel:(id)sender {
+	[_delegate loginSheetCancelled:self];
 	[NSApp endSheet:self.window];
 	[self.window orderOut:sender];
 }
