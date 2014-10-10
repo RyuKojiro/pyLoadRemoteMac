@@ -19,6 +19,7 @@
 - (void) serverHasCaptchaWaiting:(PYLServer *)server;
 - (void) server:(PYLServer *)server didUpdateFreeSpace:(NSUInteger)bytesFree;
 - (void) server:(PYLServer *)server didUpdateSpeed:(CGFloat)bytesPerSec;
+- (void) server:(PYLServer *)server didUpdatePausedStatus:(BOOL)paused;
 
 @end
 

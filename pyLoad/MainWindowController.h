@@ -17,6 +17,7 @@
 @property (assign) IBOutlet NSTableView *tableView;
 @property (assign) IBOutlet NSTextField *freeSpaceField;
 @property (assign) IBOutlet NSTextField *speedField;
+@property (assign) IBOutlet NSToolbarItem *playPauseButton;
 
 - (IBAction)presentLoginSheet:(id)sender;
 - (IBAction)serverSettings:(id)sender;

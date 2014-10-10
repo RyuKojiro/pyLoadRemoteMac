@@ -156,6 +156,8 @@
 			[_delegate serverHasCaptchaWaiting:self];
 		}
 		
+		[_delegate server:self didUpdatePausedStatus:[status[@"pause"] boolValue]];
+		
 		NSLog(@"%@", status);
 	}];
 }

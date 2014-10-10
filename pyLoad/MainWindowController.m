@@ -151,6 +151,11 @@
 
 #pragma mark - PYLServerDelegate Methods
 
+- (void) server:(PYLServer *)server didUpdatePausedStatus:(BOOL)paused {
+	_playPauseButton.image = paused ? [NSImage imageNamed:@"go"] : [NSImage imageNamed:@"stop"];
+	_playPauseButton.label = paused ? @"Resume All" : @"Stop All";
+}
+
 - (void) serverConnected:(PYLServer *)server {
 	[server checkFreeSpace];
 	[self poll];
