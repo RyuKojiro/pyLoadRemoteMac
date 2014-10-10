@@ -97,19 +97,21 @@
 - (IBAction)presentCaptchaSolver:(id)sender {
 	if (!captchaWindowController) {
 		captchaWindowController = [[CaptchaWindowController alloc] initWithWindowNibName:@"CaptchaWindowController"];
-		//captchaWindowController.delegate = self;
+		captchaWindowController.delegate = self;
 	}
 	
 	// Recycle the window
 	captchaWindowController.captchaImageView.image = nil;
 	captchaWindowController.solutionTextField.stringValue = @"";
-	captchaWindowController.delegate = self;
+	[captchaWindowController.throbber setHidden:NO];
+	[captchaWindowController.throbber startAnimation:self];
 	
 	// Populate it on demand
 	[_server fetchCaptchaWithCompletionHandler:^(NSUInteger captchaId, NSImage *image) {
 		captchaWindowController.captchaImageView.image = image;
 		captchaWindowController.captchaId = captchaId;
 		[captchaWindowController.solveButton setEnabled:YES];
+		[captchaWindowController.throbber setHidden:YES];
 	}];
 	
 	[NSApp beginSheet:captchaWindowController.window
@@ -122,7 +124,7 @@
 #pragma mark - CaptchaWindowDelegate Methods
 
 - (void) captchaWindowController:(CaptchaWindowController *)controller didGetSolution:(NSString *)solution forId:(NSUInteger)captchaId{
-	
+	[_server submitCaptchaSolution:solution forCaptchaId:captchaId];
 }
 
 
