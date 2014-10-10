@@ -9,12 +9,13 @@
                 <outlet property="captchaImageView" destination="5MP-Lc-nOd" id="OM0-x5-V1Y"/>
                 <outlet property="solutionTextField" destination="ANg-r7-x80" id="GK8-AQ-2Tz"/>
                 <outlet property="solveButton" destination="Fqs-u6-sAi" id="cAb-oW-McF"/>
+                <outlet property="throbber" destination="BkA-7v-tML" id="Rhy-pd-DcO"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Captcha" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="Captcha" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="263"/>
@@ -23,7 +24,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="263"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="BkA-7v-tML">
+                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="BkA-7v-tML">
                         <rect key="frame" x="224" y="155" width="32" height="32"/>
                     </progressIndicator>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5MP-Lc-nOd">
@@ -60,19 +61,25 @@ DQ
 Gw
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="cancel:" target="-2" id="mPx-op-2S0"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ANg-r7-x80" firstAttribute="centerX" secondItem="5MP-Lc-nOd" secondAttribute="centerX" id="0EO-go-brj"/>
                     <constraint firstItem="zr0-Om-qes" firstAttribute="top" secondItem="ANg-r7-x80" secondAttribute="bottom" constant="8" symbolic="YES" id="9xU-SP-b38"/>
                     <constraint firstItem="5MP-Lc-nOd" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="J4b-5P-gc3"/>
+                    <constraint firstItem="BkA-7v-tML" firstAttribute="top" relation="greaterThanOrEqual" secondItem="se5-gp-TjO" secondAttribute="top" constant="76" id="OLb-eJ-9Uj"/>
                     <constraint firstItem="ANg-r7-x80" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="PwH-9U-jak"/>
                     <constraint firstItem="Fqs-u6-sAi" firstAttribute="leading" secondItem="zr0-Om-qes" secondAttribute="trailing" constant="12" symbolic="YES" id="bEG-yY-pEo"/>
                     <constraint firstItem="ANg-r7-x80" firstAttribute="top" secondItem="5MP-Lc-nOd" secondAttribute="bottom" constant="8" symbolic="YES" id="boX-Re-ytz"/>
                     <constraint firstAttribute="trailing" secondItem="ANg-r7-x80" secondAttribute="trailing" constant="20" symbolic="YES" id="gRb-ml-vHt"/>
+                    <constraint firstItem="ANg-r7-x80" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BkA-7v-tML" secondAttribute="bottom" constant="84" id="nDS-f0-cFe"/>
                     <constraint firstItem="zr0-Om-qes" firstAttribute="baseline" secondItem="Fqs-u6-sAi" secondAttribute="baseline" id="pp6-dp-8yu"/>
                     <constraint firstItem="5MP-Lc-nOd" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="sh1-Vu-TB8"/>
                     <constraint firstItem="ANg-r7-x80" firstAttribute="trailing" secondItem="Fqs-u6-sAi" secondAttribute="trailing" id="uDz-yt-0MF"/>
+                    <constraint firstAttribute="centerX" secondItem="BkA-7v-tML" secondAttribute="centerX" id="yfh-Xa-cIX"/>
                     <constraint firstAttribute="bottom" secondItem="zr0-Om-qes" secondAttribute="bottom" constant="20" symbolic="YES" id="zMh-Me-TIk"/>
                 </constraints>
             </view>

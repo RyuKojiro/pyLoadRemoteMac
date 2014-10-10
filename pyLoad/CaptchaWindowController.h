@@ -24,7 +24,9 @@
 @property (assign) IBOutlet NSButton *solveButton;
 @property (assign) id <CaptchaWindowDelegate> delegate;
 @property (readwrite) NSUInteger captchaId;
+@property (assign) IBOutlet NSProgressIndicator *throbber;
 
 - (IBAction)solve:(id)sender;
+- (IBAction)cancel:(id)sender;
 
 @end
