@@ -148,7 +148,7 @@
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeUpdateStatus];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
 		NSError *e = nil;
-		NSDictionary *status = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
+		NSDictionary *status = [NSJSONSerialization JSONObjectWithData:data options:0 error:&e];
 		
 		[_delegate server:self didUpdateSpeed:[status[@"speed"] floatValue]];
 		
@@ -169,7 +169,7 @@
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchCaptcha];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
 		NSError *e = nil;
-		NSDictionary *dictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
+		NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&e];
 		
 		NSImage *result = nil;
 		NSUInteger captchaId = 0;
@@ -198,7 +198,7 @@
 	
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
 		NSError *e = nil;
-		NSDictionary *dictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
+		NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&e];
 
 		if ([dictionary[@"captcha"] boolValue]) { // "true"
 			[_delegate serverHasCaptchaWaiting:self];
