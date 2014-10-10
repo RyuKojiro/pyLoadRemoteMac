@@ -43,6 +43,7 @@
 			return @"/api/restartFailed";
 		case PYLRequestTypeUpdateStatus:
 			return @"/json/status";
+		case PYLRequestTypeSubmitCaptcha:
 		case PYLRequestTypeFetchCaptcha:
 			return @"/json/set_captcha";
 		default:
@@ -180,8 +181,29 @@
 			NSLog(@"%@", parts[0]);
 			NSData *imageData = [[NSData alloc] initWithBase64EncodedString:parts[1] options:0];
 			result = [[[NSImage alloc] initWithData:imageData] autorelease];
+			[imageData release];
 		}
 		handler(captchaId, result);
+	}];
+}
+
+- (void) submitCaptchaSolution:(NSString *)solution forCaptchaId:(NSUInteger)captchaId {
+	NSMutableURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeSubmitCaptcha];
+	[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
+ 
+	NSMutableData *postBody = [[NSMutableData alloc] init];
+	[postBody appendData:[[NSString stringWithFormat:@"cap_id=%lu&cap_result=%@", captchaId, solution] dataUsingEncoding:NSUTF8StringEncoding]];
+	[request setHTTPBody:postBody];
+	[postBody release];
+	
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		NSError *e = nil;
+		NSDictionary *dictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
+
+		if ([dictionary[@"captcha"] boolValue]) { // "true"
+			[_delegate serverHasCaptchaWaiting:self];
+		}
+
 	}];
 }
 

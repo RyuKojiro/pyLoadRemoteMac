@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Daniel Loffgren. All rights reserved.
 //
 
+#import <AppKit/AppKit.h> // Captcha needs NSImage
 #import <Foundation/Foundation.h>
 
 @class PYLServer;
@@ -30,7 +31,8 @@ typedef enum {
 	PYLRequestTypeCheckFreeSpace,
 	PYLRequestTypeRestartFailed,
 	PYLRequestTypeUpdateStatus,
-	PYLRequestTypeFetchCaptcha
+	PYLRequestTypeFetchCaptcha,
+	PYLRequestTypeSubmitCaptcha
 } PYLRequestType;
 
 @interface PYLServer : NSObject
@@ -54,6 +56,7 @@ typedef enum {
 - (void) restartFailed;
 - (void) updateStatus;
 - (void) fetchCaptchaWithCompletionHandler:(void (^)(NSUInteger captchaId, NSImage *image))handler;
+- (void) submitCaptchaSolution:(NSString *)solution forCaptchaId:(NSUInteger)captchaId;
 
 + (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req;
 - (NSMutableURLRequest *) mutableRequestForRequestType:(PYLRequestType)type;
