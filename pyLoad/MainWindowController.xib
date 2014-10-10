@@ -196,7 +196,7 @@ Gw
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="pVB-Qx-uzC"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="AB3-5N-V11"/>
-                    <toolbarItem implicitItemIdentifier="BF1B8CDA-5DF7-4EEE-B3D9-0ABE82F5FFFE" label="Cancel" paletteLabel="Cancel" tag="-1" image="NSBonjour" id="HWQ-Lp-SyD">
+                    <toolbarItem implicitItemIdentifier="BF1B8CDA-5DF7-4EEE-B3D9-0ABE82F5FFFE" label="Cancel" paletteLabel="Cancel" tag="-1" image="cancel" id="HWQ-Lp-SyD">
                         <connections>
                             <action selector="cancel:" target="-1" id="a5T-r8-PwO"/>
                         </connections>
@@ -211,15 +211,18 @@ Gw
                             <action selector="serverSettings:" target="-2" id="1Us-QO-Wmy"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="AB4654CA-826C-41ED-9B66-EC82C631250E" label="Add Package" paletteLabel="Add Package" tag="-1" image="NSBonjour" id="snc-Yk-Vfn">
+                    <toolbarItem implicitItemIdentifier="AB4654CA-826C-41ED-9B66-EC82C631250E" label="Add Package" paletteLabel="Add Package" tag="-1" image="plus" id="snc-Yk-Vfn">
                         <connections>
                             <action selector="addPackage:" target="-2" id="ZJZ-Vp-gc1"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="CECC020A-73BB-47CF-AFE7-9CF3FBF84FFD" label="Stop All" paletteLabel="Stop All" tag="-1" image="stop" id="Wdm-Vd-Bc3"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="snc-Yk-Vfn"/>
                     <toolbarItem reference="HWQ-Lp-SyD"/>
+                    <toolbarItem reference="AB3-5N-V11"/>
+                    <toolbarItem reference="Wdm-Vd-Bc3"/>
                     <toolbarItem reference="RVf-6i-0Qh"/>
                     <toolbarItem reference="AB3-5N-V11"/>
                     <toolbarItem reference="Sj2-M6-XgA"/>
@@ -242,6 +245,9 @@ Gw
         <image name="NSBonjour" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
+        <image name="cancel" width="32" height="32"/>
+        <image name="plus" width="32" height="32"/>
+        <image name="stop" width="32" height="32"/>
         <image name="xButton" width="14" height="14"/>
     </resources>
 </document>
