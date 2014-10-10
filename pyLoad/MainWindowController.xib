@@ -54,7 +54,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byb-Q4-Nd3">
-                                                            <rect key="frame" x="54" y="44" width="205" height="17"/>
+                                                            <rect key="frame" x="54" y="42" width="205" height="17"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="This is the long ass filename.zip" id="C0A-C1-ESW">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -72,7 +72,7 @@
                                                             </constraints>
                                                         </progressIndicator>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-CH-I1F">
-                                                            <rect key="frame" x="54" y="5" width="170" height="11"/>
+                                                            <rect key="frame" x="54" y="7" width="170" height="11"/>
                                                             <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Downloading… 0 KB / 2.5 GB (0 KB/s)" id="1NL-pa-qc0">
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -80,7 +80,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YXk-S7-0k6">
-                                                            <rect key="frame" x="422" y="5" width="56" height="11"/>
+                                                            <rect key="frame" x="422" y="7" width="56" height="11"/>
                                                             <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="PluginName" id="GWy-wo-50O">
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -88,7 +88,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1LE-nv-074">
-                                                            <rect key="frame" x="413" y="45" width="65" height="11"/>
+                                                            <rect key="frame" x="413" y="43" width="65" height="11"/>
                                                             <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="PackageName" id="3Jz-xk-ZYF">
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -110,21 +110,23 @@ Gw
                                                         </button>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="YXk-S7-0k6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4NL-CH-I1F" secondAttribute="trailing" constant="2" id="15a-Ja-PDC"/>
                                                         <constraint firstAttribute="trailing" secondItem="1LE-nv-074" secondAttribute="trailing" constant="3" id="2Lu-qE-dQo"/>
+                                                        <constraint firstItem="1LE-nv-074" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Byb-Q4-Nd3" secondAttribute="trailing" constant="2" id="3qn-rk-w9f"/>
                                                         <constraint firstItem="1LE-nv-074" firstAttribute="trailing" secondItem="YXk-S7-0k6" secondAttribute="trailing" id="6xf-Qb-oQL"/>
-                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="top" secondItem="rya-e7-BqI" secondAttribute="top" constant="3" id="8l3-Ul-WYd"/>
+                                                        <constraint firstItem="Byb-Q4-Nd3" firstAttribute="top" secondItem="rya-e7-BqI" secondAttribute="top" constant="5" id="8l3-Ul-WYd"/>
                                                         <constraint firstItem="x5T-ux-o1I" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="trailing" constant="8" symbolic="YES" id="EJE-Ot-qdP"/>
-                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" constant="8" symbolic="YES" id="KtW-fK-9VI"/>
+                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" constant="6" id="KtW-fK-9VI"/>
                                                         <constraint firstItem="4NL-CH-I1F" firstAttribute="baseline" secondItem="YXk-S7-0k6" secondAttribute="baseline" id="S5a-AQ-w2F"/>
                                                         <constraint firstItem="weg-iy-Ik1" firstAttribute="leading" secondItem="rya-e7-BqI" secondAttribute="leading" constant="13" id="V5V-8q-gPg"/>
                                                         <constraint firstAttribute="trailing" secondItem="x5T-ux-o1I" secondAttribute="trailing" constant="8" id="VuJ-Wz-hF1"/>
                                                         <constraint firstItem="weg-iy-Ik1" firstAttribute="centerY" secondItem="rya-e7-BqI" secondAttribute="centerY" id="XmC-P3-G2q"/>
-                                                        <constraint firstItem="4NL-CH-I1F" firstAttribute="top" secondItem="3UD-2h-bTV" secondAttribute="bottom" constant="8" symbolic="YES" id="YoM-ni-Fyf"/>
+                                                        <constraint firstItem="4NL-CH-I1F" firstAttribute="top" secondItem="3UD-2h-bTV" secondAttribute="bottom" constant="6" id="YoM-ni-Fyf"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="leading" id="bwV-Tc-Jbe"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="weg-iy-Ik1" secondAttribute="trailing" constant="11" id="cc3-h4-sLs"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="baseline" secondItem="1LE-nv-074" secondAttribute="baseline" id="cnP-PU-4ge"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="leading" secondItem="4NL-CH-I1F" secondAttribute="leading" id="iPR-gD-E3q"/>
-                                                        <constraint firstItem="x5T-ux-o1I" firstAttribute="top" secondItem="1LE-nv-074" secondAttribute="bottom" constant="7" id="l4A-fr-WR1"/>
+                                                        <constraint firstItem="x5T-ux-o1I" firstAttribute="top" secondItem="1LE-nv-074" secondAttribute="bottom" constant="5" id="l4A-fr-WR1"/>
                                                         <constraint firstItem="x5T-ux-o1I" firstAttribute="centerY" secondItem="3UD-2h-bTV" secondAttribute="centerY" id="wYf-cO-cxk"/>
                                                     </constraints>
                                                     <connections>
@@ -162,8 +164,8 @@ Gw
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-bC-5Kf">
                         <rect key="frame" x="18" y="1" width="211" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="207" id="18Q-p5-uPj"/>
-                            <constraint firstAttribute="height" constant="17" id="ffC-dm-fZV"/>
+                            <constraint firstAttribute="height" constant="17" id="fbV-2A-T8G"/>
+                            <constraint firstAttribute="width" constant="207" id="nhA-E0-QRL"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Zero KB Free" id="gHS-AJ-kjN">
                             <font key="font" metaFont="smallSystem"/>
@@ -185,19 +187,19 @@ Gw
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="dhe-aQ-vQr" firstAttribute="centerX" secondItem="U1n-cX-gJi" secondAttribute="centerX" id="7bk-5D-aO6"/>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="20" symbolic="YES" id="8Hb-1A-zTN"/>
-                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="top" secondItem="U1n-cX-gJi" secondAttribute="top" constant="-1" id="Cex-AF-aNL"/>
-                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="trailing" secondItem="dhe-aQ-vQr" secondAttribute="trailing" id="J5L-Zh-nGt"/>
-                    <constraint firstAttribute="trailing" secondItem="tID-Pm-FJb" secondAttribute="trailing" constant="20" symbolic="YES" id="Js3-OF-bCM"/>
-                    <constraint firstItem="dhe-aQ-vQr" firstAttribute="top" secondItem="WYJ-Fh-ZfZ" secondAttribute="bottom" id="KMJ-Ry-8Va"/>
-                    <constraint firstItem="dhe-aQ-vQr" firstAttribute="leading" secondItem="WYJ-Fh-ZfZ" secondAttribute="leading" id="U4F-cx-7Fz"/>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="baseline" secondItem="tID-Pm-FJb" secondAttribute="baseline" id="Uxx-kD-gNq"/>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="dhe-aQ-vQr" secondAttribute="bottom" constant="4" id="V6E-TB-fTh"/>
-                    <constraint firstItem="tID-Pm-FJb" firstAttribute="top" secondItem="gf0-bC-5Kf" secondAttribute="top" id="XE8-rW-3F0"/>
-                    <constraint firstItem="tID-Pm-FJb" firstAttribute="leading" secondItem="gf0-bC-5Kf" secondAttribute="trailing" constant="8" symbolic="YES" id="bTM-yV-aQV"/>
-                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="-1" id="egi-Jp-wAg"/>
-                    <constraint firstAttribute="bottom" secondItem="gf0-bC-5Kf" secondAttribute="bottom" constant="1" id="fYH-sd-204"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="baseline" secondItem="tID-Pm-FJb" secondAttribute="baseline" id="32i-5n-wwi"/>
+                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="-1" id="5RB-Zf-8Hw"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="dhe-aQ-vQr" secondAttribute="bottom" constant="4" id="Hm5-FT-el2"/>
+                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="dhe-aQ-vQr" secondAttribute="leading" id="KrF-gs-by8"/>
+                    <constraint firstAttribute="trailing" secondItem="tID-Pm-FJb" secondAttribute="trailing" constant="20" symbolic="YES" id="LNG-45-98l"/>
+                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="top" secondItem="U1n-cX-gJi" secondAttribute="top" constant="-1" id="TfM-fd-Aww"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="20" symbolic="YES" id="Xi9-zp-OtG"/>
+                    <constraint firstAttribute="bottom" secondItem="gf0-bC-5Kf" secondAttribute="bottom" constant="1" id="b9s-nb-KJo"/>
+                    <constraint firstItem="dhe-aQ-vQr" firstAttribute="top" secondItem="WYJ-Fh-ZfZ" secondAttribute="bottom" id="bBD-nL-5Wz"/>
+                    <constraint firstItem="dhe-aQ-vQr" firstAttribute="trailing" secondItem="WYJ-Fh-ZfZ" secondAttribute="trailing" id="hCa-sw-TJE"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="tID-Pm-FJb" secondAttribute="top" id="jYt-DD-Cuc"/>
+                    <constraint firstItem="dhe-aQ-vQr" firstAttribute="centerX" secondItem="U1n-cX-gJi" secondAttribute="centerX" id="vjK-b3-153"/>
+                    <constraint firstItem="tID-Pm-FJb" firstAttribute="leading" secondItem="gf0-bC-5Kf" secondAttribute="trailing" constant="8" symbolic="YES" id="yvT-v2-bW3"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="B036A79B-9FCD-480C-938A-30E8503D7827" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="8cG-EV-raV">
