@@ -8,7 +8,7 @@
             <connections>
                 <outlet property="freeSpaceField" destination="gf0-bC-5Kf" id="o2x-aD-Ac3"/>
                 <outlet property="playPauseButton" destination="Wdm-Vd-Bc3" id="Tmr-Cw-tLj"/>
-                <outlet property="speedField" destination="tID-Pm-FJb" id="gGO-EI-Msq"/>
+                <outlet property="speedMenuItem" destination="N72-29-0Yg" id="FVY-nH-XcM"/>
                 <outlet property="tableView" destination="e3O-kT-Mv1" id="i1H-lC-mdH"/>
                 <outlet property="window" destination="PxF-QJ-sAP" id="8cj-nQ-kjO"/>
             </connections>
@@ -177,33 +177,44 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tID-Pm-FJb">
-                        <rect key="frame" x="233" y="1" width="229" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Zero KB/s" id="RkU-fg-qNf">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dhe-aQ-vQr">
                         <rect key="frame" x="-1" y="22" width="482" height="2"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="groovePixels" id="nlg-Am-lDw"/>
                     </imageView>
+                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A6t-mk-5zG">
+                        <rect key="frame" x="401" y="-3" width="77" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="76R-tT-Tzg"/>
+                            <constraint firstAttribute="width" constant="77" id="dDi-WQ-HP1"/>
+                        </constraints>
+                        <popUpButtonCell key="cell" type="recessed" title="Zero KB/s" bezelStyle="recessed" alignment="right" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="8iV-pR-zmU">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="eC5-zJ-Kbq">
+                                <items>
+                                    <menuItem title="Zero KB/s" hidden="YES" id="N72-29-0Yg">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="Limit Speed" state="on" id="LJc-F6-AqL"/>
+                                    <menuItem isSeparatorItem="YES" id="HrG-tg-oTg"/>
+                                    <menuItem title="Set Speed Limit…" id="i01-Jt-tI6"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="baseline" secondItem="tID-Pm-FJb" secondAttribute="baseline" id="32i-5n-wwi"/>
                     <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="-1" id="5RB-Zf-8Hw"/>
+                    <constraint firstAttribute="trailing" secondItem="A6t-mk-5zG" secondAttribute="trailing" constant="2" id="HOI-Wo-7go"/>
                     <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="dhe-aQ-vQr" secondAttribute="bottom" constant="4" id="Hm5-FT-el2"/>
                     <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="dhe-aQ-vQr" secondAttribute="leading" id="KrF-gs-by8"/>
-                    <constraint firstAttribute="trailing" secondItem="tID-Pm-FJb" secondAttribute="trailing" constant="20" symbolic="YES" id="LNG-45-98l"/>
                     <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="top" secondItem="U1n-cX-gJi" secondAttribute="top" constant="-1" id="TfM-fd-Aww"/>
                     <constraint firstItem="gf0-bC-5Kf" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="20" symbolic="YES" id="Xi9-zp-OtG"/>
                     <constraint firstAttribute="bottom" secondItem="gf0-bC-5Kf" secondAttribute="bottom" constant="1" id="b9s-nb-KJo"/>
                     <constraint firstItem="dhe-aQ-vQr" firstAttribute="top" secondItem="WYJ-Fh-ZfZ" secondAttribute="bottom" id="bBD-nL-5Wz"/>
+                    <constraint firstItem="A6t-mk-5zG" firstAttribute="top" secondItem="dhe-aQ-vQr" secondAttribute="top" id="eOY-tA-8J9"/>
                     <constraint firstItem="dhe-aQ-vQr" firstAttribute="trailing" secondItem="WYJ-Fh-ZfZ" secondAttribute="trailing" id="hCa-sw-TJE"/>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="tID-Pm-FJb" secondAttribute="top" id="jYt-DD-Cuc"/>
                     <constraint firstItem="dhe-aQ-vQr" firstAttribute="centerX" secondItem="U1n-cX-gJi" secondAttribute="centerX" id="vjK-b3-153"/>
-                    <constraint firstItem="tID-Pm-FJb" firstAttribute="leading" secondItem="gf0-bC-5Kf" secondAttribute="trailing" constant="8" symbolic="YES" id="yvT-v2-bW3"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="B036A79B-9FCD-480C-938A-30E8503D7827" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="8cG-EV-raV">

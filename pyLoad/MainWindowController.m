@@ -66,9 +66,12 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+
+	// Appearance
+	[[_freeSpaceField cell] setBackgroundStyle:NSBackgroundStyleRaised];
 	
+	// Now lets login
 	[self presentLoginSheet:self];
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
 - (void) dealloc {
@@ -204,7 +207,7 @@
 
 - (void) server:(PYLServer *)server didUpdateSpeed:(CGFloat)bytesPerSec {
 	NSString *bytes = [NSByteCountFormatter stringFromByteCount:bytesPerSec countStyle:NSByteCountFormatterCountStyleFile];
-	_speedField.stringValue = [NSString stringWithFormat:@"%@/s", bytes];
+	_speedMenuItem.title = [NSString stringWithFormat:@"%@/s", bytes];
 }
 
 #pragma mark - NSTableViewDataSource Methods
