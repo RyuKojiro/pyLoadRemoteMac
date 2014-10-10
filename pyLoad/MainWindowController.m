@@ -136,6 +136,15 @@
 		  contextInfo:self];
 }
 
+- (IBAction)stopAll:(id)sender {
+	// This should also cancel all current downloads to make sure it is an actual immediate halt
+	[_server pauseServer];
+}
+
+- (IBAction)resumeAll:(id)sender {
+	[_server unpauseServer];
+}
+
 #pragma mark - CaptchaWindowDelegate Methods
 
 - (void) captchaWindowController:(CaptchaWindowController *)controller didGetSolution:(NSString *)solution forId:(NSUInteger)captchaId{
@@ -154,6 +163,7 @@
 - (void) server:(PYLServer *)server didUpdatePausedStatus:(BOOL)paused {
 	_playPauseButton.image = paused ? [NSImage imageNamed:@"go"] : [NSImage imageNamed:@"stop"];
 	_playPauseButton.label = paused ? @"Resume All" : @"Stop All";
+	_playPauseButton.action = paused ? @selector(resumeAll:) : @selector(stopAll:);
 }
 
 - (void) serverConnected:(PYLServer *)server {

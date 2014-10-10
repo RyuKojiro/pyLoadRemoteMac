@@ -46,6 +46,10 @@
 		case PYLRequestTypeSubmitCaptcha:
 		case PYLRequestTypeFetchCaptcha:
 			return @"/json/set_captcha";
+		case PYLRequestTypeUnpauseServer:
+			return @"/api/unpauseServer";
+		case PYLRequestTypePauseServer:
+			return @"/api/pauseServer";
 		default:
 			return nil;
 	}
@@ -206,6 +210,28 @@
 			[_delegate serverHasCaptchaWaiting:self];
 		}
 
+	}];
+}
+
+- (void) pauseServer {
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypePauseServer];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		if ([str isEqualToString:@"true"]) {
+			[_delegate server:self didUpdatePausedStatus:YES];
+		}
+		[str release];
+	}];
+}
+
+- (void) unpauseServer {
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeUnpauseServer];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		if ([str isEqualToString:@"true"]) {
+			[_delegate server:self didUpdatePausedStatus:NO];
+		}
+		[str release];
 	}];
 }
 

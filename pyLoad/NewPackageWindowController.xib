@@ -127,6 +127,9 @@
 DQ
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="create:" target="-2" id="pNa-Hy-6sb"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cC0-r1-V8H">
                         <rect key="frame" x="302" y="13" width="82" height="32"/>
@@ -137,6 +140,9 @@ DQ
 Gw
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="cancel:" target="-2" id="8ga-kp-1eC"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
