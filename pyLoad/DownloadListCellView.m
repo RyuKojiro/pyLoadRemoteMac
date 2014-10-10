@@ -54,4 +54,23 @@
 	return [file pathExtension];
 }
 
+- (instancetype) reconfigureWithDictionary:(NSDictionary *)dict {
+	NSString *extension = [DownloadListCellView extensionForFile:dict[@"name"]];
+	
+	_nameLabel.stringValue = dict[@"name"];
+	_statusLabel.stringValue = [DownloadListCellView statusLabelTextForDictionary:dict];
+	_icon.image = [[NSWorkspace sharedWorkspace] iconForFileType:extension];
+	_packageLabel.stringValue = dict[@"packageName"];
+	_pluginLabel.stringValue = dict[@"plugin"];
+	_progressBar.doubleValue = [dict[@"percent"] doubleValue];
+	// TODO: A more reliable test here
+	if ([dict[@"percent"] integerValue]) {
+		[_progressBar setIndeterminate:NO];
+	}
+	
+	_linkId = [dict[@"fid"] integerValue];
+	
+	return self;
+}
+
 @end

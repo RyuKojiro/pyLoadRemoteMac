@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PYLServer.h"
 
 @interface DownloadListCellView : NSTableCellView
 
@@ -17,7 +18,12 @@
 @property (assign) IBOutlet NSTextField *pluginLabel;
 @property (assign) IBOutlet NSTextField *packageLabel;
 
+@property (assign) PYLServer *server;
+@property (readwrite) NSUInteger linkId;
+
 + (NSString *) statusLabelTextForDictionary:(NSDictionary *)dict;
 + (NSString *) extensionForFile:(NSString *)file;
+
+- (instancetype) reconfigureWithDictionary:(NSDictionary *)dict;
 
 @end
