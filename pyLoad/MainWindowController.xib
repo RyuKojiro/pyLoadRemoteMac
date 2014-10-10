@@ -211,8 +211,14 @@ Gw
                             <action selector="serverSettings:" target="-2" id="1Us-QO-Wmy"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="AB4654CA-826C-41ED-9B66-EC82C631250E" label="Add Package" paletteLabel="Add Package" tag="-1" image="NSBonjour" id="snc-Yk-Vfn">
+                        <connections>
+                            <action selector="addPackage:" target="-2" id="ZJZ-Vp-gc1"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
+                    <toolbarItem reference="snc-Yk-Vfn"/>
                     <toolbarItem reference="HWQ-Lp-SyD"/>
                     <toolbarItem reference="RVf-6i-0Qh"/>
                     <toolbarItem reference="AB3-5N-V11"/>

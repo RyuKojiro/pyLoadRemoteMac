@@ -8,6 +8,7 @@
 
 #import "MainWindowController.h"
 #import "DownloadListCellView.h"
+#import "NewPackageWindowController.h"
 
 #define kMainWindowCellIdentifier	@"DownloadListItem"
 
@@ -85,6 +86,16 @@
 }
 
 #pragma mark - Window Actions
+
+- (IBAction)addPackage:(id)sender {
+	NewPackageWindowController *npc = [[NewPackageWindowController alloc] initWithWindowNibName:@"NewPackageWindowController"];
+	[NSApp beginSheet:npc.window
+	   modalForWindow:self.window
+		modalDelegate:nil
+	   didEndSelector:nil
+		  contextInfo:self];
+	//[npc release];
+}
 
 - (IBAction)serverSettings:(id)sender {
 	

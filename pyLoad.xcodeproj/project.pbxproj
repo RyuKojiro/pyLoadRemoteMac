@@ -16,6 +16,8 @@
 		E6194CCE19E61D6E00930613 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6194CCC19E61D6E00930613 /* MainWindowController.xib */; };
 		E61AF2F719E740B3008161DB /* CaptchaWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E61AF2F519E740B3008161DB /* CaptchaWindowController.m */; };
 		E61AF2F819E740B3008161DB /* CaptchaWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AF2F619E740B3008161DB /* CaptchaWindowController.xib */; };
+		E61AF2FD19E77163008161DB /* NewPackageWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E61AF2FB19E77163008161DB /* NewPackageWindowController.m */; };
+		E61AF2FE19E77163008161DB /* NewPackageWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AF2FC19E77163008161DB /* NewPackageWindowController.xib */; };
 		E65B69DC19E6256300EB83CA /* PYLServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DB19E6256300EB83CA /* PYLServer.m */; };
 		E65B69E019E627B300EB83CA /* LoginSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DE19E627B300EB83CA /* LoginSheetController.m */; };
 		E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E65B69DF19E627B300EB83CA /* LoginSheetController.xib */; };
@@ -49,6 +51,9 @@
 		E61AF2F419E740B3008161DB /* CaptchaWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptchaWindowController.h; sourceTree = "<group>"; };
 		E61AF2F519E740B3008161DB /* CaptchaWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptchaWindowController.m; sourceTree = "<group>"; };
 		E61AF2F619E740B3008161DB /* CaptchaWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaptchaWindowController.xib; sourceTree = "<group>"; };
+		E61AF2FA19E77163008161DB /* NewPackageWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPackageWindowController.h; sourceTree = "<group>"; };
+		E61AF2FB19E77163008161DB /* NewPackageWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPackageWindowController.m; sourceTree = "<group>"; };
+		E61AF2FC19E77163008161DB /* NewPackageWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPackageWindowController.xib; sourceTree = "<group>"; };
 		E65B69DA19E6256300EB83CA /* PYLServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYLServer.h; sourceTree = "<group>"; };
 		E65B69DB19E6256300EB83CA /* PYLServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYLServer.m; sourceTree = "<group>"; };
 		E65B69DD19E627B300EB83CA /* LoginSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSheetController.h; sourceTree = "<group>"; };
@@ -97,6 +102,7 @@
 		E6194CA919E614F100930613 /* pyLoad */ = {
 			isa = PBXGroup;
 			children = (
+				E61AF2F919E770B7008161DB /* NewPackage */,
 				E61AF2F319E74031008161DB /* Captcha */,
 				E65B69E519E6464E00EB83CA /* Server */,
 				E65B69E419E627D700EB83CA /* Application */,
@@ -141,6 +147,16 @@
 				E61AF2F619E740B3008161DB /* CaptchaWindowController.xib */,
 			);
 			name = Captcha;
+			sourceTree = "<group>";
+		};
+		E61AF2F919E770B7008161DB /* NewPackage */ = {
+			isa = PBXGroup;
+			children = (
+				E61AF2FA19E77163008161DB /* NewPackageWindowController.h */,
+				E61AF2FB19E77163008161DB /* NewPackageWindowController.m */,
+				E61AF2FC19E77163008161DB /* NewPackageWindowController.xib */,
+			);
+			name = NewPackage;
 			sourceTree = "<group>";
 		};
 		E65B69E219E627B800EB83CA /* MainWindow */ = {
@@ -268,6 +284,7 @@
 				E6194CB219E614F100930613 /* Images.xcassets in Resources */,
 				E6194CCE19E61D6E00930613 /* MainWindowController.xib in Resources */,
 				E6194CB519E614F100930613 /* MainMenu.xib in Resources */,
+				E61AF2FE19E77163008161DB /* NewPackageWindowController.xib in Resources */,
 				E61AF2F819E740B3008161DB /* CaptchaWindowController.xib in Resources */,
 				E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */,
 			);
@@ -288,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E65B69E019E627B300EB83CA /* LoginSheetController.m in Sources */,
+				E61AF2FD19E77163008161DB /* NewPackageWindowController.m in Sources */,
 				E6194CCD19E61D6E00930613 /* MainWindowController.m in Sources */,
 				E676BBC119E6549E00144D23 /* DownloadListCellView.m in Sources */,
 				E6194CB019E614F100930613 /* AppDelegate.m in Sources */,
