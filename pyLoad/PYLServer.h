@@ -36,7 +36,8 @@ typedef enum {
 	PYLRequestTypeFetchCaptcha,
 	PYLRequestTypeSubmitCaptcha,
 	PYLRequestTypePauseServer,
-	PYLRequestTypeUnpauseServer
+	PYLRequestTypeUnpauseServer,
+	PYLRequestTypeCancelAll
 } PYLRequestType;
 
 @interface PYLServer : NSObject
@@ -67,6 +68,7 @@ typedef enum {
 - (void) unpauseServer;
 
 - (void) cancelLinkId:(NSUInteger)linkId;
+- (void) cancelAllLinks;
 
 + (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req;
 - (NSMutableURLRequest *) mutableRequestForRequestType:(PYLRequestType)type;

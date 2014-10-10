@@ -142,12 +142,17 @@
 }
 
 - (IBAction)stopAll:(id)sender {
-	// This should also cancel all current downloads to make sure it is an actual immediate halt
 	[_server pauseServer];
+	[_server cancelAllLinks];
 }
 
 - (IBAction)resumeAll:(id)sender {
 	[_server unpauseServer];
+}
+
+- (IBAction)cancel:(id)sender {
+	// FIXME: this couples the UI and server instances in a very nasty way
+	[_server cancelLinkId:[_server.downloadList[[_tableView selectedRow]][@"fid"] integerValue]];
 }
 
 #pragma mark - CaptchaWindowDelegate Methods
@@ -155,14 +160,6 @@
 - (void) captchaWindowController:(CaptchaWindowController *)controller didGetSolution:(NSString *)solution forId:(NSUInteger)captchaId{
 	[_server submitCaptchaSolution:solution forCaptchaId:captchaId];
 	alreadyKnowAboutCaptcha = NO;
-}
-
-
-#pragma mark - List Actions
-
-- (IBAction)cancel:(id)sender {
-	// FIXME: this couples the UI and server instances in a very nasty way
-	[_server cancelLinkId:[_server.downloadList[[_tableView selectedRow]][@"fid"] integerValue]];
 }
 
 #pragma mark - PYLServerDelegate Methods

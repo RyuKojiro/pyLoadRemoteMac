@@ -56,6 +56,8 @@
 			return @"/api/unpauseServer";
 		case PYLRequestTypePauseServer:
 			return @"/api/pauseServer";
+		case PYLRequestTypeCancelAll:
+			return @"/api/stopAllDownloads";
 		default:
 			return nil;
 	}
@@ -271,6 +273,13 @@
 		// TODO: Look for {"response": "success"}
 	}];
 	[request release];
+}
+
+- (void) cancelAllLinks {
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeCancelAll];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+	}];
 }
 
 @end
