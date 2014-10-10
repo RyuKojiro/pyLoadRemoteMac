@@ -12,7 +12,7 @@
 #define kMainWindowCellIdentifier	@"DownloadListItem"
 
 #define kLastServerAddressKey		@"lastServerAddress"
-#define kLastServerPortKey		@"lastServerPort"
+#define kLastServerPortKey			@"lastServerPort"
 
 @implementation MainWindowController {
 	LoginSheetController *loginSheetController;

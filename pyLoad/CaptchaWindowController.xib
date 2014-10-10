@@ -47,6 +47,9 @@
 DQ
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="solve:" target="-2" id="beC-S4-FHL"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zr0-Om-qes">
                         <rect key="frame" x="311" y="13" width="82" height="32"/>

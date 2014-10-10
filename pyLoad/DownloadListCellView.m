@@ -41,10 +41,16 @@
 }
 
 + (NSString *)extensionForFile:(NSString *)file {
+	// Some dumb uploaders do this
 	if ([[file pathExtension] isEqualToString:@"html"]) {
 		return [[file substringToIndex:[file length] - 5] pathExtension];
 	}
-	
+
+	// Mega.co.nz does this
+	if ([[file pathExtension] isEqualToString:@"crypted"]) {
+		return [[file substringToIndex:[file length] - 8] pathExtension];
+	}
+
 	return [file pathExtension];
 }
 

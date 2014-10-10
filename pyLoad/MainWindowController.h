@@ -11,7 +11,7 @@
 #import "PYLServer.h"
 #import "CaptchaWindowController.h"
 
-@interface MainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, LoginSheetDelegate, PYLServerDelegate, NSUserNotificationCenterDelegate>
+@interface MainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, LoginSheetDelegate, PYLServerDelegate, NSUserNotificationCenterDelegate, CaptchaWindowDelegate>
 
 @property (retain) PYLServer *server;
 @property (assign) IBOutlet NSTableView *tableView;

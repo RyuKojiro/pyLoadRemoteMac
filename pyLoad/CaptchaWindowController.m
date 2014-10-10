@@ -24,7 +24,7 @@
 	[self.window orderOut:self];
 	[NSApp endSheet:self.window];
 	
-	[_delegate captchaWindowController:self didGetSolution:self.solutionTextField.stringValue];
+	[_delegate captchaWindowController:self didGetSolution:_solutionTextField.stringValue forId:_captchaId];
 }
 
 @end

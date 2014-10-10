@@ -175,7 +175,11 @@
 		if ([dictionary[@"captcha"] boolValue]) {
 			captchaId = [dictionary[@"id"] integerValue];
 			
-//			NSData *imageData = []
+			NSString *imgsrc = dictionary[@"src"];
+			NSArray *parts = [imgsrc componentsSeparatedByString:@","];
+			NSLog(@"%@", parts[0]);
+			NSData *imageData = [[NSData alloc] initWithBase64EncodedString:parts[1] options:0];
+			result = [[[NSImage alloc] initWithData:imageData] autorelease];
 		}
 		handler(captchaId, result);
 	}];
