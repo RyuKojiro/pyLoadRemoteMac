@@ -167,9 +167,9 @@ Gw
                         </scroller>
                     </scrollView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-bC-5Kf">
-                        <rect key="frame" x="18" y="1" width="126" height="17"/>
+                        <rect key="frame" x="22" y="1" width="126" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="122" id="ubv-wt-Hng"/>
+                            <constraint firstAttribute="width" constant="122" id="Tb6-Kh-LbG"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Zero KB Free" id="gHS-AJ-kjN">
                             <font key="font" metaFont="smallSystem"/>
@@ -203,7 +203,7 @@ Gw
                         </popUpButtonCell>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1dv-yB-Kkm">
-                        <rect key="frame" x="202" y="1" width="76" height="17"/>
+                        <rect key="frame" x="206" y="1" width="68" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="24x-ez-V5K"/>
                         </constraints>
@@ -213,24 +213,33 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mTr-vu-7rl">
+                        <rect key="frame" x="5" y="3" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="dux-op-ohj"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="DBTemplate" id="Cyd-Be-Mpv"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="-1" id="5RB-Zf-8Hw"/>
                     <constraint firstItem="1dv-yB-Kkm" firstAttribute="centerX" secondItem="dhe-aQ-vQr" secondAttribute="centerX" id="A6m-HN-D01"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="dhe-aQ-vQr" secondAttribute="bottom" constant="4" id="Feh-P0-sjg"/>
                     <constraint firstAttribute="trailing" secondItem="A6t-mk-5zG" secondAttribute="trailing" constant="2" id="HOI-Wo-7go"/>
+                    <constraint firstItem="mTr-vu-7rl" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="5" id="IBn-fe-fod"/>
                     <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="dhe-aQ-vQr" secondAttribute="leading" id="KrF-gs-by8"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="baseline" secondItem="1dv-yB-Kkm" secondAttribute="baseline" id="OJT-rf-4VN"/>
+                    <constraint firstAttribute="bottom" secondItem="gf0-bC-5Kf" secondAttribute="bottom" constant="1" id="PJM-1x-maj"/>
+                    <constraint firstItem="1dv-yB-Kkm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gf0-bC-5Kf" secondAttribute="trailing" constant="10" id="QqA-EC-FuB"/>
                     <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="top" secondItem="U1n-cX-gJi" secondAttribute="top" constant="-1" id="TfM-fd-Aww"/>
                     <constraint firstItem="A6t-mk-5zG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1dv-yB-Kkm" secondAttribute="trailing" constant="10" id="Ts1-3H-bim"/>
-                    <constraint firstAttribute="bottom" secondItem="gf0-bC-5Kf" secondAttribute="bottom" constant="1" id="W5C-50-dzX"/>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="dhe-aQ-vQr" secondAttribute="bottom" constant="4" id="WzJ-ep-362"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="1dv-yB-Kkm" secondAttribute="top" id="aAH-YD-JBE"/>
                     <constraint firstItem="dhe-aQ-vQr" firstAttribute="top" secondItem="WYJ-Fh-ZfZ" secondAttribute="bottom" id="bBD-nL-5Wz"/>
-                    <constraint firstItem="1dv-yB-Kkm" firstAttribute="top" secondItem="gf0-bC-5Kf" secondAttribute="top" id="dKq-2W-CCa"/>
                     <constraint firstItem="A6t-mk-5zG" firstAttribute="top" secondItem="dhe-aQ-vQr" secondAttribute="top" id="eOY-tA-8J9"/>
-                    <constraint firstItem="1dv-yB-Kkm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gf0-bC-5Kf" secondAttribute="trailing" constant="10" id="grZ-Mn-hgf"/>
+                    <constraint firstItem="mTr-vu-7rl" firstAttribute="centerY" secondItem="A6t-mk-5zG" secondAttribute="centerY" id="g5f-Vw-Fcf"/>
                     <constraint firstItem="dhe-aQ-vQr" firstAttribute="trailing" secondItem="WYJ-Fh-ZfZ" secondAttribute="trailing" id="hCa-sw-TJE"/>
-                    <constraint firstItem="1dv-yB-Kkm" firstAttribute="baseline" secondItem="gf0-bC-5Kf" secondAttribute="baseline" id="qGM-RV-vDi"/>
                     <constraint firstItem="dhe-aQ-vQr" firstAttribute="centerX" secondItem="U1n-cX-gJi" secondAttribute="centerX" id="vjK-b3-153"/>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="20" symbolic="YES" id="wEJ-Wg-F8Q"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="leading" secondItem="mTr-vu-7rl" secondAttribute="trailing" constant="3" id="wn0-L8-sqC"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="B036A79B-9FCD-480C-938A-30E8503D7827" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="8cG-EV-raV">
@@ -283,6 +292,7 @@ Gw
         </menu>
     </objects>
     <resources>
+        <image name="DBTemplate" width="12" height="16"/>
         <image name="NSBonjour" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
