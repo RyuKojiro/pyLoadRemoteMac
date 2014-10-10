@@ -76,16 +76,8 @@
                                                                 <constraint firstAttribute="height" constant="12" id="CSP-Zv-li0"/>
                                                             </constraints>
                                                         </progressIndicator>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YXk-S7-0k6">
-                                                            <rect key="frame" x="422" y="7" width="56" height="11"/>
-                                                            <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="PluginName" id="GWy-wo-50O">
-                                                                <font key="font" metaFont="miniSystem"/>
-                                                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1LE-nv-074">
-                                                            <rect key="frame" x="413" y="43" width="65" height="11"/>
+                                                            <rect key="frame" x="408" y="43" width="65" height="11"/>
                                                             <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="PackageName" id="3Jz-xk-ZYF">
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -93,9 +85,10 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="x5T-ux-o1I">
-                                                            <rect key="frame" x="456" y="22" width="15" height="15"/>
+                                                            <rect key="frame" x="455" y="21" width="16" height="16"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="15" id="Taj-lH-eZP"/>
+                                                                <constraint firstAttribute="height" constant="16" id="0OD-Ry-WDY"/>
+                                                                <constraint firstAttribute="width" constant="16" id="Zmr-xG-W8G"/>
                                                             </constraints>
                                                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="xButton" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="9gB-6W-E4D">
                                                                 <behavior key="behavior" lightByContents="YES"/>
@@ -113,26 +106,33 @@ Gw
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YXk-S7-0k6">
+                                                            <rect key="frame" x="417" y="7" width="56" height="11"/>
+                                                            <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="PluginName" id="GWy-wo-50O">
+                                                                <font key="font" metaFont="miniSystem"/>
+                                                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="YXk-S7-0k6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4NL-CH-I1F" secondAttribute="trailing" constant="3" id="15a-Ja-PDC"/>
-                                                        <constraint firstAttribute="trailing" secondItem="1LE-nv-074" secondAttribute="trailing" constant="3" id="2Lu-qE-dQo"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1LE-nv-074" secondAttribute="trailing" constant="8" id="2Lu-qE-dQo"/>
+                                                        <constraint firstItem="x5T-ux-o1I" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="trailing" constant="7" id="399-Pi-I8f"/>
                                                         <constraint firstItem="1LE-nv-074" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Byb-Q4-Nd3" secondAttribute="trailing" constant="3" id="3qn-rk-w9f"/>
                                                         <constraint firstItem="1LE-nv-074" firstAttribute="trailing" secondItem="YXk-S7-0k6" secondAttribute="trailing" id="6xf-Qb-oQL"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="top" secondItem="rya-e7-BqI" secondAttribute="top" constant="5" id="8l3-Ul-WYd"/>
-                                                        <constraint firstItem="x5T-ux-o1I" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="trailing" constant="8" symbolic="YES" id="EJE-Ot-qdP"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" constant="6" id="KtW-fK-9VI"/>
                                                         <constraint firstItem="4NL-CH-I1F" firstAttribute="baseline" secondItem="YXk-S7-0k6" secondAttribute="baseline" id="S5a-AQ-w2F"/>
                                                         <constraint firstItem="weg-iy-Ik1" firstAttribute="leading" secondItem="rya-e7-BqI" secondAttribute="leading" constant="10" id="V5V-8q-gPg"/>
-                                                        <constraint firstAttribute="trailing" secondItem="x5T-ux-o1I" secondAttribute="trailing" constant="8" id="VuJ-Wz-hF1"/>
                                                         <constraint firstItem="weg-iy-Ik1" firstAttribute="centerY" secondItem="rya-e7-BqI" secondAttribute="centerY" id="XmC-P3-G2q"/>
                                                         <constraint firstItem="4NL-CH-I1F" firstAttribute="top" secondItem="3UD-2h-bTV" secondAttribute="bottom" constant="6" id="YoM-ni-Fyf"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="leading" id="bwV-Tc-Jbe"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="weg-iy-Ik1" secondAttribute="trailing" constant="8" id="cc3-h4-sLs"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="baseline" secondItem="1LE-nv-074" secondAttribute="baseline" id="cnP-PU-4ge"/>
+                                                        <constraint firstItem="x5T-ux-o1I" firstAttribute="trailing" secondItem="YXk-S7-0k6" secondAttribute="trailing" id="cnf-ii-g8Y"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="leading" secondItem="4NL-CH-I1F" secondAttribute="leading" id="iPR-gD-E3q"/>
-                                                        <constraint firstItem="x5T-ux-o1I" firstAttribute="top" secondItem="1LE-nv-074" secondAttribute="bottom" constant="6" id="l4A-fr-WR1"/>
-                                                        <constraint firstItem="x5T-ux-o1I" firstAttribute="centerY" secondItem="3UD-2h-bTV" secondAttribute="centerY" id="wYf-cO-cxk"/>
+                                                        <constraint firstItem="YXk-S7-0k6" firstAttribute="top" secondItem="x5T-ux-o1I" secondAttribute="bottom" constant="3" id="n7w-f0-oxh"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="icon" destination="weg-iy-Ik1" id="DFF-kN-j5h"/>
@@ -185,7 +185,7 @@ Gw
                         <rect key="frame" x="401" y="-3" width="77" height="27"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="76R-tT-Tzg"/>
-                            <constraint firstAttribute="width" constant="77" id="dDi-WQ-HP1"/>
+                            <constraint firstAttribute="width" constant="77" placeholder="YES" id="dDi-WQ-HP1"/>
                         </constraints>
                         <popUpButtonCell key="cell" type="recessed" title="Zero KB/s" bezelStyle="recessed" alignment="right" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="8iV-pR-zmU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
