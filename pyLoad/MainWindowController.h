@@ -18,6 +18,7 @@
 @property (assign) IBOutlet NSTextField *freeSpaceField;
 @property (assign) IBOutlet NSMenuItem *speedMenuItem;
 @property (assign) IBOutlet NSToolbarItem *playPauseButton;
+@property (assign) IBOutlet NSTextField *transferCountField;
 
 - (IBAction)presentLoginSheet:(id)sender;
 - (IBAction)serverSettings:(id)sender;

@@ -10,6 +10,7 @@
                 <outlet property="playPauseButton" destination="Wdm-Vd-Bc3" id="Tmr-Cw-tLj"/>
                 <outlet property="speedMenuItem" destination="N72-29-0Yg" id="FVY-nH-XcM"/>
                 <outlet property="tableView" destination="e3O-kT-Mv1" id="i1H-lC-mdH"/>
+                <outlet property="transferCountField" destination="1dv-yB-Kkm" id="M3s-iV-bD7"/>
                 <outlet property="window" destination="PxF-QJ-sAP" id="8cj-nQ-kjO"/>
             </connections>
         </customObject>
@@ -166,10 +167,9 @@ Gw
                         </scroller>
                     </scrollView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-bC-5Kf">
-                        <rect key="frame" x="18" y="1" width="211" height="17"/>
+                        <rect key="frame" x="18" y="1" width="126" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="17" id="fbV-2A-T8G"/>
-                            <constraint firstAttribute="width" constant="207" id="nhA-E0-QRL"/>
+                            <constraint firstAttribute="width" constant="122" id="ubv-wt-Hng"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Zero KB Free" id="gHS-AJ-kjN">
                             <font key="font" metaFont="smallSystem"/>
@@ -202,19 +202,35 @@ Gw
                             </menu>
                         </popUpButtonCell>
                     </popUpButton>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1dv-yB-Kkm">
+                        <rect key="frame" x="202" y="1" width="76" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="24x-ez-V5K"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0 Transfers" id="3ZJ-eq-GPF">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="-1" id="5RB-Zf-8Hw"/>
+                    <constraint firstItem="1dv-yB-Kkm" firstAttribute="centerX" secondItem="dhe-aQ-vQr" secondAttribute="centerX" id="A6m-HN-D01"/>
                     <constraint firstAttribute="trailing" secondItem="A6t-mk-5zG" secondAttribute="trailing" constant="2" id="HOI-Wo-7go"/>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="dhe-aQ-vQr" secondAttribute="bottom" constant="4" id="Hm5-FT-el2"/>
                     <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="leading" secondItem="dhe-aQ-vQr" secondAttribute="leading" id="KrF-gs-by8"/>
                     <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="top" secondItem="U1n-cX-gJi" secondAttribute="top" constant="-1" id="TfM-fd-Aww"/>
-                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="20" symbolic="YES" id="Xi9-zp-OtG"/>
-                    <constraint firstAttribute="bottom" secondItem="gf0-bC-5Kf" secondAttribute="bottom" constant="1" id="b9s-nb-KJo"/>
+                    <constraint firstItem="A6t-mk-5zG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1dv-yB-Kkm" secondAttribute="trailing" constant="10" id="Ts1-3H-bim"/>
+                    <constraint firstAttribute="bottom" secondItem="gf0-bC-5Kf" secondAttribute="bottom" constant="1" id="W5C-50-dzX"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="dhe-aQ-vQr" secondAttribute="bottom" constant="4" id="WzJ-ep-362"/>
                     <constraint firstItem="dhe-aQ-vQr" firstAttribute="top" secondItem="WYJ-Fh-ZfZ" secondAttribute="bottom" id="bBD-nL-5Wz"/>
+                    <constraint firstItem="1dv-yB-Kkm" firstAttribute="top" secondItem="gf0-bC-5Kf" secondAttribute="top" id="dKq-2W-CCa"/>
                     <constraint firstItem="A6t-mk-5zG" firstAttribute="top" secondItem="dhe-aQ-vQr" secondAttribute="top" id="eOY-tA-8J9"/>
+                    <constraint firstItem="1dv-yB-Kkm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gf0-bC-5Kf" secondAttribute="trailing" constant="10" id="grZ-Mn-hgf"/>
                     <constraint firstItem="dhe-aQ-vQr" firstAttribute="trailing" secondItem="WYJ-Fh-ZfZ" secondAttribute="trailing" id="hCa-sw-TJE"/>
+                    <constraint firstItem="1dv-yB-Kkm" firstAttribute="baseline" secondItem="gf0-bC-5Kf" secondAttribute="baseline" id="qGM-RV-vDi"/>
                     <constraint firstItem="dhe-aQ-vQr" firstAttribute="centerX" secondItem="U1n-cX-gJi" secondAttribute="centerX" id="vjK-b3-153"/>
+                    <constraint firstItem="gf0-bC-5Kf" firstAttribute="leading" secondItem="U1n-cX-gJi" secondAttribute="leading" constant="20" symbolic="YES" id="wEJ-Wg-F8Q"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="B036A79B-9FCD-480C-938A-30E8503D7827" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="8cG-EV-raV">

@@ -70,6 +70,7 @@
 
 	// Appearance
 	[[_freeSpaceField cell] setBackgroundStyle:NSBackgroundStyleRaised];
+	[[_transferCountField cell] setBackgroundStyle:NSBackgroundStyleRaised];
 	
 	// Now lets login
 	[self presentLoginSheet:self];
@@ -180,6 +181,10 @@
 	NSIndexSet *selectedRows = [_tableView selectedRowIndexes];
 	[_tableView reloadData];
 	[_tableView selectRowIndexes:selectedRows byExtendingSelection:NO];
+	
+	// Refresh list count at bottom
+	NSUInteger count = _server.downloadList.count;
+	_transferCountField.stringValue = [NSString stringWithFormat:@"%lu Transfer%@", count, (count == 1) ? @"" : @"s" ];
 }
 
 - (void) serverHasCaptchaWaiting:(PYLServer *)server {
