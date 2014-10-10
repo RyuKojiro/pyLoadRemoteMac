@@ -18,6 +18,7 @@
 @implementation MainWindowController {
 	LoginSheetController *loginSheetController;
 	CaptchaWindowController *captchaWindowController;
+	BOOL alreadyKnowAboutCaptcha;
 }
 
 #pragma mark - Login Sheet Management
@@ -152,6 +153,7 @@
 
 - (void) captchaWindowController:(CaptchaWindowController *)controller didGetSolution:(NSString *)solution forId:(NSUInteger)captchaId{
 	[_server submitCaptchaSolution:solution forCaptchaId:captchaId];
+	alreadyKnowAboutCaptcha = NO;
 }
 
 
@@ -181,15 +183,23 @@
 }
 
 - (void) serverHasCaptchaWaiting:(PYLServer *)server {
-	NSUserNotification *notification = [[NSUserNotification alloc] init];
-	notification.title = @"Captcha Available";
-	notification.informativeText = @"Click this notification to solve the captcha. You have 10 seconds before the captcha check fails.";
-	notification.hasActionButton = YES;
-	notification.actionButtonTitle = @"Solve";
-	
-	[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self]; // FIXME: We need to do something different for multi-server
-	[notification release];
+	if (!alreadyKnowAboutCaptcha) {
+		alreadyKnowAboutCaptcha = YES;
+		if ([NSApp keyWindow] == self.window) {
+			[self presentCaptchaSolver:self];
+		}
+		else {
+			NSUserNotification *notification = [[NSUserNotification alloc] init];
+			notification.title = @"Captcha Available";
+			notification.informativeText = @"Click this notification to solve the captcha. You have 10 seconds before the captcha check fails.";
+			notification.hasActionButton = YES;
+			notification.actionButtonTitle = @"Solve";
+			
+			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+			[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self]; // FIXME: We need to do something different for multi-server
+			[notification release];
+		}
+	}
 }
 
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
