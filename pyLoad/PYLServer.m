@@ -8,6 +8,12 @@
 
 #import "PYLServer.h"
 
+#define PYLServerAssertConnection			if (!data) { \
+												[_delegate serverDisconnected:self]; \
+												return; \
+											}
+
+
 @implementation PYLServer {
 	NSString *cookie;
 }
@@ -99,6 +105,9 @@
 	[postBody release];
 	
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+		
+		// TODO: verify that the data is actually a pyload server
 		_connected = YES;
 		[_delegate serverConnected:self];
 	}];
@@ -113,6 +122,8 @@
 - (void) refreshDownloadList {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchDownloadsList];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+		
 		NSError *e = nil;
 		[_downloadList release];
 		_downloadList = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
@@ -123,6 +134,8 @@
 - (void) refreshQueue {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchQueue];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+
 		NSError *e = nil;
 		[_queue release];
 		_queue = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&e] retain];
@@ -133,6 +146,8 @@
 - (void) checkForCaptcha {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeCheckForCaptcha];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+
 		if ([data length] == 4) { // "true"
 			[_delegate serverHasCaptchaWaiting:self];
 		}
@@ -142,6 +157,8 @@
 - (void) checkFreeSpace {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeCheckFreeSpace];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+
 		NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 		[_delegate server:self didUpdateFreeSpace:[str integerValue]];
 		[str release];
@@ -151,6 +168,8 @@
 - (void) updateStatus {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeUpdateStatus];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+
 		NSError *e = nil;
 		NSDictionary *status = [NSJSONSerialization JSONObjectWithData:data options:0 error:&e];
 		
@@ -161,19 +180,21 @@
 		}
 		
 		[_delegate server:self didUpdatePausedStatus:[status[@"pause"] boolValue]];
-		
-		NSLog(@"%@", status);
 	}];
 }
 
 - (void) restartFailed {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeRestartFailed];
-	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){}];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+	}];
 }
 
 - (void) fetchCaptchaWithCompletionHandler:(void (^)(NSUInteger captchaId, NSImage *image))handler {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchCaptcha];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+
 		NSError *e = nil;
 		NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&e];
 		
@@ -184,7 +205,6 @@
 			
 			NSString *imgsrc = dictionary[@"src"];
 			NSArray *parts = [imgsrc componentsSeparatedByString:@","];
-			NSLog(@"%@", parts[0]);
 			NSData *imageData = [[NSData alloc] initWithBase64EncodedString:parts[1] options:0];
 			result = [[[NSImage alloc] initWithData:imageData] autorelease];
 			[imageData release];
@@ -203,6 +223,8 @@
 	[postBody release];
 	
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+
 		NSError *e = nil;
 		NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&e];
 
@@ -216,6 +238,8 @@
 - (void) pauseServer {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypePauseServer];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+
 		NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 		if ([str isEqualToString:@"true"]) {
 			[_delegate server:self didUpdatePausedStatus:YES];
@@ -227,6 +251,8 @@
 - (void) unpauseServer {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeUnpauseServer];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+
 		NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 		if ([str isEqualToString:@"true"]) {
 			[_delegate server:self didUpdatePausedStatus:NO];

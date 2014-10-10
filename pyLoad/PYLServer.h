@@ -14,6 +14,7 @@
 @protocol PYLServerDelegate <NSObject>
 
 - (void) serverConnected:(PYLServer *)server;
+- (void) serverDisconnected:(PYLServer *)server;
 - (void) server:(PYLServer *)server didRefreshDownloadList:(NSArray *)list;
 - (void) server:(PYLServer *)server didRefreshQueue:(NSArray *)queue;
 - (void) serverHasCaptchaWaiting:(PYLServer *)server;

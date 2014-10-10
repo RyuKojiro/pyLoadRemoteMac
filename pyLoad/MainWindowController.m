@@ -177,6 +177,10 @@
 	[self poll];
 }
 
+- (void) serverDisconnected:(PYLServer *)server {
+	[self presentLoginSheet:self];
+}
+
 - (void) server:(PYLServer *)server didRefreshDownloadList:(NSArray *)list {
 	NSIndexSet *selectedRows = [_tableView selectedRowIndexes];
 	[_tableView reloadData];
@@ -245,7 +249,7 @@
 	result.pluginLabel.stringValue = _server.downloadList[row][@"plugin"];
 	result.progressBar.doubleValue = [_server.downloadList[row][@"percent"] doubleValue];
 	// TODO: A more reliable test here
-	if (result.progressBar.doubleValue) {
+	if ([_server.downloadList[row][@"percent"] integerValue]) {
 		[result.progressBar setIndeterminate:NO];
 	}
 	
