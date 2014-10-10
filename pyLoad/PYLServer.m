@@ -261,4 +261,16 @@
 	}];
 }
 
+- (void) cancelLinkId:(NSUInteger)linkId {
+	// NOTE: This one is a GET for some reason
+	NSString *endpoint = [NSString stringWithFormat:@"/json/abort_link/%lu", linkId];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[self urlWithLastPathComponent:endpoint]];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+		
+		// TODO: Look for {"response": "success"}
+	}];
+	[request release];
+}
+
 @end

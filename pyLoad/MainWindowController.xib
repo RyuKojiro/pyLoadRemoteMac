@@ -97,6 +97,9 @@
 Gw
 </string>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="cancel:" target="rya-e7-BqI" id="zBp-1k-GrU"/>
+                                                            </connections>
                                                         </button>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-CH-I1F">
                                                             <rect key="frame" x="48" y="7" width="170" height="11"/>
@@ -246,11 +249,6 @@ Gw
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="pVB-Qx-uzC"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="AB3-5N-V11"/>
-                    <toolbarItem implicitItemIdentifier="BF1B8CDA-5DF7-4EEE-B3D9-0ABE82F5FFFE" label="Cancel" paletteLabel="Cancel" tag="-1" image="cancel" id="HWQ-Lp-SyD">
-                        <connections>
-                            <action selector="cancel:" target="-1" id="a5T-r8-PwO"/>
-                        </connections>
-                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="2E73DF99-780C-464E-8346-E06374A18872" label="Restart Failed" paletteLabel="Restart Failed" tag="-1" image="NSBonjour" id="RVf-6i-0Qh">
                         <connections>
                             <action selector="restartFailed:" target="-2" id="Ez1-rA-F0c"/>
@@ -270,7 +268,6 @@ Gw
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="snc-Yk-Vfn"/>
-                    <toolbarItem reference="HWQ-Lp-SyD"/>
                     <toolbarItem reference="AB3-5N-V11"/>
                     <toolbarItem reference="Wdm-Vd-Bc3"/>
                     <toolbarItem reference="RVf-6i-0Qh"/>
@@ -296,7 +293,6 @@ Gw
         <image name="NSBonjour" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
-        <image name="cancel" width="32" height="32"/>
         <image name="groovePixels" width="1" height="2"/>
         <image name="plus" width="32" height="32"/>
         <image name="stop" width="32" height="32"/>

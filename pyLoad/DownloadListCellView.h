@@ -26,4 +26,6 @@
 
 - (instancetype) reconfigureWithDictionary:(NSDictionary *)dict;
 
+- (IBAction)cancel:(id)sender;
+
 @end

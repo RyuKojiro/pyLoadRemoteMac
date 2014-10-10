@@ -59,11 +59,14 @@ typedef enum {
 - (void) checkFreeSpace;
 - (void) restartFailed;
 - (void) updateStatus;
+
 - (void) fetchCaptchaWithCompletionHandler:(void (^)(NSUInteger captchaId, NSImage *image))handler;
 - (void) submitCaptchaSolution:(NSString *)solution forCaptchaId:(NSUInteger)captchaId;
 
 - (void) pauseServer;
 - (void) unpauseServer;
+
+- (void) cancelLinkId:(NSUInteger)linkId;
 
 + (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req;
 - (NSMutableURLRequest *) mutableRequestForRequestType:(PYLRequestType)type;

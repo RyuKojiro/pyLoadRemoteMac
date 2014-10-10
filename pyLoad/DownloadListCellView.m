@@ -73,4 +73,8 @@
 	return self;
 }
 
+- (IBAction)cancel:(id)sender {
+	[_server cancelLinkId:_linkId];
+}
+
 @end

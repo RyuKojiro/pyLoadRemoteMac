@@ -161,7 +161,8 @@
 #pragma mark - List Actions
 
 - (IBAction)cancel:(id)sender {
-	
+	// FIXME: this couples the UI and server instances in a very nasty way
+	[_server cancelLinkId:[_server.downloadList[[_tableView selectedRow]][@"fid"] integerValue]];
 }
 
 #pragma mark - PYLServerDelegate Methods
