@@ -56,6 +56,7 @@ typedef enum {
 
 - (void) refreshDownloadList;
 - (void) refreshQueue;
+
 - (void) checkForCaptcha;
 - (void) checkFreeSpace;
 - (void) restartFailed;

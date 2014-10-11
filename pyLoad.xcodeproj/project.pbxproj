@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E615050A19E8AA3200C6AFFA /* QueueListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = E615050919E8AA3200C6AFFA /* QueueListCellView.m */; };
 		E6194CAD19E614F100930613 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E6194CAC19E614F100930613 /* main.m */; };
 		E6194CB019E614F100930613 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E6194CAF19E614F100930613 /* AppDelegate.m */; };
 		E6194CB219E614F100930613 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6194CB119E614F100930613 /* Images.xcassets */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E615050819E8AA3200C6AFFA /* QueueListCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueListCellView.h; sourceTree = "<group>"; };
+		E615050919E8AA3200C6AFFA /* QueueListCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueListCellView.m; sourceTree = "<group>"; };
 		E6194CA719E614F100930613 /* pyLoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pyLoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6194CAB19E614F100930613 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6194CAC19E614F100930613 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 				E6194CCC19E61D6E00930613 /* MainWindowController.xib */,
 				E676BBBF19E6549E00144D23 /* DownloadListCellView.h */,
 				E676BBC019E6549E00144D23 /* DownloadListCellView.m */,
+				E615050819E8AA3200C6AFFA /* QueueListCellView.h */,
+				E615050919E8AA3200C6AFFA /* QueueListCellView.m */,
 			);
 			name = MainWindow;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 			files = (
 				E65B69E019E627B300EB83CA /* LoginSheetController.m in Sources */,
 				E61AF2FD19E77163008161DB /* NewPackageWindowController.m in Sources */,
+				E615050A19E8AA3200C6AFFA /* QueueListCellView.m in Sources */,
 				E6194CCD19E61D6E00930613 /* MainWindowController.m in Sources */,
 				E676BBC119E6549E00144D23 /* DownloadListCellView.m in Sources */,
 				E6194CB019E614F100930613 /* AppDelegate.m in Sources */,

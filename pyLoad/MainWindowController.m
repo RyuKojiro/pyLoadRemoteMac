@@ -9,11 +9,13 @@
 #import "MainWindowController.h"
 #import "DownloadListCellView.h"
 #import "NewPackageWindowController.h"
+#import "QueueListCellView.h"
 
-#define kMainWindowCellIdentifier	@"DownloadListItem"
+#define kDownloadListItemCellIdentifier	@"DownloadListItem"
+#define kQueueItemCellIdentifier		@"QueueItem"
 
-#define kLastServerAddressKey		@"lastServerAddress"
-#define kLastServerPortKey			@"lastServerPort"
+#define kLastServerAddressKey			@"lastServerAddress"
+#define kLastServerPortKey				@"lastServerPort"
 
 @implementation MainWindowController {
 	LoginSheetController *loginSheetController;
@@ -151,8 +153,15 @@
 }
 
 - (IBAction)cancel:(id)sender {
-	// FIXME: this couples the UI and server instances in a very nasty way
-	[_server cancelLinkId:[_server.downloadList[[_tableView selectedRow]][@"fid"] integerValue]];
+	NSUInteger row = [_tableView selectedRow];
+
+	if (row < _server.downloadList.count) {
+		// FIXME: this couples the UI and server instances in a very nasty way
+		[_server cancelLinkId:[_server.downloadList[row][@"fid"] integerValue]];
+	}
+	else {
+		NSLog(@"Tried to cancel a package from the window");
+	}
 }
 
 #pragma mark - CaptchaWindowDelegate Methods
@@ -230,15 +239,23 @@
 #pragma mark - NSTableViewDataSource Methods
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
-	return _server.downloadList.count;
+	return _server.downloadList.count + _server.queue.count;
 }
 
 #pragma mark - NSTableViewDelegate Methods
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-	DownloadListCellView *result = [tableView makeViewWithIdentifier:kMainWindowCellIdentifier owner:self];
-	result.server = _server;
-	return [result reconfigureWithDictionary:_server.downloadList[row]];
+	if (row < _server.downloadList.count) {
+		DownloadListCellView *result = [tableView makeViewWithIdentifier:kDownloadListItemCellIdentifier owner:self];
+		result.server = _server;
+		return [result reconfigureWithDictionary:_server.downloadList[row]];
+	}
+	if (row >= _server.downloadList.count && row < (_server.downloadList.count + _server.queue.count)) {
+		QueueListCellView *result = [tableView makeViewWithIdentifier:kQueueItemCellIdentifier owner:self];
+		result.server = _server;
+		return [result reconfigureWithDictionary:_server.queue[row - _server.downloadList.count]];
+	}
+	return nil;
 }
 
 @end
