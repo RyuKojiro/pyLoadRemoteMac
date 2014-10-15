@@ -10,6 +10,7 @@
 #import "PYLLogLine.h"
 
 #define PYLServerAssertConnection			if (!data) { \
+												_connected = NO;\
 												[_delegate serverDisconnected:self]; \
 												return; \
 											}
