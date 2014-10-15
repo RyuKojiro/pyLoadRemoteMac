@@ -33,10 +33,11 @@
 	NSUInteger totalBytes = [dict[@"size"] integerValue];
 	NSUInteger remaining = [dict[@"bleft"] integerValue];
 	NSUInteger speed = [dict[@"speed"] integerValue];
-	return [NSString stringWithFormat:@"Downloading… %@ (%@ / %@) @ %@/s",
-			dict[@"format_eta"],
+	return [NSString stringWithFormat:@"Downloading… %@%% (%@ / %@) %@ remaining (%@/s)",
+			dict[@"percent"],
 			[NSByteCountFormatter stringFromByteCount:totalBytes - remaining countStyle:NSByteCountFormatterCountStyleFile],
 			[NSByteCountFormatter stringFromByteCount:totalBytes countStyle:NSByteCountFormatterCountStyleFile],
+			dict[@"format_eta"],
 			[NSByteCountFormatter stringFromByteCount:speed countStyle:NSByteCountFormatterCountStyleFile]];
 }
 
@@ -63,8 +64,8 @@
 	_packageLabel.stringValue = dict[@"packageName"];
 	_pluginLabel.stringValue = dict[@"plugin"];
 	_progressBar.doubleValue = [dict[@"percent"] doubleValue];
-	// TODO: A more reliable test here
-	if ([dict[@"percent"] integerValue]) {
+
+	if ([dict[@"bleft"] integerValue] < [dict[@"size"] integerValue]) {
 		[_progressBar setIndeterminate:NO];
 	}
 	
