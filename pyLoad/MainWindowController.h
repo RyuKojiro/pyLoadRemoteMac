@@ -11,7 +11,7 @@
 #import "PYLServer.h"
 #import "CaptchaWindowController.h"
 
-@interface MainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, LoginSheetDelegate, PYLServerDelegate, NSUserNotificationCenterDelegate, CaptchaWindowDelegate>
+@interface MainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, LoginSheetDelegate, PYLServerDelegate, NSUserNotificationCenterDelegate, CaptchaWindowDelegate, NSDrawerDelegate>
 
 @property (retain) PYLServer *server;
 @property (assign) IBOutlet NSTableView *tableView;
@@ -19,6 +19,7 @@
 @property (assign) IBOutlet NSMenuItem *speedMenuItem;
 @property (assign) IBOutlet NSToolbarItem *playPauseButton;
 @property (assign) IBOutlet NSTextField *transferCountField;
+@property (assign) IBOutlet NSTextView *logView;
 
 - (IBAction)presentLoginSheet:(id)sender;
 - (IBAction)serverSettings:(id)sender;

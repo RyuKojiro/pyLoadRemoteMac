@@ -10,6 +10,7 @@
 #import "DownloadListCellView.h"
 #import "NewPackageWindowController.h"
 #import "QueueListCellView.h"
+#import "PYLLogLine.h"
 
 #define kDownloadListItemCellIdentifier	@"DownloadListItem"
 #define kQueueItemCellIdentifier		@"QueueItem"
@@ -199,22 +200,20 @@
 }
 
 - (void) serverHasCaptchaWaiting:(PYLServer *)server {
-	if (!alreadyKnowAboutCaptcha) {
+	if ([NSApp keyWindow] == self.window) {
+		[self presentCaptchaSolver:self];
+	}
+	else if (!alreadyKnowAboutCaptcha) {
 		alreadyKnowAboutCaptcha = YES;
-		if ([NSApp keyWindow] == self.window) {
-			[self presentCaptchaSolver:self];
-		}
-		else {
-			NSUserNotification *notification = [[NSUserNotification alloc] init];
-			notification.title = @"Captcha Available";
-			notification.informativeText = @"Click this notification to solve the captcha. You have 10 seconds before the captcha check fails.";
-			notification.hasActionButton = YES;
-			notification.actionButtonTitle = @"Solve";
-			
-			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-			[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self]; // FIXME: We need to do something different for multi-server
-			[notification release];
-		}
+		NSUserNotification *notification = [[NSUserNotification alloc] init];
+		notification.title = @"Captcha Available";
+		notification.informativeText = @"Click this notification to solve the captcha. You have 10 seconds before the captcha check fails.";
+		notification.hasActionButton = YES;
+		notification.actionButtonTitle = @"Solve";
+		
+		[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+		[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self]; // FIXME: We need to do something different for multi-server
+		[notification release];
 	}
 }
 
@@ -234,6 +233,23 @@
 - (void) server:(PYLServer *)server didUpdateSpeed:(CGFloat)bytesPerSec {
 	NSString *bytes = [NSByteCountFormatter stringFromByteCount:bytesPerSec countStyle:NSByteCountFormatterCountStyleFile];
 	_speedMenuItem.title = [NSString stringWithFormat:@"%@/s", bytes];
+}
+
+- (void) server:(PYLServer *)server didRefreshLogs:(NSArray *)logData {
+	NSMutableString *logText = [[NSMutableString alloc] init];
+
+	for (PYLLogLine *line in logData) {
+		[logText appendFormat:@"%@ %@\n", line.importance, line.text];
+	}
+	
+	[_logView setString:logText];
+	[logText release];
+}
+
+#pragma mark - NSDrawerDelegate Methods
+
+- (void)drawerWillOpen:(NSNotification *)notification {
+	[_server fetchLogs];
 }
 
 #pragma mark - NSTableViewDataSource Methods
