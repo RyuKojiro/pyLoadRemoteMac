@@ -199,22 +199,20 @@
 }
 
 - (void) serverHasCaptchaWaiting:(PYLServer *)server {
-	if (!alreadyKnowAboutCaptcha) {
+	if ([NSApp keyWindow] == self.window) {
+		[self presentCaptchaSolver:self];
+	}
+	else if (!alreadyKnowAboutCaptcha) {
 		alreadyKnowAboutCaptcha = YES;
-		if ([NSApp keyWindow] == self.window) {
-			[self presentCaptchaSolver:self];
-		}
-		else {
-			NSUserNotification *notification = [[NSUserNotification alloc] init];
-			notification.title = @"Captcha Available";
-			notification.informativeText = @"Click this notification to solve the captcha. You have 10 seconds before the captcha check fails.";
-			notification.hasActionButton = YES;
-			notification.actionButtonTitle = @"Solve";
-			
-			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-			[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self]; // FIXME: We need to do something different for multi-server
-			[notification release];
-		}
+		NSUserNotification *notification = [[NSUserNotification alloc] init];
+		notification.title = @"Captcha Available";
+		notification.informativeText = @"Click this notification to solve the captcha. You have 10 seconds before the captcha check fails.";
+		notification.hasActionButton = YES;
+		notification.actionButtonTitle = @"Solve";
+		
+		[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+		[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self]; // FIXME: We need to do something different for multi-server
+		[notification release];
 	}
 }
 
