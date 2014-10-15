@@ -74,7 +74,8 @@
 }
 
 - (IBAction)cancel:(id)sender {
-	[_server cancelLinkId:_linkId];
+	[_server fetchLogs];
+//	[_server cancelLinkId:_linkId];
 }
 
 @end

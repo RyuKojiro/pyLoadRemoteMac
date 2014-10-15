@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
             <connections>
                 <outlet property="freeSpaceField" destination="gf0-bC-5Kf" id="o2x-aD-Ac3"/>
+                <outlet property="logView" destination="Q8z-Z9-z7s" id="GwE-RW-YOy"/>
                 <outlet property="playPauseButton" destination="Wdm-Vd-Bc3" id="Tmr-Cw-tLj"/>
                 <outlet property="speedMenuItem" destination="N72-29-0Yg" id="FVY-nH-XcM"/>
                 <outlet property="tableView" destination="e3O-kT-Mv1" id="i1H-lC-mdH"/>
@@ -352,6 +353,11 @@ Gw
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="CECC020A-73BB-47CF-AFE7-9CF3FBF84FFD" label="Stop All" paletteLabel="Stop All" tag="-1" image="stop" id="Wdm-Vd-Bc3"/>
+                    <toolbarItem implicitItemIdentifier="417AE672-49BE-40EB-B7AB-D1ABCB8C1AD5" label="Server Logs" paletteLabel="Server Logs" tag="-1" image="NSCaution" id="9ZR-ow-I6j">
+                        <connections>
+                            <action selector="toggle:" target="voD-dv-RaV" id="jj4-WQ-BF6"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="snc-Yk-Vfn"/>
@@ -360,6 +366,7 @@ Gw
                     <toolbarItem reference="RVf-6i-0Qh"/>
                     <toolbarItem reference="AB3-5N-V11"/>
                     <toolbarItem reference="Sj2-M6-XgA"/>
+                    <toolbarItem reference="9ZR-ow-I6j"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
@@ -374,10 +381,69 @@ Gw
             </items>
             <point key="canvasLocation" x="573" y="8.5"/>
         </menu>
+        <customView id="hon-gf-Cy0" userLabel="Drawer Content View">
+            <rect key="frame" x="0.0" y="0.0" width="655" height="415"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqY-ln-kXC">
+                    <rect key="frame" x="0.0" y="0.0" width="655" height="415"/>
+                    <clipView key="contentView" id="J6n-Hu-0FL">
+                        <rect key="frame" x="1" y="1" width="223" height="133"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Q8z-Z9-z7s">
+                                <rect key="frame" x="0.0" y="0.0" width="223" height="413"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="minSize" width="638" height="413"/>
+                                <size key="maxSize" width="655" height="10000000"/>
+                                <attributedString key="textStorage">
+                                    <fragment content="Loading…">
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Courier"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <size key="minSize" width="638" height="413"/>
+                                <size key="maxSize" width="655" height="10000000"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="90V-ie-bh7">
+                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="tdA-U2-2PJ">
+                        <rect key="frame" x="224" y="1" width="15" height="133"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="aqY-ln-kXC" secondAttribute="trailing" id="HLg-9p-bps"/>
+                <constraint firstAttribute="bottom" secondItem="aqY-ln-kXC" secondAttribute="bottom" id="QGZ-Ne-nbw"/>
+                <constraint firstItem="aqY-ln-kXC" firstAttribute="leading" secondItem="hon-gf-Cy0" secondAttribute="leading" id="Qbd-iA-QQB"/>
+                <constraint firstItem="aqY-ln-kXC" firstAttribute="top" secondItem="hon-gf-Cy0" secondAttribute="top" id="uGE-EP-s1g"/>
+            </constraints>
+            <point key="canvasLocation" x="801.5" y="103.5"/>
+        </customView>
+        <drawer preferredEdge="minY" trailingOffset="15" id="voD-dv-RaV">
+            <size key="contentSize" width="100" height="100"/>
+            <size key="maxContentSize" width="10000" height="10000"/>
+            <connections>
+                <outlet property="contentView" destination="hon-gf-Cy0" id="2kU-Cd-YYn"/>
+                <outlet property="delegate" destination="-2" id="F6M-p3-K6p"/>
+                <outlet property="parentWindow" destination="PxF-QJ-sAP" id="IMp-dn-wMl"/>
+            </connections>
+        </drawer>
     </objects>
     <resources>
         <image name="DBTemplate" width="12" height="16"/>
         <image name="NSBonjour" width="32" height="32"/>
+        <image name="NSCaution" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSMultipleDocuments" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>

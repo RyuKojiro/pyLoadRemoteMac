@@ -10,6 +10,7 @@
 #import "DownloadListCellView.h"
 #import "NewPackageWindowController.h"
 #import "QueueListCellView.h"
+#import "PYLLogLine.h"
 
 #define kDownloadListItemCellIdentifier	@"DownloadListItem"
 #define kQueueItemCellIdentifier		@"QueueItem"
@@ -232,6 +233,23 @@
 - (void) server:(PYLServer *)server didUpdateSpeed:(CGFloat)bytesPerSec {
 	NSString *bytes = [NSByteCountFormatter stringFromByteCount:bytesPerSec countStyle:NSByteCountFormatterCountStyleFile];
 	_speedMenuItem.title = [NSString stringWithFormat:@"%@/s", bytes];
+}
+
+- (void) server:(PYLServer *)server didRefreshLogs:(NSArray *)logData {
+	NSMutableString *logText = [[NSMutableString alloc] init];
+
+	for (PYLLogLine *line in logData) {
+		[logText appendFormat:@"%@ %@\n", line.importance, line.text];
+	}
+	
+	[_logView setString:logText];
+	[logText release];
+}
+
+#pragma mark - NSDrawerDelegate Methods
+
+- (void)drawerWillOpen:(NSNotification *)notification {
+	[_server fetchLogs];
 }
 
 #pragma mark - NSTableViewDataSource Methods

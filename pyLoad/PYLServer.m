@@ -7,6 +7,7 @@
 //
 
 #import "PYLServer.h"
+#import "PYLLogLine.h"
 
 #define PYLServerAssertConnection			if (!data) { \
 												[_delegate serverDisconnected:self]; \
@@ -58,6 +59,8 @@
 			return @"/api/pauseServer";
 		case PYLRequestTypeCancelAll:
 			return @"/api/stopAllDownloads";
+		case PYLRequestTypeFetchLogs:
+			return @"/logs/";
 		default:
 			return nil;
 	}
@@ -280,6 +283,43 @@
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
 		PYLServerAssertConnection;
 	}];
+}
+
+- (void) fetchLogs {
+	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchLogs];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+		
+		NSString *html = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		[_delegate server:self didRefreshLogs:[PYLServer logLinesFromLogHTML:html]];
+		[html release];
+	}];
+}
+
++ (NSArray *) logLinesFromLogHTML:(NSString *)html {
+	// HACK: This is some super dirty scraping
+	html = [[html componentsSeparatedByString:@"<table class=\"logtable\" cellpadding=\"0\" cellspacing=\"0\">"] lastObject];
+	html = [[html componentsSeparatedByString:@"</table>"] firstObject];
+	
+	NSArray *lines = [html componentsSeparatedByString:@"\n</td></tr>\n"];
+	NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:[lines count] - 1];
+	
+	for (NSString *line in lines) {
+		NSArray *components = [line componentsSeparatedByString:@"</td><td"];
+		
+		if ([components count] == 4) {
+			PYLLogLine *l = [[PYLLogLine alloc] init];
+			
+			l.timestamp = [components[1] substringFromIndex:1];
+			l.importance = [components[2] substringFromIndex:18];
+			l.text = [components[3] substringFromIndex:1];
+			
+			[result addObject:l];
+			[l release];
+		}
+	}
+	
+	return [result autorelease];
 }
 
 @end

@@ -21,6 +21,7 @@
 - (void) server:(PYLServer *)server didUpdateFreeSpace:(NSUInteger)bytesFree;
 - (void) server:(PYLServer *)server didUpdateSpeed:(CGFloat)bytesPerSec;
 - (void) server:(PYLServer *)server didUpdatePausedStatus:(BOOL)paused;
+- (void) server:(PYLServer *)server didRefreshLogs:(NSArray *)logData;
 
 @end
 
@@ -37,7 +38,8 @@ typedef enum {
 	PYLRequestTypeSubmitCaptcha,
 	PYLRequestTypePauseServer,
 	PYLRequestTypeUnpauseServer,
-	PYLRequestTypeCancelAll
+	PYLRequestTypeCancelAll,
+	PYLRequestTypeFetchLogs
 } PYLRequestType;
 
 @interface PYLServer : NSObject
@@ -70,6 +72,8 @@ typedef enum {
 
 - (void) cancelLinkId:(NSUInteger)linkId;
 - (void) cancelAllLinks;
+
+- (void) fetchLogs;
 
 + (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req;
 - (NSMutableURLRequest *) mutableRequestForRequestType:(PYLRequestType)type;

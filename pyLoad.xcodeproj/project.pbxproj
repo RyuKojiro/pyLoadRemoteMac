@@ -23,6 +23,7 @@
 		E65B69E019E627B300EB83CA /* LoginSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DE19E627B300EB83CA /* LoginSheetController.m */; };
 		E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E65B69DF19E627B300EB83CA /* LoginSheetController.xib */; };
 		E676BBC119E6549E00144D23 /* DownloadListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = E676BBC019E6549E00144D23 /* DownloadListCellView.m */; };
+		E686E23519E8E4E10071C1F0 /* PYLLogLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E686E23419E8E4E10071C1F0 /* PYLLogLine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		E65B69DF19E627B300EB83CA /* LoginSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginSheetController.xib; sourceTree = "<group>"; };
 		E676BBBF19E6549E00144D23 /* DownloadListCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListCellView.h; sourceTree = "<group>"; };
 		E676BBC019E6549E00144D23 /* DownloadListCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListCellView.m; sourceTree = "<group>"; };
+		E686E23319E8E4E10071C1F0 /* PYLLogLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYLLogLine.h; sourceTree = "<group>"; };
+		E686E23419E8E4E10071C1F0 /* PYLLogLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYLLogLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +205,8 @@
 			children = (
 				E65B69DA19E6256300EB83CA /* PYLServer.h */,
 				E65B69DB19E6256300EB83CA /* PYLServer.m */,
+				E686E23319E8E4E10071C1F0 /* PYLLogLine.h */,
+				E686E23419E8E4E10071C1F0 /* PYLLogLine.m */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				E6194CB019E614F100930613 /* AppDelegate.m in Sources */,
 				E65B69DC19E6256300EB83CA /* PYLServer.m in Sources */,
 				E6194CAD19E614F100930613 /* main.m in Sources */,
+				E686E23519E8E4E10071C1F0 /* PYLLogLine.m in Sources */,
 				E61AF2F719E740B3008161DB /* CaptchaWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
