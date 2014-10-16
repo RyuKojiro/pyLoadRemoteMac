@@ -23,6 +23,7 @@
 @property (assign) IBOutlet NSTextField *addressField;
 @property (assign) IBOutlet NSTextField *portField;
 @property (assign) IBOutlet NSTextField *usernameField;
+@property (assign) IBOutlet NSTextField *pathField;
 @property (assign) IBOutlet NSSecureTextField *passwordField;
 @property (assign) IBOutlet NSTabView *tabView;
 

@@ -15,6 +15,10 @@
 												return; \
 											}
 
+#define kPYLDefaultLocalHost        @"localhost"
+#define kPYLDefaultLocalPort        8001
+#define kPYLDefaultLocalUser        @"local"
+#define kPYLDefaultLocalPassword    @"localSecret"
 
 @implementation PYLServer {
 	NSString *cookie;
@@ -49,13 +53,23 @@
         // start server and hold onto the task
         NSString *corePath = [pathToPyloadBinaries stringByAppendingPathComponent:@"pyLoadCore.py"];
         if ([[NSFileManager defaultManager] fileExistsAtPath:corePath]) {
-            localInstance = [NSTask launchedTaskWithLaunchPath:corePath arguments:@[]];
+            localInstance = [NSTask launchedTaskWithLaunchPath:kPYLDefaultLocalPython arguments:@[corePath]];
         }
         else {
             NSLog(@"Looks like the instance you pointed to is damaged. It's missing pyLoadCore.py!");
+            [_delegate serverDisconnected:self];
         }
+        
+        self.address = kPYLDefaultLocalHost;
+        self.port = kPYLDefaultLocalPort;
+        
+        [self performSelector:@selector(_localConnect) withObject:nil afterDelay:20.0f];
     }
     return self;
+}
+
+- (void) _localConnect {
+    [self connectWithUsername:kPYLDefaultLocalUser password:kPYLDefaultLocalPassword];
 }
 
 #pragma mark - Request Convenience Methods

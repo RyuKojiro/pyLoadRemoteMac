@@ -17,6 +17,7 @@
 
 #define kLastServerAddressKey			@"lastServerAddress"
 #define kLastServerPortKey				@"lastServerPort"
+#define kLastLocalPathKey               @"lastLocalPath"
 
 @implementation MainWindowController {
 	LoginSheetController *loginSheetController;
@@ -46,10 +47,10 @@
         _server = [[PYLServer alloc] initWithLocalPath:controller.pathField.stringValue];
         _server.delegate = self;
     }
-    
 	
 	[[NSUserDefaults standardUserDefaults] setObject:controller.addressField.stringValue forKey:kLastServerAddressKey];
-	[[NSUserDefaults standardUserDefaults] setObject:controller.portField.stringValue forKey:kLastServerPortKey];
+    [[NSUserDefaults standardUserDefaults] setObject:controller.portField.stringValue forKey:kLastServerPortKey];
+    [[NSUserDefaults standardUserDefaults] setObject:controller.pathField.stringValue forKey:kLastLocalPathKey];
 }
 
 - (IBAction)presentLoginSheet:(id)sender {
@@ -70,10 +71,15 @@
 	}
 	
 	NSString *lastPort = [[NSUserDefaults standardUserDefaults] stringForKey:kLastServerPortKey];
-	
 	if (lastPort) {
 		loginSheetController.portField.stringValue = lastPort;
 	}
+
+    NSString *lastPath = [[NSUserDefaults standardUserDefaults] stringForKey:kLastLocalPathKey];
+    if (lastPath) {
+        loginSheetController.pathField.stringValue = lastPath;
+    }
+
 }
 
 #pragma mark - Window Lifecycle
@@ -191,6 +197,8 @@
 }
 
 - (void) serverConnected:(PYLServer *)server {
+    self.window.title = [NSString stringWithFormat:@"pyLoad — %@", server.address];
+    
 	[server checkFreeSpace];
 	[self poll];
 }

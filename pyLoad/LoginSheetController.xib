@@ -8,8 +8,9 @@
             <connections>
                 <outlet property="addressField" destination="2uD-f0-wq3" id="DoW-pZ-Jvc"/>
                 <outlet property="passwordField" destination="Vfk-Bl-5V2" id="2ON-uX-45Q"/>
+                <outlet property="pathField" destination="Zza-X8-Lhf" id="kwt-3f-bYp"/>
                 <outlet property="portField" destination="htE-aR-WD5" id="uDl-SH-u6A"/>
-                <outlet property="tabView" destination="W4y-ge-Se7" id="tjW-tR-eKN"/>
+                <outlet property="tabView" destination="W4y-ge-Se7" id="2fO-2y-YCj"/>
                 <outlet property="usernameField" destination="mop-iH-I29" id="AS9-8D-wqe"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
