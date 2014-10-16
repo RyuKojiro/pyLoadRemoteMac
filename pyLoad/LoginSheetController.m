@@ -11,6 +11,7 @@
 #define kLastServerAddressKey			@"lastServerAddress"
 #define kLastServerPortKey				@"lastServerPort"
 #define kLastLocalPathKey               @"lastLocalPath"
+#define kLastPythonPathKey              @"lastPythonPath"
 
 @interface LoginSheetController ()
 
@@ -18,21 +19,22 @@
 
 @implementation LoginSheetController
 
-- (IBAction)cancel:(id)sender {
+- (void) _persistFields {
 	[[NSUserDefaults standardUserDefaults] setObject:_addressField.stringValue forKey:kLastServerAddressKey];
 	[[NSUserDefaults standardUserDefaults] setObject:_portField.stringValue forKey:kLastServerPortKey];
 	[[NSUserDefaults standardUserDefaults] setObject:_pathField.stringValue forKey:kLastLocalPathKey];
+	[[NSUserDefaults standardUserDefaults] setObject:_pythonField.stringValue forKey:kLastPythonPathKey];
+}
 
+- (IBAction)cancel:(id)sender {
+	[self _persistFields];
 	[_delegate loginSheetCancelled:self];
 	[NSApp endSheet:self.window];
 	[self.window orderOut:sender];
 }
 
 - (IBAction)done:(id)sender {
-	[[NSUserDefaults standardUserDefaults] setObject:_addressField.stringValue forKey:kLastServerAddressKey];
-	[[NSUserDefaults standardUserDefaults] setObject:_portField.stringValue forKey:kLastServerPortKey];
-	[[NSUserDefaults standardUserDefaults] setObject:_pathField.stringValue forKey:kLastLocalPathKey];
-
+	[self _persistFields];
 	[_delegate loginSheetCompleted:self];
 	[NSApp endSheet:self.window];
 	[self.window orderOut:sender];
@@ -54,6 +56,11 @@
 	NSString *lastPath = [[NSUserDefaults standardUserDefaults] stringForKey:kLastLocalPathKey];
 	if (lastPath) {
 		_pathField.stringValue = lastPath;
+	}
+	
+	NSString *lastPython = [[NSUserDefaults standardUserDefaults] stringForKey:kLastPythonPathKey];
+	if (lastPython) {
+		_pythonField.stringValue = lastPython;
 	}
 }
 

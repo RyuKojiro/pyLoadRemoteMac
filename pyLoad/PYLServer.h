@@ -54,7 +54,7 @@ typedef enum {
 @property (readonly, getter=isLocal) BOOL local;
 
 - (instancetype) initWithRemoteAddress:(NSString *)address port:(NSUInteger)port;
-- (instancetype) initWithLocalPath:(NSString *)pathToPyloadBinaries;
+- (instancetype) initWithLocalPath:(NSString *)pathToPyloadBinaries usingPython:(NSString *)pathToPython;
 
 - (void) connectWithUsername:(NSString *)username password:(NSString *)password;
 - (void) disconnect;

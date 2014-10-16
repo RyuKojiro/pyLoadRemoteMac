@@ -40,7 +40,7 @@
     }
     else {
         // Local Setup
-        _server = [[PYLServer alloc] initWithLocalPath:controller.pathField.stringValue];
+        _server = [[PYLServer alloc] initWithLocalPath:controller.pathField.stringValue usingPython:controller.pythonField.stringValue];
         _server.delegate = self;
     }
 }

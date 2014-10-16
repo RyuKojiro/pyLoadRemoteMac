@@ -24,6 +24,7 @@
 @property (assign) IBOutlet NSTextField *portField;
 @property (assign) IBOutlet NSTextField *usernameField;
 @property (assign) IBOutlet NSTextField *pathField;
+@property (assign) IBOutlet NSComboBox *pythonField;
 @property (assign) IBOutlet NSSecureTextField *passwordField;
 @property (assign) IBOutlet NSTabView *tabView;
 

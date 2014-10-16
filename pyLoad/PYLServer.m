@@ -39,7 +39,7 @@
 	return self;
 }
 
-- (instancetype) initWithLocalPath:(NSString *)pathToPyloadBinaries {
+- (instancetype) initWithLocalPath:(NSString *)pathToPyloadBinaries usingPython:(NSString *)pathToPython {
     if ((self = [self init])) {
         _local = YES;
 
@@ -51,9 +51,9 @@
         // TODO: Put in canned config
         
         // start server and hold onto the task
-        NSString *corePath = [pathToPyloadBinaries stringByAppendingPathComponent:@"pyLoadCore.py"];
+        NSString *corePath = [[pathToPyloadBinaries stringByAppendingPathComponent:@"pyLoadCore.py"] stringByExpandingTildeInPath];
         if ([[NSFileManager defaultManager] fileExistsAtPath:corePath]) {
-            localInstance = [NSTask launchedTaskWithLaunchPath:kPYLDefaultLocalPython arguments:@[corePath]];
+            localInstance = [NSTask launchedTaskWithLaunchPath:[pathToPython stringByExpandingTildeInPath] arguments:@[corePath]];
         }
         else {
             NSLog(@"Looks like the instance you pointed to is damaged. It's missing pyLoadCore.py!");
