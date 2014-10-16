@@ -12,6 +12,7 @@
 
 @protocol LoginSheetDelegate <NSObject>
 
+// TODO: Instead give all the parameters in the callback
 - (void) loginSheetCompleted:(LoginSheetController *)controller;
 - (void) loginSheetCancelled:(LoginSheetController *)controller;
 
@@ -23,6 +24,7 @@
 @property (assign) IBOutlet NSTextField *portField;
 @property (assign) IBOutlet NSTextField *usernameField;
 @property (assign) IBOutlet NSSecureTextField *passwordField;
+@property (assign) IBOutlet NSTabView *tabView;
 
 @property (assign) id <LoginSheetDelegate> delegate;
 

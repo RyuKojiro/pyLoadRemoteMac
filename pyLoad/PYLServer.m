@@ -18,6 +18,7 @@
 
 @implementation PYLServer {
 	NSString *cookie;
+    NSTask *localInstance;
 }
 
 - (NSURL *) urlWithLastPathComponent:(NSString *)endpoint {
@@ -25,12 +26,36 @@
 	return [NSURL URLWithString:string];
 }
 
-- (instancetype) initWithAddress:(NSString *)address port:(NSUInteger)port {
+- (instancetype) initWithRemoteAddress:(NSString *)address port:(NSUInteger)port {
 	if ((self = [self init])) {
 		self.address = address;
 		self.port = port;
+        _local = NO;
 	}
 	return self;
+}
+
+- (instancetype) initWithLocalPath:(NSString *)pathToPyloadBinaries {
+    if ((self = [self init])) {
+        _local = YES;
+
+        // Move pyload.conf aside if it exists
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[@"~/.pyload/pyload.conf" stringByExpandingTildeInPath]]) {
+            //
+        }
+
+        // TODO: Put in canned config
+        
+        // start server and hold onto the task
+        NSString *corePath = [pathToPyloadBinaries stringByAppendingPathComponent:@"pyLoadCore.py"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:corePath]) {
+            localInstance = [NSTask launchedTaskWithLaunchPath:corePath arguments:@[]];
+        }
+        else {
+            NSLog(@"Looks like the instance you pointed to is damaged. It's missing pyLoadCore.py!");
+        }
+    }
+    return self;
 }
 
 #pragma mark - Request Convenience Methods

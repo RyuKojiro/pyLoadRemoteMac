@@ -9,6 +9,7 @@
                 <outlet property="addressField" destination="2uD-f0-wq3" id="DoW-pZ-Jvc"/>
                 <outlet property="passwordField" destination="Vfk-Bl-5V2" id="2ON-uX-45Q"/>
                 <outlet property="portField" destination="htE-aR-WD5" id="uDl-SH-u6A"/>
+                <outlet property="tabView" destination="W4y-ge-Se7" id="tjW-tR-eKN"/>
                 <outlet property="usernameField" destination="mop-iH-I29" id="AS9-8D-wqe"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -19,13 +20,13 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="445" height="231"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="445" height="231"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView initialItem="rpY-yM-hrs" translatesAutoresizingMaskIntoConstraints="NO" id="W4y-ge-Se7">
-                        <rect key="frame" x="13" y="41" width="419" height="184"/>
+                        <rect key="frame" x="13" y="41" width="419" height="88"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Remote" identifier="1" id="rpY-yM-hrs">
@@ -117,11 +118,44 @@
                                         <constraint firstItem="Vfk-Bl-5V2" firstAttribute="top" secondItem="mop-iH-I29" secondAttribute="bottom" constant="10" symbolic="YES" id="ZRK-cq-1nH"/>
                                         <constraint firstItem="PVL-3U-Zz0" firstAttribute="centerY" secondItem="mop-iH-I29" secondAttribute="centerY" id="asd-HR-KuW"/>
                                         <constraint firstItem="mop-iH-I29" firstAttribute="leading" secondItem="htE-aR-WD5" secondAttribute="leading" id="eCc-8B-2ne"/>
+                                        <constraint firstAttribute="bottom" secondItem="Vfk-Bl-5V2" secondAttribute="bottom" constant="17" id="eRL-lG-Hj3"/>
                                         <constraint firstItem="A81-8U-yoz" firstAttribute="centerY" secondItem="htE-aR-WD5" secondAttribute="centerY" id="hly-7P-Hlh"/>
                                         <constraint firstItem="2uD-f0-wq3" firstAttribute="leading" secondItem="htE-aR-WD5" secondAttribute="leading" id="pHj-cS-qEJ"/>
                                         <constraint firstItem="2uD-f0-wq3" firstAttribute="centerY" secondItem="Dun-bP-VrW" secondAttribute="centerY" id="rb6-Jw-fZf"/>
                                         <constraint firstItem="Vfk-Bl-5V2" firstAttribute="centerY" secondItem="rd4-ph-gGF" secondAttribute="centerY" id="syK-cD-UFE"/>
                                         <constraint firstItem="Vfk-Bl-5V2" firstAttribute="leading" secondItem="mop-iH-I29" secondAttribute="leading" id="vbP-Xi-GAl"/>
+                                    </constraints>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Local" identifier="" id="021-v3-UD9">
+                                <view key="view" id="wdV-uq-lIq">
+                                    <rect key="frame" x="10" y="33" width="399" height="42"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zza-X8-Lhf">
+                                            <rect key="frame" x="114" y="17" width="246" height="22"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="SRt-ac-8QX">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jGA-Pq-Gr3">
+                                            <rect key="frame" x="72" y="20" width="36" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Path:" id="HIh-FA-E2c">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Zza-X8-Lhf" firstAttribute="top" secondItem="wdV-uq-lIq" secondAttribute="top" constant="3" id="Brb-gf-9b1"/>
+                                        <constraint firstItem="Zza-X8-Lhf" firstAttribute="centerY" secondItem="jGA-Pq-Gr3" secondAttribute="centerY" id="GA8-5c-ppL"/>
+                                        <constraint firstItem="Zza-X8-Lhf" firstAttribute="leading" secondItem="jGA-Pq-Gr3" secondAttribute="trailing" constant="8" symbolic="YES" id="HBS-ZN-kdw"/>
+                                        <constraint firstAttribute="trailing" secondItem="Zza-X8-Lhf" secondAttribute="trailing" constant="39" id="OEF-vB-NtG"/>
+                                        <constraint firstAttribute="bottom" secondItem="Zza-X8-Lhf" secondAttribute="bottom" constant="17" id="xlF-vd-sit"/>
+                                        <constraint firstItem="jGA-Pq-Gr3" firstAttribute="leading" secondItem="wdV-uq-lIq" secondAttribute="leading" constant="74" id="z2s-rX-lsA"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>

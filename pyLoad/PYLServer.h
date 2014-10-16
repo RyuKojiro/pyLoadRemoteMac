@@ -51,8 +51,11 @@ typedef enum {
 @property (readonly) NSArray *downloadList;
 @property (readonly) NSArray *queue;
 @property (assign) id <PYLServerDelegate> delegate;
+@property (readonly, getter=isLocal) BOOL local;
 
-- (instancetype) initWithAddress:(NSString *)address port:(NSUInteger)port;
+- (instancetype) initWithRemoteAddress:(NSString *)address port:(NSUInteger)port;
+- (instancetype) initWithLocalPath:(NSString *)pathToPyloadBinaries;
+
 - (void) connectWithUsername:(NSString *)username password:(NSString *)password;
 - (void) disconnect;
 

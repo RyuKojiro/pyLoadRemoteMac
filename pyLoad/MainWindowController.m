@@ -31,12 +31,22 @@
 }
 
 - (void) loginSheetCompleted:(LoginSheetController *)controller {
-	[_server release];
-	_server = [[PYLServer alloc] initWithAddress:controller.addressField.stringValue
-											port:controller.portField.integerValue];
-	_server.delegate = self;
-	[_server connectWithUsername:controller.usernameField.stringValue
-						password:controller.passwordField.stringValue];
+    [_server release];
+
+    if ([[[[controller tabView] selectedTabViewItem] label] isEqualToString:@"Remote"]) {
+        // Remote Setup
+        _server = [[PYLServer alloc] initWithRemoteAddress:controller.addressField.stringValue
+                                                port:controller.portField.integerValue];
+        _server.delegate = self;
+        [_server connectWithUsername:controller.usernameField.stringValue
+                            password:controller.passwordField.stringValue];
+    }
+    else {
+        // Local Setup
+        _server = [[PYLServer alloc] initWithLocalPath:controller.pathField.stringValue];
+        _server.delegate = self;
+    }
+    
 	
 	[[NSUserDefaults standardUserDefaults] setObject:controller.addressField.stringValue forKey:kLastServerAddressKey];
 	[[NSUserDefaults standardUserDefaults] setObject:controller.portField.stringValue forKey:kLastServerPortKey];
