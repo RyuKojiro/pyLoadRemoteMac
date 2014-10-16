@@ -348,7 +348,13 @@
 }
 
 - (void) removeAllCompletePackages {
+	NSArray *q2 = [_queue copy];
 	
+	for (NSDictionary *item in q2) {
+		if ([item[@"linksdone"] integerValue] == [item[@"linkstotal"] integerValue]) {
+			[self removePackageId:[item[@"pid"] integerValue]];
+		}
+	}
 }
 
 - (void) fetchLogs {

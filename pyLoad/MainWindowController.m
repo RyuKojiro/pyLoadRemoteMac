@@ -186,6 +186,10 @@
 	}
 }
 
+- (IBAction)clearCompleted:(id)sender {
+	[_server removeAllCompletePackages];
+}
+
 #pragma mark - CaptchaWindowDelegate Methods
 
 - (void) captchaWindowController:(CaptchaWindowController *)controller didGetSolution:(NSString *)solution forId:(NSUInteger)captchaId{
