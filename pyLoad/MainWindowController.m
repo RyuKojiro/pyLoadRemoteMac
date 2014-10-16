@@ -15,10 +15,6 @@
 #define kDownloadListItemCellIdentifier	@"DownloadListItem"
 #define kQueueItemCellIdentifier		@"QueueItem"
 
-#define kLastServerAddressKey			@"lastServerAddress"
-#define kLastServerPortKey				@"lastServerPort"
-#define kLastLocalPathKey               @"lastLocalPath"
-
 @implementation MainWindowController {
 	LoginSheetController *loginSheetController;
 	CaptchaWindowController *captchaWindowController;
@@ -47,10 +43,6 @@
         _server = [[PYLServer alloc] initWithLocalPath:controller.pathField.stringValue];
         _server.delegate = self;
     }
-	
-	[[NSUserDefaults standardUserDefaults] setObject:controller.addressField.stringValue forKey:kLastServerAddressKey];
-    [[NSUserDefaults standardUserDefaults] setObject:controller.portField.stringValue forKey:kLastServerPortKey];
-    [[NSUserDefaults standardUserDefaults] setObject:controller.pathField.stringValue forKey:kLastLocalPathKey];
 }
 
 - (IBAction)presentLoginSheet:(id)sender {
@@ -64,22 +56,6 @@
 		modalDelegate:nil
 	   didEndSelector:nil
 		  contextInfo:self];
-	
-	NSString *lastAddress = [[NSUserDefaults standardUserDefaults] stringForKey:kLastServerAddressKey];
-	if (lastAddress) {
-		loginSheetController.addressField.stringValue = lastAddress;
-	}
-	
-	NSString *lastPort = [[NSUserDefaults standardUserDefaults] stringForKey:kLastServerPortKey];
-	if (lastPort) {
-		loginSheetController.portField.stringValue = lastPort;
-	}
-
-    NSString *lastPath = [[NSUserDefaults standardUserDefaults] stringForKey:kLastLocalPathKey];
-    if (lastPath) {
-        loginSheetController.pathField.stringValue = lastPath;
-    }
-
 }
 
 #pragma mark - Window Lifecycle
