@@ -107,6 +107,11 @@
 	[_server refreshDownloadList];
 	[_server updateStatus];
 	[_server refreshQueue];
+
+//	// XXX: Should we be polling logs locally? This should probably only happen when the drawer is out, but that's more plumbing.
+//	if ([_server isLocal]) {
+//		[_server fetchLogs];
+//	}
 	
 	if ([_server isConnected]) {
 		[self performSelector:_cmd withObject:nil afterDelay:1.0f];
@@ -270,6 +275,7 @@
 	
 	[_logView setString:logText];
 	[logText release];
+	[_logView scrollRangeToVisible:NSMakeRange(_logView.string.length, 0)];
 }
 
 #pragma mark - NSDrawerDelegate Methods
