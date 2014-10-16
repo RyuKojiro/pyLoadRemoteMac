@@ -288,7 +288,11 @@ Gw
                                     </menuItem>
                                     <menuItem title="Limit Speed" state="on" id="LJc-F6-AqL"/>
                                     <menuItem isSeparatorItem="YES" id="HrG-tg-oTg"/>
-                                    <menuItem title="Set Speed Limit…" id="i01-Jt-tI6"/>
+                                    <menuItem title="Set Speed Limit…" id="i01-Jt-tI6">
+                                        <connections>
+                                            <action selector="setSpeedLimit:" target="-2" id="fMT-So-wO7"/>
+                                        </connections>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </popUpButtonCell>

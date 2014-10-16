@@ -120,6 +120,18 @@
 
 #pragma mark - Window Actions
 
+- (IBAction)setSpeedLimit:(id)sender {
+	NSAlert *alert = [NSAlert alertWithMessageText:@"Set Speed Limit" defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Enter a speed (in kilobytes per second) to throttle the total transfer speed to."];
+	[alert setIcon:[NSImage imageNamed:@"speedLimitSign"]];
+	
+	NSTextField *speedLimitField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 300, 22)];
+	[alert setAccessoryView:speedLimitField];
+	
+	[alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+		[speedLimitField release];
+	}];
+}
+
 - (IBAction)addPackage:(id)sender {
 	NewPackageWindowController *npc = [[NewPackageWindowController alloc] initWithWindowNibName:@"NewPackageWindowController"];
 	[NSApp beginSheet:npc.window
