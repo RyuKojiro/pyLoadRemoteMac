@@ -21,7 +21,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="U1n-cX-gJi">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -337,12 +337,12 @@ Gw
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="pVB-Qx-uzC"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="AB3-5N-V11"/>
-                    <toolbarItem implicitItemIdentifier="2E73DF99-780C-464E-8346-E06374A18872" label="Restart Failed" paletteLabel="Restart Failed" tag="-1" image="NSBonjour" id="RVf-6i-0Qh">
+                    <toolbarItem implicitItemIdentifier="2E73DF99-780C-464E-8346-E06374A18872" label="Restart Failed" paletteLabel="Restart Failed" tag="-1" image="revive" id="RVf-6i-0Qh">
                         <connections>
                             <action selector="restartFailed:" target="-2" id="Ez1-rA-F0c"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="AD0F024B-EC3B-4142-A35F-DF50FCF2E10F" label="Server Settings" paletteLabel="Server Settings" tag="-1" image="NSPreferencesGeneral" id="Sj2-M6-XgA">
+                    <toolbarItem implicitItemIdentifier="AD0F024B-EC3B-4142-A35F-DF50FCF2E10F" label="Settings" paletteLabel="Settings" tag="-1" image="NSPreferencesGeneral" id="Sj2-M6-XgA">
                         <connections>
                             <action selector="serverSettings:" target="-2" id="1Us-QO-Wmy"/>
                         </connections>
@@ -353,7 +353,7 @@ Gw
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="CECC020A-73BB-47CF-AFE7-9CF3FBF84FFD" label="Stop All" paletteLabel="Stop All" tag="-1" image="stop" id="Wdm-Vd-Bc3"/>
-                    <toolbarItem implicitItemIdentifier="417AE672-49BE-40EB-B7AB-D1ABCB8C1AD5" label="Server Logs" paletteLabel="Server Logs" tag="-1" image="NSCaution" id="9ZR-ow-I6j">
+                    <toolbarItem implicitItemIdentifier="417AE672-49BE-40EB-B7AB-D1ABCB8C1AD5" label="Logs" paletteLabel="Logs" tag="-1" image="NSCaution" id="9ZR-ow-I6j">
                         <connections>
                             <action selector="toggle:" target="voD-dv-RaV" id="jj4-WQ-BF6"/>
                         </connections>
@@ -442,13 +442,13 @@ Gw
     </objects>
     <resources>
         <image name="DBTemplate" width="12" height="16"/>
-        <image name="NSBonjour" width="32" height="32"/>
         <image name="NSCaution" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSMultipleDocuments" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="groovePixels" width="1" height="2"/>
         <image name="plus" width="32" height="32"/>
+        <image name="revive" width="32" height="32"/>
         <image name="stop" width="32" height="32"/>
         <image name="xButton" width="14" height="14"/>
     </resources>
