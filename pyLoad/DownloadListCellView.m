@@ -65,7 +65,7 @@
 	_pluginLabel.stringValue = dict[@"plugin"];
 	_progressBar.doubleValue = [dict[@"percent"] doubleValue];
 
-	if ([dict[@"bleft"] integerValue] < [dict[@"size"] integerValue]) {
+	if ([dict[@"bleft"] integerValue] < [dict[@"size"] integerValue] && !([dict[@"bleft"] integerValue] == 0 && [dict[@"percent"] integerValue] == 0)) {
 		[_progressBar setIndeterminate:NO];
 	}
 	
