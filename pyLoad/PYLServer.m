@@ -335,6 +335,22 @@
 	}];
 }
 
+- (void) removePackageId:(NSUInteger)packageId {
+	// NOTE: This one is a GET for some reason
+	NSString *endpoint = [NSString stringWithFormat:@"/api/deletePackages/[%lu]", packageId];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[self urlWithLastPathComponent:endpoint]];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+		
+		// TODO: Look for "true"
+	}];
+	[request release];
+}
+
+- (void) removeAllCompletePackages {
+	
+}
+
 - (void) fetchLogs {
 	NSURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchLogs];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){

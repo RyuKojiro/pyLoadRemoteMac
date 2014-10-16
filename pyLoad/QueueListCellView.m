@@ -32,13 +32,14 @@
 	self.packageLabel.stringValue = @"";
 	self.pluginLabel.stringValue = @"Package";
 	
-	self.linkId = [dict[@"pid"] integerValue];
+	self.entityId = [dict[@"pid"] integerValue];
 	
 	return self;
 }
 
 - (IBAction)cancel:(id)sender {
-	NSLog(@"Tried to cancel a package from the cell");
+	[self.server removePackageId:self.entityId];
+	[self.server refreshQueue];
 }
 
 @end

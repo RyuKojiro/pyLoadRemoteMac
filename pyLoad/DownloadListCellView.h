@@ -19,7 +19,7 @@
 @property (assign) IBOutlet NSTextField *packageLabel;
 
 @property (assign) PYLServer *server;
-@property (readwrite) NSUInteger linkId;
+@property (readwrite) NSUInteger entityId;
 
 + (NSString *) statusLabelTextForDictionary:(NSDictionary *)dict;
 + (NSString *) extensionForFile:(NSString *)file;

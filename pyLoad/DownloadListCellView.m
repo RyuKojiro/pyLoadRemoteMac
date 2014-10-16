@@ -69,7 +69,7 @@
 		[_progressBar setIndeterminate:NO];
 	}
 	
-	_linkId = [dict[@"fid"] integerValue];
+	_entityId = [dict[@"fid"] integerValue];
 	
 	return self;
 }

@@ -77,6 +77,9 @@ typedef enum {
 - (void) cancelLinkId:(NSUInteger)linkId;
 - (void) cancelAllLinks;
 
+- (void) removePackageId:(NSUInteger)packageId;
+- (void) removeAllCompletePackages;
+
 - (void) fetchLogs;
 
 + (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req;
