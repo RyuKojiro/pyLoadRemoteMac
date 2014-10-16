@@ -11,6 +11,7 @@
 #import "NewPackageWindowController.h"
 #import "QueueListCellView.h"
 #import "PYLLogLine.h"
+#import "ThrobberModalWindowController.h"
 
 #define kDownloadListItemCellIdentifier	@"DownloadListItem"
 #define kQueueItemCellIdentifier		@"QueueItem"
@@ -18,16 +19,29 @@
 @implementation MainWindowController {
 	LoginSheetController *loginSheetController;
 	CaptchaWindowController *captchaWindowController;
+	ThrobberModalWindowController *throbberWindowController;
 	BOOL alreadyKnowAboutCaptcha;
+	NSUInteger connectingToLocalInstance;
 }
 
 #pragma mark - Login Sheet Management
 
 - (void) loginSheetCancelled:(LoginSheetController *)controller {
 	[self.window orderOut:self];
+	[self windowWillClose:nil];
 }
 
 - (void) loginSheetCompleted:(LoginSheetController *)controller {
+	if (!throbberWindowController) {
+		throbberWindowController = [[ThrobberModalWindowController alloc] initWithWindowNibName:@"ThrobberModalWindowController"];
+	}
+	
+	[NSApp beginSheet:throbberWindowController.window
+	   modalForWindow:self.window
+		modalDelegate:nil
+	   didEndSelector:nil
+		  contextInfo:self];
+	
     [_server release];
 
     if ([[[[controller tabView] selectedTabViewItem] label] isEqualToString:@"Remote"]) {
@@ -37,11 +51,16 @@
         _server.delegate = self;
         [_server connectWithUsername:controller.usernameField.stringValue
                             password:controller.passwordField.stringValue];
+		
+		connectingToLocalInstance = 0;
+		throbberWindowController.textLabel.stringValue = [NSString stringWithFormat:@"Connecting to %@…", controller.addressField.stringValue];
     }
     else {
         // Local Setup
         _server = [[PYLServer alloc] initWithLocalPath:controller.pathField.stringValue usingPython:controller.pythonField.stringValue];
         _server.delegate = self;
+		connectingToLocalInstance = 1;
+		throbberWindowController.textLabel.stringValue = @"Starting local instance…";
     }
 }
 
@@ -71,7 +90,12 @@
 	[self presentLoginSheet:self];
 }
 
+- (void)windowWillClose:(NSNotification *)notification {
+	[_server disconnect];
+}
+
 - (void) dealloc {
+	[throbberWindowController release];
 	[captchaWindowController release];
 	[loginSheetController release];
 	[super dealloc];
@@ -173,6 +197,7 @@
 }
 
 - (void) serverConnected:(PYLServer *)server {
+	[throbberWindowController dismiss:self];
     self.window.title = [NSString stringWithFormat:@"pyLoad — %@", server.address];
     
 	[server checkFreeSpace];
@@ -180,7 +205,14 @@
 }
 
 - (void) serverDisconnected:(PYLServer *)server {
-	[self presentLoginSheet:self];
+	if (connectingToLocalInstance) {
+		connectingToLocalInstance++;
+		[_server connectLocally];
+	}
+	else {
+		[throbberWindowController dismiss:self];
+		[self presentLoginSheet:self];
+	}
 }
 
 - (void) server:(PYLServer *)server didRefreshDownloadList:(NSArray *)list {

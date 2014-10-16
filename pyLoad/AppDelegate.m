@@ -25,7 +25,6 @@
 - (IBAction)newDocument:(id)sender {
 	MainWindowController *window = [[MainWindowController alloc] initWithWindowNibName:@"MainWindowController"];
 	[window showWindow:self];
-	// TODO: For now this leaks
 }
 
 @end

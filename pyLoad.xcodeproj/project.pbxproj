@@ -19,6 +19,8 @@
 		E61AF2F819E740B3008161DB /* CaptchaWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AF2F619E740B3008161DB /* CaptchaWindowController.xib */; };
 		E61AF2FD19E77163008161DB /* NewPackageWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E61AF2FB19E77163008161DB /* NewPackageWindowController.m */; };
 		E61AF2FE19E77163008161DB /* NewPackageWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AF2FC19E77163008161DB /* NewPackageWindowController.xib */; };
+		E622AFA319EF6EB700745A42 /* ThrobberModalWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E622AFA119EF6EB700745A42 /* ThrobberModalWindowController.m */; };
+		E622AFA419EF6EB700745A42 /* ThrobberModalWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E622AFA219EF6EB700745A42 /* ThrobberModalWindowController.xib */; };
 		E65B69DC19E6256300EB83CA /* PYLServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DB19E6256300EB83CA /* PYLServer.m */; };
 		E65B69E019E627B300EB83CA /* LoginSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = E65B69DE19E627B300EB83CA /* LoginSheetController.m */; };
 		E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E65B69DF19E627B300EB83CA /* LoginSheetController.xib */; };
@@ -58,6 +60,9 @@
 		E61AF2FA19E77163008161DB /* NewPackageWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPackageWindowController.h; sourceTree = "<group>"; };
 		E61AF2FB19E77163008161DB /* NewPackageWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPackageWindowController.m; sourceTree = "<group>"; };
 		E61AF2FC19E77163008161DB /* NewPackageWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPackageWindowController.xib; sourceTree = "<group>"; };
+		E622AFA019EF6EB700745A42 /* ThrobberModalWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThrobberModalWindowController.h; sourceTree = "<group>"; };
+		E622AFA119EF6EB700745A42 /* ThrobberModalWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThrobberModalWindowController.m; sourceTree = "<group>"; };
+		E622AFA219EF6EB700745A42 /* ThrobberModalWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThrobberModalWindowController.xib; sourceTree = "<group>"; };
 		E65B69DA19E6256300EB83CA /* PYLServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYLServer.h; sourceTree = "<group>"; };
 		E65B69DB19E6256300EB83CA /* PYLServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYLServer.m; sourceTree = "<group>"; };
 		E65B69DD19E627B300EB83CA /* LoginSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSheetController.h; sourceTree = "<group>"; };
@@ -108,6 +113,7 @@
 		E6194CA919E614F100930613 /* pyLoad */ = {
 			isa = PBXGroup;
 			children = (
+				E622AF9F19EF6E9800745A42 /* ThrobberModal */,
 				E61AF2F919E770B7008161DB /* NewPackage */,
 				E61AF2F319E74031008161DB /* Captcha */,
 				E65B69E519E6464E00EB83CA /* Server */,
@@ -163,6 +169,16 @@
 				E61AF2FC19E77163008161DB /* NewPackageWindowController.xib */,
 			);
 			name = NewPackage;
+			sourceTree = "<group>";
+		};
+		E622AF9F19EF6E9800745A42 /* ThrobberModal */ = {
+			isa = PBXGroup;
+			children = (
+				E622AFA019EF6EB700745A42 /* ThrobberModalWindowController.h */,
+				E622AFA119EF6EB700745A42 /* ThrobberModalWindowController.m */,
+				E622AFA219EF6EB700745A42 /* ThrobberModalWindowController.xib */,
+			);
+			name = ThrobberModal;
 			sourceTree = "<group>";
 		};
 		E65B69E219E627B800EB83CA /* MainWindow */ = {
@@ -296,6 +312,7 @@
 				E6194CB519E614F100930613 /* MainMenu.xib in Resources */,
 				E61AF2FE19E77163008161DB /* NewPackageWindowController.xib in Resources */,
 				E61AF2F819E740B3008161DB /* CaptchaWindowController.xib in Resources */,
+				E622AFA419EF6EB700745A42 /* ThrobberModalWindowController.xib in Resources */,
 				E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,6 +338,7 @@
 				E676BBC119E6549E00144D23 /* DownloadListCellView.m in Sources */,
 				E6194CB019E614F100930613 /* AppDelegate.m in Sources */,
 				E65B69DC19E6256300EB83CA /* PYLServer.m in Sources */,
+				E622AFA319EF6EB700745A42 /* ThrobberModalWindowController.m in Sources */,
 				E6194CAD19E614F100930613 /* main.m in Sources */,
 				E686E23519E8E4E10071C1F0 /* PYLLogLine.m in Sources */,
 				E61AF2F719E740B3008161DB /* CaptchaWindowController.m in Sources */,

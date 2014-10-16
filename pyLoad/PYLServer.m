@@ -53,7 +53,7 @@
         // start server and hold onto the task
         NSString *corePath = [[pathToPyloadBinaries stringByAppendingPathComponent:@"pyLoadCore.py"] stringByExpandingTildeInPath];
         if ([[NSFileManager defaultManager] fileExistsAtPath:corePath]) {
-            localInstance = [NSTask launchedTaskWithLaunchPath:[pathToPython stringByExpandingTildeInPath] arguments:@[corePath]];
+            localInstance = [[NSTask launchedTaskWithLaunchPath:[pathToPython stringByExpandingTildeInPath] arguments:@[corePath]] retain];
         }
         else {
             NSLog(@"Looks like the instance you pointed to is damaged. It's missing pyLoadCore.py!");
@@ -62,13 +62,18 @@
         
         self.address = kPYLDefaultLocalHost;
         self.port = kPYLDefaultLocalPort;
-        
-        [self performSelector:@selector(_localConnect) withObject:nil afterDelay:20.0f];
+		
+		[self connectLocally];
     }
     return self;
 }
 
-- (void) _localConnect {
+- (void) dealloc {
+	[self disconnect];
+	[super dealloc];
+}
+
+- (void) connectLocally {
     [self connectWithUsername:kPYLDefaultLocalUser password:kPYLDefaultLocalPassword];
 }
 
@@ -140,6 +145,7 @@
 	
 	// POST urlencoded data
 	NSMutableURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeLogin];
+	[request setTimeoutInterval:3.0f];
 	[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
  
 	NSMutableData *postBody = [[NSMutableData alloc] init];
@@ -159,6 +165,10 @@
 }
 
 - (void) disconnect {
+	[localInstance terminate];
+	[localInstance release];
+	localInstance = nil;
+	
 	cookie = nil;
 	_connected = NO;
 	_username = nil;

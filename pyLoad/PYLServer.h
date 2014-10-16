@@ -57,6 +57,7 @@ typedef enum {
 - (instancetype) initWithLocalPath:(NSString *)pathToPyloadBinaries usingPython:(NSString *)pathToPython;
 
 - (void) connectWithUsername:(NSString *)username password:(NSString *)password;
+- (void) connectLocally;
 - (void) disconnect;
 
 - (void) refreshDownloadList;

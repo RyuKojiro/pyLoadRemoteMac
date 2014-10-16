@@ -369,6 +369,9 @@ Gw
                     <toolbarItem reference="9ZR-ow-I6j"/>
                 </defaultToolbarItems>
             </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="4pc-s3-R7a"/>
+            </connections>
         </window>
         <menu id="7Ut-ky-GHm">
             <items>

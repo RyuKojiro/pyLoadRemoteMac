@@ -28,16 +28,18 @@
 
 - (IBAction)cancel:(id)sender {
 	[self _persistFields];
-	[_delegate loginSheetCancelled:self];
 	[NSApp endSheet:self.window];
 	[self.window orderOut:sender];
+
+	[_delegate loginSheetCancelled:self];
 }
 
 - (IBAction)done:(id)sender {
 	[self _persistFields];
-	[_delegate loginSheetCompleted:self];
 	[NSApp endSheet:self.window];
 	[self.window orderOut:sender];
+
+	[_delegate loginSheetCompleted:self];
 }
 
 - (void)windowDidLoad {
