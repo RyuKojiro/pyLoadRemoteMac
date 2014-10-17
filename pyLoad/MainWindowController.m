@@ -8,7 +8,6 @@
 
 #import "MainWindowController.h"
 #import "DownloadListCellView.h"
-#import "NewPackageWindowController.h"
 #import "QueueListCellView.h"
 #import "PYLLogLine.h"
 #import "ThrobberModalWindowController.h"
@@ -134,12 +133,15 @@
 
 - (IBAction)addPackage:(id)sender {
 	NewPackageWindowController *npc = [[NewPackageWindowController alloc] initWithWindowNibName:@"NewPackageWindowController"];
+	npc.delegate = self;
+	
 	[NSApp beginSheet:npc.window
 	   modalForWindow:self.window
 		modalDelegate:nil
 	   didEndSelector:nil
 		  contextInfo:self];
-	//[npc release];
+	
+	// Released in cancel or add
 }
 
 - (IBAction)serverSettings:(id)sender {
@@ -200,6 +202,17 @@
 
 - (IBAction)clearCompleted:(id)sender {
 	[_server removeAllCompletePackages];
+}
+
+#pragma mark - NewPackageWindowDelegate Methods
+
+- (void) newPackageControllerDidCancel:(NewPackageWindowController *)controller {
+	[controller release];
+}
+
+- (void) newPackageControllerDidAddPackage:(NewPackageWindowController *)controller {
+	[_server addPacakgeNamed:controller.nameField.stringValue withLinks:controller.linksView.string password:controller.passwordField.stringValue destination:(PYLDestination)(controller.destinationMatrix.selectedRow + 1)];
+	[controller release];
 }
 
 #pragma mark - CaptchaWindowDelegate Methods

@@ -10,8 +10,11 @@
 #import "LoginSheetController.h"
 #import "PYLServer.h"
 #import "CaptchaWindowController.h"
+#import "NewPackageWindowController.h"
 
-@interface MainWindowController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate, LoginSheetDelegate, PYLServerDelegate, NSUserNotificationCenterDelegate, CaptchaWindowDelegate, NSDrawerDelegate>
+@interface MainWindowController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate,
+													LoginSheetDelegate, PYLServerDelegate, NSUserNotificationCenterDelegate,
+													CaptchaWindowDelegate, NSDrawerDelegate, NewPackageWindowDelegate>
 
 @property (retain) PYLServer *server;
 @property (assign) IBOutlet NSTableView *tableView;
