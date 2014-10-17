@@ -106,6 +106,8 @@
 			return @"/api/stopAllDownloads";
 		case PYLRequestTypeFetchLogs:
 			return @"/logs/";
+        case PYLRequestTypeAddPackage:
+            return @"/json/add_package";
 		default:
 			return nil;
 	}
@@ -366,6 +368,52 @@
 		[_delegate server:self didRefreshLogs:[PYLServer logLinesFromLogHTML:html]];
 		[html release];
 	}];
+}
+
+- (void) addPacakgeNamed:(NSString *)packageName withLinks:(NSString *)newlineSeparatedLinks password:(NSString *)password destination:(PYLDestination)destination {
+    NSString *boundary = @"----WebKitFormBoundaryMUgIwkK6ft9mNHFM";
+    
+    NSMutableURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeAddPackage];
+    [request addValue:[@"multipart/form-data; boundary=" stringByAppendingString:boundary]
+   forHTTPHeaderField: @"Content-Type"];
+    
+    NSMutableData *postBody = [[NSMutableData alloc] init];
+
+    [postBody appendData:[[NSString stringWithFormat:@"--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[PYLServer formDataHeaderNamed:@"add_name"]];
+    [postBody appendData:[packageName dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [postBody appendData:[[NSString stringWithFormat:@"\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[PYLServer formDataHeaderNamed:@"add_links"]];
+    [postBody appendData:[newlineSeparatedLinks dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [postBody appendData:[[NSString stringWithFormat:@"\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[PYLServer formDataHeaderNamed:@"add_password"]];
+    if (password) [postBody appendData:[newlineSeparatedLinks dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [postBody appendData:[[NSString stringWithFormat:@"\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[PYLServer formDataHeaderNamed:@"add_file"]];
+    [postBody appendData:[@"Content-Type: application/octet-stream\n" dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [postBody appendData:[[NSString stringWithFormat:@"\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[PYLServer formDataHeaderNamed:@"add_dest"]];
+    [postBody appendData:[[NSString stringWithFormat:@"%d", destination] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [postBody appendData:[[NSString stringWithFormat:@"\n--%@--", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [request setHTTPBody:postBody];
+    [postBody release];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        PYLServerAssertConnection;
+        
+        // TODO: Check for success
+    }];
+}
+
++ (NSData *)formDataHeaderNamed:(NSString *)name {
+    NSString *stringData = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\n", name];
+    return [stringData dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 + (NSArray *) logLinesFromLogHTML:(NSString *)html {

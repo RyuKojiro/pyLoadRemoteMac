@@ -39,8 +39,15 @@ typedef enum {
 	PYLRequestTypePauseServer,
 	PYLRequestTypeUnpauseServer,
 	PYLRequestTypeCancelAll,
-	PYLRequestTypeFetchLogs
+	PYLRequestTypeFetchLogs,
+    PYLRequestTypeAddPackage
 } PYLRequestType;
+
+typedef enum {
+    PYLDestinationNone,
+    PYLDestinationQueue = 1,
+    PYLDestinationCollector = 2
+} PYLDestination;
 
 @interface PYLServer : NSObject
 
@@ -73,6 +80,8 @@ typedef enum {
 
 - (void) pauseServer;
 - (void) unpauseServer;
+
+- (void) addPacakgeNamed:(NSString *)packageName withLinks:(NSString *)newlineSeparatedLinks password:(NSString *)password destination:(PYLDestination)destination;
 
 - (void) cancelLinkId:(NSUInteger)linkId;
 - (void) cancelAllLinks;
