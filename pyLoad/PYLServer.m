@@ -379,27 +379,34 @@
     
     NSMutableData *postBody = [[NSMutableData alloc] init];
 
-    [postBody appendData:[[NSString stringWithFormat:@"--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	NSData *newlineData = [@"\n" dataUsingEncoding:NSUTF8StringEncoding];
+	
+    [postBody appendData:[[NSString stringWithFormat:@"--%@\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[PYLServer formDataHeaderNamed:@"add_name"]];
+	[postBody appendData:newlineData];
     [postBody appendData:[packageName dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [postBody appendData:[[NSString stringWithFormat:@"\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	
+    [postBody appendData:[[NSString stringWithFormat:@"\n--%@\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[PYLServer formDataHeaderNamed:@"add_links"]];
+	[postBody appendData:newlineData];
     [postBody appendData:[newlineSeparatedLinks dataUsingEncoding:NSUTF8StringEncoding]];
 
-    [postBody appendData:[[NSString stringWithFormat:@"\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"\n--%@\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[PYLServer formDataHeaderNamed:@"add_password"]];
-    if (password) [postBody appendData:[newlineSeparatedLinks dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:newlineData];
+    if (password) [postBody appendData:[password dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [postBody appendData:[[NSString stringWithFormat:@"\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"\n--%@\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[PYLServer formDataHeaderNamed:@"add_file"]];
-    [postBody appendData:[@"Content-Type: application/octet-stream\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Type: application/octet-stream\n\n" dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:newlineData];
 
-    [postBody appendData:[[NSString stringWithFormat:@"\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"\n--%@\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[PYLServer formDataHeaderNamed:@"add_dest"]];
+	[postBody appendData:newlineData];
     [postBody appendData:[[NSString stringWithFormat:@"%d", destination] dataUsingEncoding:NSUTF8StringEncoding]];
 
-    [postBody appendData:[[NSString stringWithFormat:@"\n--%@--", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\n--%@--\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 
     [request setHTTPBody:postBody];
     [postBody release];
