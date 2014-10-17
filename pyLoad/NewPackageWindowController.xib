@@ -6,6 +6,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NewPackageWindowController">
             <connections>
+                <outlet property="destinationMatrix" destination="9fD-YV-rch" id="OnN-0E-OOg"/>
+                <outlet property="linksView" destination="b15-W4-eOd" id="66e-pY-o4P"/>
+                <outlet property="nameField" destination="EC8-k6-SYh" id="12d-4K-puq"/>
+                <outlet property="passwordField" destination="WpF-pF-FdI" id="q0c-VA-7sx"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -15,7 +19,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="315"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="315"/>
                 <autoresizingMask key="autoresizingMask"/>

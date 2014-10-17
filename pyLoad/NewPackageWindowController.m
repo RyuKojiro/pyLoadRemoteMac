@@ -23,11 +23,15 @@
 - (IBAction)create:(id)sender {
 	[self.window orderOut:self];
 	[NSApp endSheet:self.window];
+    [_delegate newPackageControllerDidAddPackage:self];
 }
 
 - (IBAction)cancel:(id)sender {
 	[self.window orderOut:self];
 	[NSApp endSheet:self.window];
+    if ([_delegate respondsToSelector:@selector(newPackageControllerDidCancel:)]) {
+        [_delegate newPackageControllerDidCancel:self];
+    }
 }
 
 
