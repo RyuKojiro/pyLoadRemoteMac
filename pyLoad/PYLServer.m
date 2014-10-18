@@ -90,7 +90,7 @@
 		case PYLRequestTypeCheckFreeSpace:
 			return @"/api/freeSpace";
 		case PYLRequestTypeFetchQueue:
-			return @"/api/getQueue";
+			return @"/api/getQueueData";
 		case PYLRequestTypeRestartFailed:
 			return @"/api/restartFailed";
 		case PYLRequestTypeUpdateStatus:
@@ -447,6 +447,32 @@
 	}
 	
 	return [result autorelease];
+}
+
+- (NSDictionary *) queueItemForPid:(NSUInteger)pid {
+	__block NSUInteger index = NSNotFound;
+	
+	[_queue enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		if ([obj[@"pid"] integerValue] == pid) {
+			index = idx;
+			*stop = YES;
+		}
+	}];
+	
+	return _queue[index];
+}
+
+- (NSDictionary *) downloadItemForFid:(NSUInteger)fid {
+	__block NSUInteger index = NSNotFound;
+	
+	[_downloadList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		if ([obj[@"fid"] integerValue] == fid) {
+			index = idx;
+			*stop = YES;
+		}
+	}];
+	
+	return _downloadList[index];
 }
 
 @end

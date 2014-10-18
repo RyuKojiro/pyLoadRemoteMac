@@ -91,6 +91,9 @@ typedef enum {
 
 - (void) fetchLogs;
 
+- (NSDictionary *) queueItemForPid:(NSUInteger)pid;
+- (NSDictionary *) downloadItemForFid:(NSUInteger)fid;
+
 + (PYLRequestType) requestTypeForRequest:(NSURLRequest *)req;
 - (NSMutableURLRequest *) mutableRequestForRequestType:(PYLRequestType)type;
 
