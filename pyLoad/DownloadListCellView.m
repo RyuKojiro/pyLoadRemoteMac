@@ -61,10 +61,21 @@
 	_nameLabel.stringValue = dict[@"name"];
 	_statusLabel.stringValue = [DownloadListCellView statusLabelTextForDictionary:dict];
 	_icon.image = [[NSWorkspace sharedWorkspace] iconForFileType:extension];
-	_packageLabel.stringValue = dict[@"packageName"];
+    
+    NSString *packageName = dict[@"packageName"];
+    _packageLabel.stringValue = packageName ? packageName : @"";
+    
 	_pluginLabel.stringValue = dict[@"plugin"];
-	_progressBar.doubleValue = [dict[@"percent"] doubleValue];
 
+    double progress = [dict[@"percent"] doubleValue];
+    _progressBar.doubleValue = progress;
+
+    NSString *statusMesage = dict[@"statusmsg"];
+    if (progress == 0.0f && [statusMesage isEqualToString:@"finished"]) {
+        [_progressBar setIndeterminate:NO];
+        _progressBar.doubleValue = 100.0f;
+    }
+    
 	if ([dict[@"bleft"] integerValue] < [dict[@"size"] integerValue] && !([dict[@"bleft"] integerValue] == 0 && [dict[@"percent"] integerValue] == 0)) {
 		[_progressBar setIndeterminate:NO];
 	}

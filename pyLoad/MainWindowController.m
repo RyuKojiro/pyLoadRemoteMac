@@ -345,11 +345,7 @@
 	if ([item isKindOfClass:[NSDictionary class]] && item[@"links"]) {
 		return [item[@"links"] count];
 	}
-	
-	if ([item isKindOfClass:[NSArray class]]) {
-		return [item count];
-	}
-	
+		
 	return 0;
 }
 
@@ -363,7 +359,7 @@
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item {
 	if (item == nil) {
-		return _server.queue[index];
+		return [_server.queue[index] retain];
 	}
 	
 	if ([item isKindOfClass:[NSDictionary class]] && item[@"links"]) {
@@ -383,11 +379,15 @@
 	if ([item isKindOfClass:[NSDictionary class]] && item[@"statusmsg"]) {
 		NSDictionary *downloadItem = [_server downloadItemForFid:[item[@"fid"] integerValue]];
 		
-		if (downloadItem) {
-			DownloadListCellView *result = [outlineView makeViewWithIdentifier:kDownloadListItemCellIdentifier owner:self];
-			result.server = _server;
-			return result; //[result reconfigureWithDictionary:downloadItem];
+        DownloadListCellView *result = [outlineView makeViewWithIdentifier:kDownloadListItemCellIdentifier owner:self];
+        result.server = _server;
+
+        if (downloadItem) {
+			return [result reconfigureWithDictionary:downloadItem];
 		}
+        else {
+            return [result reconfigureWithDictionary:item];
+        }
 		
 	}
 	
