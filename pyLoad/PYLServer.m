@@ -357,6 +357,8 @@
 			[self removePackageId:[item[@"pid"] integerValue]];
 		}
 	}
+    
+    [q2 release];
 }
 
 - (void) fetchLogs {
@@ -459,7 +461,10 @@
 		}
 	}];
 	
-	return _queue[index];
+    if (index != NSNotFound) {
+        return _queue[index];
+    }
+    return nil;
 }
 
 - (NSDictionary *) downloadItemForFid:(NSUInteger)fid {
@@ -472,7 +477,10 @@
 		}
 	}];
 	
-	return _downloadList[index];
+    if (index != NSNotFound) {
+        return _downloadList[index];
+    }
+    return nil;
 }
 
 @end
