@@ -335,4 +335,64 @@
 	return nil;
 }
 
+#pragma mark NSOutlineView Delegate and Data Source Methods
+
+- (NSUInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
+	if (item == nil) {
+		return [_server.queue count];
+	}
+	
+	if ([item isKindOfClass:[NSDictionary class]] && item[@"links"]) {
+		return [item[@"links"] count];
+	}
+	
+	if ([item isKindOfClass:[NSArray class]]) {
+		return [item count];
+	}
+	
+	return 0;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
+	if ([item isKindOfClass:[NSDictionary class]] && item[@"links"]) {
+		return YES;
+	}
+	
+	return NO;
+}
+
+- (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item {
+	if (item == nil) {
+		return _server.queue[index];
+	}
+	
+	if ([item isKindOfClass:[NSDictionary class]] && item[@"links"]) {
+		return item[@"links"][index];
+	}
+	
+	return nil;
+}
+
+- (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+	if ([item isKindOfClass:[NSDictionary class]] && item[@"links"]) {
+		QueueListCellView *result = [outlineView makeViewWithIdentifier:kQueueItemCellIdentifier owner:self];
+		result.server = _server;
+		return [result reconfigureWithDictionary:item];
+	}
+	
+	if ([item isKindOfClass:[NSDictionary class]] && item[@"statusmsg"]) {
+		NSDictionary *downloadItem = [_server downloadItemForFid:[item[@"fid"] integerValue]];
+		
+		if (downloadItem) {
+			DownloadListCellView *result = [outlineView makeViewWithIdentifier:kDownloadListItemCellIdentifier owner:self];
+			result.server = _server;
+			return result; //[result reconfigureWithDictionary:downloadItem];
+		}
+		
+	}
+	
+	return nil;
+
+}
+
 @end
