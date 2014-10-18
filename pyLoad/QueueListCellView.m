@@ -18,10 +18,10 @@
 	NSUInteger bytesTotal = [dict[@"sizetotal"] integerValue];
 	
 	if (bytesTotal) {
-		self.statusLabel.stringValue = [NSString stringWithFormat:@"%lu%% – %@/%@ items complete – %@/%@",
+		self.statusLabel.stringValue = [NSString stringWithFormat:@"%lu%% – %@/%lu items complete – %@/%@",
 										(100 * bytesComplete/bytesTotal),
 										dict[@"linksdone"],
-										dict[@"linkstotal"],
+										[dict[@"links"] count],
 										[NSByteCountFormatter stringFromByteCount:bytesComplete countStyle:NSByteCountFormatterCountStyleFile],
 										[NSByteCountFormatter stringFromByteCount:bytesTotal countStyle:NSByteCountFormatterCountStyleFile]];
 	}
