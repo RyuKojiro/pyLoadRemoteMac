@@ -56,7 +56,10 @@
 }
 
 - (instancetype) reconfigureWithDictionary:(NSDictionary *)dict {
-	NSString *extension = [DownloadListCellView extensionForFile:dict[@"name"]];
+    [_progressBar stopAnimation:self];
+    [_progressBar setIndeterminate:YES];
+
+    NSString *extension = [DownloadListCellView extensionForFile:dict[@"name"]];
 	
 	_nameLabel.stringValue = dict[@"name"];
 	_statusLabel.stringValue = [DownloadListCellView statusLabelTextForDictionary:dict];
@@ -78,6 +81,7 @@
     
 	if ([dict[@"bleft"] integerValue] < [dict[@"size"] integerValue] && !([dict[@"bleft"] integerValue] == 0 && [dict[@"percent"] integerValue] == 0)) {
 		[_progressBar setIndeterminate:NO];
+        [_progressBar startAnimation:self];
 	}
 	
 	_entityId = [dict[@"fid"] integerValue];
