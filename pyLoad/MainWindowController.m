@@ -395,4 +395,13 @@
 
 }
 
+- (CGFloat)outlineView:(NSOutlineView *)outlineView
+     heightOfRowByItem:(id)item {
+    if ([item isKindOfClass:[NSDictionary class]] && item[@"links"]) {
+        return 20.0f;
+    }
+    
+    return 38.0f;
+}
+
 @end
