@@ -27,7 +27,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="50" horizontalPageScroll="10" verticalLineScroll="50" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYJ-Fh-ZfZ">
-                        <rect key="frame" x="0.0" y="24" width="480" height="337"/>
+                        <rect key="frame" x="0.0" y="24" width="480" height="336"/>
                         <clipView key="contentView" id="FYB-Vf-JO0">
                             <rect key="frame" x="1" y="17" width="238" height="117"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,7 +259,7 @@ Gw
                     <constraint firstItem="gf0-bC-5Kf" firstAttribute="baseline" secondItem="1dv-yB-Kkm" secondAttribute="baseline" id="OJT-rf-4VN"/>
                     <constraint firstAttribute="bottom" secondItem="gf0-bC-5Kf" secondAttribute="bottom" constant="1" id="PJM-1x-maj"/>
                     <constraint firstItem="1dv-yB-Kkm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gf0-bC-5Kf" secondAttribute="trailing" constant="10" id="QqA-EC-FuB"/>
-                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="top" secondItem="U1n-cX-gJi" secondAttribute="top" constant="-1" id="TfM-fd-Aww"/>
+                    <constraint firstItem="WYJ-Fh-ZfZ" firstAttribute="top" secondItem="U1n-cX-gJi" secondAttribute="top" id="TfM-fd-Aww"/>
                     <constraint firstItem="A6t-mk-5zG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1dv-yB-Kkm" secondAttribute="trailing" constant="10" id="Ts1-3H-bim"/>
                     <constraint firstItem="gf0-bC-5Kf" firstAttribute="top" secondItem="1dv-yB-Kkm" secondAttribute="top" id="aAH-YD-JBE"/>
                     <constraint firstItem="dhe-aQ-vQr" firstAttribute="top" secondItem="WYJ-Fh-ZfZ" secondAttribute="bottom" id="bBD-nL-5Wz"/>
