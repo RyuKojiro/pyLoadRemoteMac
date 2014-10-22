@@ -432,7 +432,7 @@
         return 20.0f;
     }
     
-    return 38.0f;
+    return 48.0f;
 }
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification {
