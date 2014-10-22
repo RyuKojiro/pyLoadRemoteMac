@@ -355,7 +355,17 @@
 	NSArray *q2 = [_queue copy];
 	
 	for (NSDictionary *item in q2) {
-		if ([item[@"linksdone"] integerValue] == [item[@"linkstotal"] integerValue]) {
+		NSUInteger linksTotal;
+		NSString *ltString = item[@"linkstotal"];
+		
+		if ([ltString isKindOfClass:[NSNull class]]) {
+			linksTotal = [item[@"links"] count];
+		}
+		else {
+			linksTotal = [ltString integerValue];
+		}
+		
+		if ([item[@"linksdone"] integerValue] == linksTotal) {
 			[self removePackageId:[item[@"pid"] integerValue]];
 		}
 	}
