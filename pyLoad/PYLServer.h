@@ -22,6 +22,7 @@
 - (void) server:(PYLServer *)server didUpdateSpeed:(CGFloat)bytesPerSec;
 - (void) server:(PYLServer *)server didUpdatePausedStatus:(BOOL)paused;
 - (void) server:(PYLServer *)server didRefreshLogs:(NSArray *)logData;
+- (void) server:(PYLServer *)server didUpdateActiveCount:(NSUInteger)active queueCount:(NSUInteger)queueCount totalCount:(NSUInteger)totalCount;
 
 @end
 

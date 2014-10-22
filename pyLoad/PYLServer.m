@@ -237,6 +237,8 @@
 		}
 		
 		[_delegate server:self didUpdatePausedStatus:[status[@"pause"] boolValue]];
+        
+        [_delegate server:self didUpdateActiveCount:[status[@"active"] integerValue] queueCount:[status[@"queue"] integerValue] totalCount:[status[@"total"] integerValue]];
 	}];
 }
 
