@@ -16,12 +16,14 @@
 
 @implementation DictionaryHUDController {
 	NSDictionary *_dictionary;
+	NSDictionary *_userFriendlyKeys;
 }
 
 @dynamic dictionary;
 
 - (void) dealloc {
 	[_dictionary release];
+	[_userFriendlyKeys release];
 	[super dealloc];
 }
 
@@ -31,8 +33,10 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+	
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"UserFriendlyKeyNames"
+													 ofType:@"plist"];
+	_userFriendlyKeys = [[NSDictionary alloc] initWithContentsOfFile:path];
 }
 
 - (NSDictionary *) dictionary {
@@ -52,12 +56,15 @@
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+	NSString *key = [_dictionary allKeys][rowIndex];
+	
 	if (_dictionary) {
 		if ([[[aTableColumn headerCell] title] isEqualToString:@"Key"]) {
-			return [_dictionary allKeys][rowIndex];
+			NSString *userFriendlyKey = _userFriendlyKeys[key];
+			return userFriendlyKey ? userFriendlyKey : key;
 		}
 		else {
-			return _dictionary[[_dictionary allKeys][rowIndex]];
+			return _dictionary[key];
 		}
 	}
 	else {

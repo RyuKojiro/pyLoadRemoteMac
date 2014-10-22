@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Name</string>
+	<key>size</key>
+	<string>Size in Bytes</string>
+	<key>packageID</key>
+	<string>Package ID</string>
+	<key>error</key>
+	<string>Last Error Message</string>
+	<key>plugin</key>
+	<string>Plugin</string>
+	<key>status</key>
+	<string>Status ID</string>
+	<key>order</key>
+	<string>Order</string>
+	<key>url</key>
+	<string>URL</string>
+	<key>format_size</key>
+	<string>Size</string>
+	<key>fid</key>
+	<string>File ID</string>
+	<key>statusmsg</key>
+	<string>Current Status</string>
+	<key>dest</key>
+	<string>Destination (1=Queue, 2=Collector)</string>
+	<key>linksdone</key>
+	<string>Files Completed</string>
+	<key>sizetotal</key>
+	<string>Total Package Size in Bytes</string>
+	<key>linkstotal</key>
+	<string>Total Files</string>
+	<key>folder</key>
+	<string>Destination Folder Name</string>
+	<key>password</key>
+	<string>Password</string>
+	<key>links</key>
+	<string>Links</string>
+	<key>sizedone</key>
+	<string>Total Bytes Completed</string>
+	<key>site</key>
+	<string>Site?</string>
+	<key>pid</key>
+	<string>Package ID</string>
+	<key>fids</key>
+	<string>Folder IDs</string>
+</dict>
+</plist>
