@@ -22,11 +22,15 @@
 			return @"Queued";
 		case 4:
 			return @"Skipped";
-		case 5:
-			return [NSString stringWithFormat:@"Waiting… %@", dict[@"format_wait"]];
+		case 5: { // These brackets are required in clang for some reason
+			NSString *waitTime = dict[@"format_wait"];
+			return (waitTime ? [NSString stringWithFormat:@"Waiting… %@", waitTime] : @"Waiting…");
+		}
 		case 11:
 		case 13:
 			return @"Processing…";
+		case 8:
+			return @"Failed";
 		
 	}
 	
@@ -62,7 +66,9 @@
     NSString *extension = [DownloadListCellView extensionForFile:dict[@"name"]];
 	
 	_nameLabel.stringValue = dict[@"name"];
-	_statusLabel.stringValue = [DownloadListCellView statusLabelTextForDictionary:dict];
+	
+	NSDictionary *labelDict = [_server downloadItemForFid:[dict[@"fid"] integerValue]];
+	_statusLabel.stringValue = [DownloadListCellView statusLabelTextForDictionary:labelDict ? labelDict : dict];
 	_icon.image = [[NSWorkspace sharedWorkspace] iconForFileType:extension];
     
     NSString *packageName = dict[@"packageName"];
