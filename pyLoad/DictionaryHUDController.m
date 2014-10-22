@@ -17,11 +17,13 @@
 @implementation DictionaryHUDController {
 	NSDictionary *_dictionary;
 	NSDictionary *_userFriendlyKeys;
+	NSMutableArray *_filteredKeys;
 }
 
 @dynamic dictionary;
 
 - (void) dealloc {
+	[_filteredKeys release];
 	[_dictionary release];
 	[_userFriendlyKeys release];
 	[super dealloc];
@@ -37,6 +39,8 @@
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"UserFriendlyKeyNames"
 													 ofType:@"plist"];
 	_userFriendlyKeys = [[NSDictionary alloc] initWithContentsOfFile:path];
+	
+	_filteredKeys = [[NSMutableArray alloc] init];
 }
 
 - (NSDictionary *) dictionary {
@@ -45,6 +49,15 @@
 
 - (void) setDictionary:(NSDictionary *)dictionary {
 	[_dictionary release];
+	
+	[_filteredKeys removeAllObjects];
+	
+	for (NSString *key in [dictionary allKeys]) {
+		if (_userFriendlyKeys[key]) {
+			[_filteredKeys addObject:key];
+		}
+	}
+	
 	[_tableView reloadData];
 	_dictionary = [dictionary retain];
 }
@@ -52,19 +65,17 @@
 #pragma mark - NSTableViewDataSource and Delegate Methods
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
-	return _dictionary ? [_dictionary count] : 1;
+	return _dictionary ? [_filteredKeys count] : 1;
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
-	NSString *key = [_dictionary allKeys][rowIndex];
 	
 	if (_dictionary) {
 		if ([[[aTableColumn headerCell] title] isEqualToString:@"Key"]) {
-			NSString *userFriendlyKey = _userFriendlyKeys[key];
-			return userFriendlyKey ? userFriendlyKey : key;
+			return _userFriendlyKeys[_filteredKeys[rowIndex]];
 		}
 		else {
-			return _dictionary[key];
+			return _dictionary[_filteredKeys[rowIndex]];
 		}
 	}
 	else {

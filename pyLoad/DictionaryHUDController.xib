@@ -15,14 +15,14 @@
         <window title="Inspector" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Nh4-kb-02W" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="259" height="260"/>
+            <rect key="contentRect" x="196" y="240" width="388" height="260"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="ytU-Vn-DBo">
-                <rect key="frame" x="0.0" y="0.0" width="259" height="260"/>
+                <rect key="frame" x="0.0" y="0.0" width="388" height="260"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOb-cK-5iE">
-                        <rect key="frame" x="20" y="20" width="219" height="220"/>
+                        <rect key="frame" x="20" y="20" width="348" height="220"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="hoG-3C-kFb">
                             <rect key="frame" x="1" y="17" width="238" height="117"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,20 +34,20 @@
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="116" minWidth="40" maxWidth="1000" id="Lb9-If-Ehb">
+                                        <tableColumn width="150" minWidth="40" maxWidth="1000" id="Lb9-If-Ehb">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Key">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Text" placeholderString="" id="D0z-6p-2fD">
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="Text" placeholderString="" id="D0z-6p-2fD">
                                                 <font key="font" metaFont="smallSystemBold"/>
                                                 <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
-                                        <tableColumn width="97" minWidth="40" maxWidth="1000" id="wyC-1F-uth">
+                                        <tableColumn width="226" minWidth="40" maxWidth="1000" id="wyC-1F-uth">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -89,7 +89,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="81J-Pb-WGl"/>
             </connections>
-            <point key="canvasLocation" x="544.5" y="551"/>
+            <point key="canvasLocation" x="609" y="551"/>
         </window>
     </objects>
 </document>

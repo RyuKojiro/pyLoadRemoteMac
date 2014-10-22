@@ -36,15 +36,9 @@
 	<string>Destination Folder Name</string>
 	<key>password</key>
 	<string>Password</string>
-	<key>links</key>
-	<string>Links</string>
 	<key>sizedone</key>
 	<string>Total Bytes Completed</string>
-	<key>site</key>
-	<string>Site?</string>
 	<key>pid</key>
 	<string>Package ID</string>
-	<key>fids</key>
-	<string>Folder IDs</string>
 </dict>
 </plist>
