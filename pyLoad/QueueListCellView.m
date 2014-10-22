@@ -11,6 +11,11 @@
 @implementation QueueListCellView
 
 - (instancetype) reconfigureWithDictionary:(NSDictionary *)dict {
+    // Appearance
+    [self.nameLabel.cell setBackgroundStyle:NSBackgroundStyleRaised];
+    [self.statusLabel.cell setBackgroundStyle:NSBackgroundStyleRaised];
+    
+    // Values
 	self.nameLabel.stringValue = dict[@"name"];
 	self.icon.image = [NSImage imageNamed:NSImageNameFolder];
 
