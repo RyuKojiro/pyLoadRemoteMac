@@ -28,6 +28,7 @@
 		E686E23519E8E4E10071C1F0 /* PYLLogLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E686E23419E8E4E10071C1F0 /* PYLLogLine.m */; };
 		E6ABB05B19F73B70009EDBB1 /* DictionaryHUDController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ABB05919F73B70009EDBB1 /* DictionaryHUDController.m */; };
 		E6ABB05C19F73B70009EDBB1 /* DictionaryHUDController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6ABB05A19F73B70009EDBB1 /* DictionaryHUDController.xib */; };
+		E6ABB05E19F74572009EDBB1 /* UserFriendlyKeyNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6ABB05D19F74572009EDBB1 /* UserFriendlyKeyNames.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		E6ABB05819F73B70009EDBB1 /* DictionaryHUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryHUDController.h; sourceTree = "<group>"; };
 		E6ABB05919F73B70009EDBB1 /* DictionaryHUDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryHUDController.m; sourceTree = "<group>"; };
 		E6ABB05A19F73B70009EDBB1 /* DictionaryHUDController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DictionaryHUDController.xib; sourceTree = "<group>"; };
+		E6ABB05D19F74572009EDBB1 /* UserFriendlyKeyNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserFriendlyKeyNames.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +241,7 @@
 				E6ABB05819F73B70009EDBB1 /* DictionaryHUDController.h */,
 				E6ABB05919F73B70009EDBB1 /* DictionaryHUDController.m */,
 				E6ABB05A19F73B70009EDBB1 /* DictionaryHUDController.xib */,
+				E6ABB05D19F74572009EDBB1 /* UserFriendlyKeyNames.plist */,
 			);
 			name = DictionaryHUD;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				E6194CCE19E61D6E00930613 /* MainWindowController.xib in Resources */,
 				E6194CB519E614F100930613 /* MainMenu.xib in Resources */,
 				E61AF2FE19E77163008161DB /* NewPackageWindowController.xib in Resources */,
+				E6ABB05E19F74572009EDBB1 /* UserFriendlyKeyNames.plist in Resources */,
 				E61AF2F819E740B3008161DB /* CaptchaWindowController.xib in Resources */,
 				E622AFA419EF6EB700745A42 /* ThrobberModalWindowController.xib in Resources */,
 				E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */,
