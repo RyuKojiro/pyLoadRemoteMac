@@ -280,10 +280,10 @@
 	NSIndexSet *selectedRows = [_outlineView selectedRowIndexes];
 	[_outlineView reloadData];
 	[_outlineView selectRowIndexes:selectedRows byExtendingSelection:NO];
-	
-	// Refresh list count at bottom
-	NSUInteger count = _server.downloadList.count;
-	_transferCountField.stringValue = [NSString stringWithFormat:@"%lu Transfer%@", count, (count == 1) ? @"" : @"s" ];
+}
+
+- (void) server:(PYLServer *)server didUpdateActiveCount:(NSUInteger)active queueCount:(NSUInteger)queueCount totalCount:(NSUInteger)totalCount {
+    _transferCountField.stringValue = [NSString stringWithFormat:@"%lu Active / %lu Queued / %lu Total", active, queueCount, totalCount];
 }
 
 - (void) serverHasCaptchaWaiting:(PYLServer *)server {
