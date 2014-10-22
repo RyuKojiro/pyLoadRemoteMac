@@ -364,6 +364,10 @@
 
 #pragma mark NSOutlineView Delegate and Data Source Methods
 
+- (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item {
+	return [self outlineView:outlineView isItemExpandable:item];
+}
+
 - (NSUInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
 	if (item == nil) {
 		return [_server.queue count];
