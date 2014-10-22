@@ -188,16 +188,18 @@
 	[_server unpauseServer];
 }
 
-- (IBAction)cancel:(id)sender {
-	NSUInteger row = [_tableView selectedRow];
+- (IBAction)restartSelected:(id)sender {
+	id item = [_outlineView itemAtRow:[_outlineView selectedRow]];
+	
+	//[_server ]
+}
 
-	if (row < _server.downloadList.count) {
-		// FIXME: this couples the UI and server instances in a very nasty way
-		[_server cancelLinkId:[_server.downloadList[row][@"fid"] integerValue]];
-	}
-	else {
-		NSLog(@"Tried to cancel a package from the window");
-	}
+- (IBAction)cancelSelected:(id)sender {
+	id item = [_outlineView itemAtRow:[_outlineView selectedRow]];
+
+	// TODO: Check if it's a package and cancel the package instead
+	
+	[_server cancelLinkId:[item[@"fid"] integerValue]];
 }
 
 - (IBAction)clearCompleted:(id)sender {
@@ -250,9 +252,10 @@
 }
 
 - (void) server:(PYLServer *)server didRefreshDownloadList:(NSArray *)list {
-	NSIndexSet *selectedRows = [_tableView selectedRowIndexes];
-	[_tableView reloadData];
-	[_tableView selectRowIndexes:selectedRows byExtendingSelection:NO];
+	// TODO: Also capture state of what is collapsed and what isn't
+	NSIndexSet *selectedRows = [_outlineView selectedRowIndexes];
+	[_outlineView reloadData];
+	[_outlineView selectRowIndexes:selectedRows byExtendingSelection:NO];
 	
 	// Refresh list count at bottom
 	NSUInteger count = _server.downloadList.count;

@@ -17,7 +17,7 @@
 													CaptchaWindowDelegate, NSDrawerDelegate, NewPackageWindowDelegate>
 
 @property (retain) PYLServer *server;
-@property (assign) IBOutlet NSTableView *tableView;
+@property (assign) IBOutlet NSOutlineView *outlineView;
 @property (assign) IBOutlet NSTextField *freeSpaceField;
 @property (assign) IBOutlet NSMenuItem *speedMenuItem;
 @property (assign) IBOutlet NSToolbarItem *playPauseButton;
