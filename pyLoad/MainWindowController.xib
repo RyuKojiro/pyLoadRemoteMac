@@ -64,7 +64,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="weg-iy-Ik1">
-                                                            <rect key="frame" x="3" y="2" width="32" height="32"/>
+                                                            <rect key="frame" x="3" y="3" width="32" height="32"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="32" id="ZW6-fD-yYF"/>
                                                                 <constraint firstAttribute="height" constant="32" id="wKQ-0u-eNl"/>
@@ -113,13 +113,13 @@ Gw
                                                         <constraint firstItem="4NL-CH-I1F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Byb-Q4-Nd3" secondAttribute="trailing" constant="3" id="8yr-3p-qbK"/>
                                                         <constraint firstItem="4NL-CH-I1F" firstAttribute="centerY" secondItem="x5T-ux-o1I" secondAttribute="centerY" constant="-1" id="Rmc-sm-hWN"/>
                                                         <constraint firstItem="x5T-ux-o1I" firstAttribute="top" secondItem="rya-e7-BqI" secondAttribute="top" constant="5" id="UK0-qS-WOE"/>
-                                                        <constraint firstAttribute="centerY" secondItem="weg-iy-Ik1" secondAttribute="centerY" constant="-1" id="Ubo-hh-KIM"/>
+                                                        <constraint firstAttribute="centerY" secondItem="weg-iy-Ik1" secondAttribute="centerY" id="Ubo-hh-KIM"/>
                                                         <constraint firstItem="x5T-ux-o1I" firstAttribute="leading" secondItem="4NL-CH-I1F" secondAttribute="trailing" constant="8" id="XSJ-8m-eO8"/>
                                                         <constraint firstItem="YXk-S7-0k6" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="trailing" constant="9" id="apo-ZR-ljk"/>
-                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="top" constant="2" id="hC4-79-YYZ"/>
+                                                        <constraint firstItem="weg-iy-Ik1" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="top" constant="1" id="hC4-79-YYZ"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="weg-iy-Ik1" secondAttribute="trailing" constant="2" id="m91-Ua-5kF"/>
                                                         <constraint firstAttribute="trailing" secondItem="YXk-S7-0k6" secondAttribute="trailing" constant="7" id="oM2-ek-hMB"/>
-                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="bottom" secondItem="weg-iy-Ik1" secondAttribute="bottom" constant="-3" id="p8Y-Uj-8NG"/>
+                                                        <constraint firstItem="3UD-2h-bTV" firstAttribute="bottom" secondItem="weg-iy-Ik1" secondAttribute="bottom" constant="-2" id="p8Y-Uj-8NG"/>
                                                         <constraint firstAttribute="bottom" secondItem="YXk-S7-0k6" secondAttribute="bottom" constant="6" id="sll-4B-aYA"/>
                                                         <constraint firstItem="weg-iy-Ik1" firstAttribute="leading" secondItem="rya-e7-BqI" secondAttribute="leading" constant="3" id="wJb-a3-3gi"/>
                                                         <constraint firstAttribute="trailing" secondItem="x5T-ux-o1I" secondAttribute="trailing" constant="7" id="zDv-Wj-Agi"/>
@@ -138,8 +138,8 @@ Gw
                                                     <rect key="frame" x="1" y="67" width="477" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2R-0R-W4Z">
-                                                            <rect key="frame" x="24" y="3" width="214" height="17"/>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2R-0R-W4Z">
+                                                            <rect key="frame" x="24" y="3" width="233" height="17"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="This is the long ass packagename" id="RjL-Uc-cUb">
                                                                 <font key="font" metaFont="systemBold"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
