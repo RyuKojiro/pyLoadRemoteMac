@@ -194,7 +194,10 @@
 - (IBAction)restartSelected:(id)sender {
 	id item = [_outlineView itemAtRow:[_outlineView selectedRow]];
 	
-	//[_server ]
+	NSString *fid = item[@"fid"];
+	if (fid) {
+		[_server restartFileId:[fid integerValue]];
+	}
 }
 
 - (IBAction)cancelSelected:(id)sender {

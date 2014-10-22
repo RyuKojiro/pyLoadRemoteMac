@@ -420,6 +420,20 @@
     }];
 }
 
+- (void) restartFileId:(NSUInteger)fileId {
+	// NOTE: This one is a GET for some reason
+	NSString *endpoint = [NSString stringWithFormat:@"/api/restartFile/%lu", fileId];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[self urlWithLastPathComponent:endpoint]];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+		
+		// TODO: Look for "true"
+	}];
+	[request release];
+}
+
+#pragma mark - Helper Methods
+
 + (NSData *)formDataHeaderNamed:(NSString *)name {
     NSString *stringData = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\n", name];
     return [stringData dataUsingEncoding:NSUTF8StringEncoding];
@@ -450,6 +464,8 @@
 	
 	return [result autorelease];
 }
+
+#pragma mark - Item Correlation Methods
 
 - (NSDictionary *) queueItemForPid:(NSUInteger)pid {
 	__block NSUInteger index = NSNotFound;

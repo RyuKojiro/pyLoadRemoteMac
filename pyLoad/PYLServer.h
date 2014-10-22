@@ -83,6 +83,7 @@ typedef enum {
 
 - (void) addPacakgeNamed:(NSString *)packageName withLinks:(NSString *)newlineSeparatedLinks password:(NSString *)password destination:(PYLDestination)destination;
 
+- (void) restartFileId:(NSUInteger)fileId;
 - (void) cancelLinkId:(NSUInteger)linkId;
 - (void) cancelAllLinks;
 
