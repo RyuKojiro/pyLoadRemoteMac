@@ -26,6 +26,8 @@
 		E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E65B69DF19E627B300EB83CA /* LoginSheetController.xib */; };
 		E676BBC119E6549E00144D23 /* DownloadListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = E676BBC019E6549E00144D23 /* DownloadListCellView.m */; };
 		E686E23519E8E4E10071C1F0 /* PYLLogLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E686E23419E8E4E10071C1F0 /* PYLLogLine.m */; };
+		E6ABB05B19F73B70009EDBB1 /* DictionaryHUDController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ABB05919F73B70009EDBB1 /* DictionaryHUDController.m */; };
+		E6ABB05C19F73B70009EDBB1 /* DictionaryHUDController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6ABB05A19F73B70009EDBB1 /* DictionaryHUDController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,9 @@
 		E676BBC019E6549E00144D23 /* DownloadListCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListCellView.m; sourceTree = "<group>"; };
 		E686E23319E8E4E10071C1F0 /* PYLLogLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYLLogLine.h; sourceTree = "<group>"; };
 		E686E23419E8E4E10071C1F0 /* PYLLogLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYLLogLine.m; sourceTree = "<group>"; };
+		E6ABB05819F73B70009EDBB1 /* DictionaryHUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryHUDController.h; sourceTree = "<group>"; };
+		E6ABB05919F73B70009EDBB1 /* DictionaryHUDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryHUDController.m; sourceTree = "<group>"; };
+		E6ABB05A19F73B70009EDBB1 /* DictionaryHUDController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DictionaryHUDController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +118,7 @@
 		E6194CA919E614F100930613 /* pyLoad */ = {
 			isa = PBXGroup;
 			children = (
+				E6ABB05719F73B54009EDBB1 /* DictionaryHUD */,
 				E622AF9F19EF6E9800745A42 /* ThrobberModal */,
 				E61AF2F919E770B7008161DB /* NewPackage */,
 				E61AF2F319E74031008161DB /* Captcha */,
@@ -227,6 +233,16 @@
 			name = Server;
 			sourceTree = "<group>";
 		};
+		E6ABB05719F73B54009EDBB1 /* DictionaryHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E6ABB05819F73B70009EDBB1 /* DictionaryHUDController.h */,
+				E6ABB05919F73B70009EDBB1 /* DictionaryHUDController.m */,
+				E6ABB05A19F73B70009EDBB1 /* DictionaryHUDController.xib */,
+			);
+			name = DictionaryHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,6 +330,7 @@
 				E61AF2F819E740B3008161DB /* CaptchaWindowController.xib in Resources */,
 				E622AFA419EF6EB700745A42 /* ThrobberModalWindowController.xib in Resources */,
 				E65B69E119E627B300EB83CA /* LoginSheetController.xib in Resources */,
+				E6ABB05C19F73B70009EDBB1 /* DictionaryHUDController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +359,7 @@
 				E6194CAD19E614F100930613 /* main.m in Sources */,
 				E686E23519E8E4E10071C1F0 /* PYLLogLine.m in Sources */,
 				E61AF2F719E740B3008161DB /* CaptchaWindowController.m in Sources */,
+				E6ABB05B19F73B70009EDBB1 /* DictionaryHUDController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

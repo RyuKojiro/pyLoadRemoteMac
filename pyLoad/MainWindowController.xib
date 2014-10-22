@@ -328,7 +328,11 @@ Gw
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="6ff-b3-vVB"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="af7-f4-oPk"/>
-                    <toolbarItem implicitItemIdentifier="4DB8CFDF-6776-4552-AC71-6431591BFC7F" label="Inspector" paletteLabel="Inspector" tag="-1" image="NSInfo" id="cBR-aV-lzx"/>
+                    <toolbarItem implicitItemIdentifier="4DB8CFDF-6776-4552-AC71-6431591BFC7F" label="Inspector" paletteLabel="Inspector" tag="-1" image="NSInfo" id="cBR-aV-lzx">
+                        <connections>
+                            <action selector="toggleInspector:" target="-2" id="gJB-Lu-qgV"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="snc-Yk-Vfn"/>

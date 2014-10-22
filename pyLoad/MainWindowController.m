@@ -11,6 +11,7 @@
 #import "QueueListCellView.h"
 #import "PYLLogLine.h"
 #import "ThrobberModalWindowController.h"
+#import "DictionaryHUDController.h"
 
 #define kDownloadListItemCellIdentifier	@"DownloadListItem"
 #define kQueueItemCellIdentifier		@"QueueItem"
@@ -19,6 +20,7 @@
 	LoginSheetController *loginSheetController;
 	CaptchaWindowController *captchaWindowController;
 	ThrobberModalWindowController *throbberWindowController;
+	DictionaryHUDController *inspector;
 	BOOL alreadyKnowAboutCaptcha;
 	NSUInteger connectingToLocalInstance;
 }
@@ -97,6 +99,7 @@
 	[throbberWindowController release];
 	[captchaWindowController release];
 	[loginSheetController release];
+	[inspector release];
 	[super dealloc];
 }
 
@@ -204,6 +207,24 @@
 
 - (IBAction)clearCompleted:(id)sender {
 	[_server removeAllCompletePackages];
+}
+
+- (IBAction)toggleInspector:(id)sender {
+	if (!inspector) {
+		inspector = [[DictionaryHUDController alloc] initWithWindowNibName:@"DictionaryHUDController"];
+
+		id item = [_outlineView itemAtRow:[_outlineView selectedRow]];
+		if (item) {
+			inspector.dictionary = item;
+		}
+	}
+	
+	if ([inspector.window isVisible]) {
+		[inspector.window orderOut:sender];
+	}
+	else {
+		[inspector showWindow:sender];
+	}
 }
 
 #pragma mark - NewPackageWindowDelegate Methods
@@ -405,6 +426,10 @@
     }
     
     return 38.0f;
+}
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+	inspector.dictionary = [_outlineView itemAtRow:[_outlineView selectedRow]];
 }
 
 @end
