@@ -12,9 +12,11 @@
 @interface DownloadListCellView : NSTableCellView
 
 @property (assign) IBOutlet NSTextField *nameLabel;
+@property (assign) IBOutlet NSTextField *nameLabel2;
 @property (assign) IBOutlet NSImageView *icon;
 @property (assign) IBOutlet NSProgressIndicator *progressBar;
 @property (assign) IBOutlet NSTextField *statusLabel;
+@property (assign) IBOutlet NSTextField *statusLabel2;
 @property (assign) IBOutlet NSTextField *pluginLabel;
 @property (assign) IBOutlet NSTextField *packageLabel;
 

@@ -59,9 +59,26 @@
 	return [file pathExtension];
 }
 
+- (void) setActiveAppearance:(BOOL)active {
+	// #1 = When active, #2 = Inactive
+
+	[_statusLabel setHidden:!active];
+	[_nameLabel setHidden:!active];
+	[_statusLabel2 setHidden:active];
+	[_nameLabel2 setHidden:active];
+
+	[_progressBar setIndeterminate:!active];
+
+	if (active) {
+		[_progressBar startAnimation:self];
+	}
+	else {
+		[_progressBar stopAnimation:self];
+	}
+}
+
 - (instancetype) reconfigureWithDictionary:(NSDictionary *)dict {
-    [_progressBar stopAnimation:self];
-    [_progressBar setIndeterminate:YES];
+	[self setActiveAppearance:NO];
 
     NSString *extension = [DownloadListCellView extensionForFile:dict[@"name"]];
 	
@@ -81,16 +98,18 @@
 
     NSString *statusMesage = dict[@"statusmsg"];
     if (progress == 0.0f && [statusMesage isEqualToString:@"finished"]) {
-        [_progressBar setIndeterminate:NO];
+		[self setActiveAppearance:YES];
         _progressBar.doubleValue = 100.0f;
     }
     
 	if ([dict[@"bleft"] integerValue] < [dict[@"size"] integerValue] && !([dict[@"bleft"] integerValue] == 0 && [dict[@"percent"] integerValue] == 0)) {
-		[_progressBar setIndeterminate:NO];
-        [_progressBar startAnimation:self];
+		[self setActiveAppearance:YES];
 	}
 	
 	_entityId = [dict[@"fid"] integerValue];
+	
+	_nameLabel2.stringValue = _nameLabel.stringValue;
+	_statusLabel2.stringValue = _statusLabel.stringValue;
 	
 	return self;
 }

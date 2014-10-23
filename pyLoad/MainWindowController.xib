@@ -72,7 +72,7 @@
                                                             </constraints>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSMultipleDocuments" id="Ayf-uY-eyp"/>
                                                         </imageView>
-                                                        <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="3UD-2h-bTV">
+                                                        <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="3UD-2h-bTV">
                                                             <rect key="frame" x="37" y="9" width="409" height="12"/>
                                                         </progressIndicator>
                                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="x5T-ux-o1I">
@@ -93,8 +93,24 @@ Gw
                                                             </connections>
                                                         </button>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-CH-I1F">
-                                                            <rect key="frame" x="278" y="25" width="170" height="11"/>
+                                                            <rect key="frame" x="278" y="26" width="170" height="11"/>
                                                             <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Downloading… 0 KB / 2.5 GB (0 KB/s)" id="1NL-pa-qc0">
+                                                                <font key="font" metaFont="miniSystem"/>
+                                                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField hidden="YES" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wWD-UJ-CRO">
+                                                            <rect key="frame" x="35" y="17" width="205" height="17"/>
+                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="This is the long ass filename.zip" id="bfO-M7-Mdk">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iRf-jf-JPh">
+                                                            <rect key="frame" x="278" y="19" width="170" height="11"/>
+                                                            <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Downloading… 0 KB / 2.5 GB (0 KB/s)" id="AUX-Zg-WtG">
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -102,6 +118,8 @@ Gw
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="wWD-UJ-CRO" firstAttribute="baseline" secondItem="iRf-jf-JPh" secondAttribute="baseline" constant="1" id="1Hg-Bn-5Q3"/>
+                                                        <constraint firstItem="iRf-jf-JPh" firstAttribute="baseline" secondItem="x5T-ux-o1I" secondAttribute="baseline" constant="-2" id="3eM-dX-LnN"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="leading" secondItem="Byb-Q4-Nd3" secondAttribute="leading" id="5Ku-QK-5uB"/>
                                                         <constraint firstItem="4NL-CH-I1F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Byb-Q4-Nd3" secondAttribute="trailing" constant="3" id="8yr-3p-qbK"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" constant="4" id="S8c-NB-X3t"/>
@@ -110,17 +128,21 @@ Gw
                                                         <constraint firstItem="x5T-ux-o1I" firstAttribute="leading" secondItem="4NL-CH-I1F" secondAttribute="trailing" constant="8" id="XSJ-8m-eO8"/>
                                                         <constraint firstItem="x5T-ux-o1I" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="trailing" constant="8" symbolic="YES" id="aqk-XR-ZnI"/>
                                                         <constraint firstItem="weg-iy-Ik1" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="top" constant="2" id="hC4-79-YYZ"/>
+                                                        <constraint firstItem="wWD-UJ-CRO" firstAttribute="leading" secondItem="3UD-2h-bTV" secondAttribute="leading" id="iue-eM-gLh"/>
                                                         <constraint firstItem="Byb-Q4-Nd3" firstAttribute="leading" secondItem="weg-iy-Ik1" secondAttribute="trailing" constant="2" id="m91-Ua-5kF"/>
+                                                        <constraint firstItem="iRf-jf-JPh" firstAttribute="leading" secondItem="4NL-CH-I1F" secondAttribute="leading" id="sfU-Ek-xMe"/>
                                                         <constraint firstItem="weg-iy-Ik1" firstAttribute="leading" secondItem="rya-e7-BqI" secondAttribute="leading" constant="3" id="wJb-a3-3gi"/>
-                                                        <constraint firstItem="4NL-CH-I1F" firstAttribute="bottom" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" id="yIv-cm-W0u"/>
+                                                        <constraint firstItem="4NL-CH-I1F" firstAttribute="bottom" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" constant="-1" id="yIv-cm-W0u"/>
                                                         <constraint firstAttribute="trailing" secondItem="x5T-ux-o1I" secondAttribute="trailing" constant="7" id="zDv-Wj-Agi"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="icon" destination="weg-iy-Ik1" id="DFF-kN-j5h"/>
                                                         <outlet property="imageView" destination="weg-iy-Ik1" id="tsB-JR-mK4"/>
                                                         <outlet property="nameLabel" destination="Byb-Q4-Nd3" id="97Z-Yb-SGO"/>
+                                                        <outlet property="nameLabel2" destination="wWD-UJ-CRO" id="snK-sA-3lo"/>
                                                         <outlet property="progressBar" destination="3UD-2h-bTV" id="EqE-8j-b0h"/>
                                                         <outlet property="statusLabel" destination="4NL-CH-I1F" id="ceF-84-Nxw"/>
+                                                        <outlet property="statusLabel2" destination="iRf-jf-JPh" id="PUw-Bp-gfg"/>
                                                         <outlet property="textField" destination="Byb-Q4-Nd3" id="nFQ-HD-gh0"/>
                                                     </connections>
                                                 </tableCellView>
