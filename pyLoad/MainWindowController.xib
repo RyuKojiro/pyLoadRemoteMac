@@ -21,14 +21,14 @@
         <window title="pyLoad" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="PxF-QJ-sAP">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="contentRect" x="335" y="390" width="488" height="360"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="U1n-cX-gJi">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="488" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="50" horizontalPageScroll="10" verticalLineScroll="50" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYJ-Fh-ZfZ">
-                        <rect key="frame" x="0.0" y="24" width="480" height="336"/>
+                        <rect key="frame" x="0.0" y="24" width="488" height="336"/>
                         <clipView key="contentView" id="FYB-Vf-JO0">
                             <rect key="frame" x="1" y="17" width="238" height="117"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,7 +39,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="477" minWidth="40" maxWidth="999999999" id="0lo-SP-Xy9">
+                                        <tableColumn width="485" minWidth="40" maxWidth="999999999" id="0lo-SP-Xy9">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -53,7 +53,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="DownloadListItem" id="rya-e7-BqI" customClass="DownloadListCellView">
-                                                    <rect key="frame" x="1" y="1" width="477" height="48"/>
+                                                    <rect key="frame" x="1" y="1" width="485" height="48"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byb-Q4-Nd3">
@@ -73,10 +73,10 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSMultipleDocuments" id="Ayf-uY-eyp"/>
                                                         </imageView>
                                                         <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="3UD-2h-bTV">
-                                                            <rect key="frame" x="37" y="9" width="409" height="12"/>
+                                                            <rect key="frame" x="37" y="9" width="417" height="12"/>
                                                         </progressIndicator>
                                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="x5T-ux-o1I">
-                                                            <rect key="frame" x="454" y="16" width="16" height="17"/>
+                                                            <rect key="frame" x="462" y="16" width="16" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="Lqx-Wr-9ir"/>
                                                                 <constraint firstAttribute="width" constant="16" id="qXw-7V-85y"/>
@@ -93,7 +93,7 @@ Gw
                                                             </connections>
                                                         </button>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-CH-I1F">
-                                                            <rect key="frame" x="278" y="26" width="170" height="11"/>
+                                                            <rect key="frame" x="286" y="26" width="170" height="11"/>
                                                             <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Downloading… 0 KB / 2.5 GB (0 KB/s)" id="1NL-pa-qc0">
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -109,7 +109,7 @@ Gw
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iRf-jf-JPh">
-                                                            <rect key="frame" x="278" y="19" width="170" height="11"/>
+                                                            <rect key="frame" x="286" y="19" width="170" height="11"/>
                                                             <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Downloading… 0 KB / 2.5 GB (0 KB/s)" id="AUX-Zg-WtG">
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -122,6 +122,7 @@ Gw
                                                         <constraint firstItem="iRf-jf-JPh" firstAttribute="baseline" secondItem="x5T-ux-o1I" secondAttribute="baseline" constant="-2" id="3eM-dX-LnN"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="leading" secondItem="Byb-Q4-Nd3" secondAttribute="leading" id="5Ku-QK-5uB"/>
                                                         <constraint firstItem="4NL-CH-I1F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Byb-Q4-Nd3" secondAttribute="trailing" constant="3" id="8yr-3p-qbK"/>
+                                                        <constraint firstItem="iRf-jf-JPh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wWD-UJ-CRO" secondAttribute="trailing" constant="3" id="K7i-2a-pzz"/>
                                                         <constraint firstItem="3UD-2h-bTV" firstAttribute="top" secondItem="Byb-Q4-Nd3" secondAttribute="bottom" constant="4" id="S8c-NB-X3t"/>
                                                         <constraint firstAttribute="centerY" secondItem="weg-iy-Ik1" secondAttribute="centerY" id="Ubo-hh-KIM"/>
                                                         <constraint firstAttribute="centerY" secondItem="x5T-ux-o1I" secondAttribute="centerY" constant="0.5" id="VoO-5i-Vr0"/>
@@ -147,7 +148,7 @@ Gw
                                                     </connections>
                                                 </tableCellView>
                                                 <tableCellView identifier="QueueItem" id="3Mi-9B-T0z" customClass="QueueListCellView">
-                                                    <rect key="frame" x="1" y="67" width="477" height="20"/>
+                                                    <rect key="frame" x="1" y="51" width="485" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2R-0R-W4Z">
@@ -167,7 +168,7 @@ Gw
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSFolder" id="bct-Qh-ImR"/>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="rqC-Kt-2Km">
-                                                            <rect key="frame" x="306" y="5" width="170" height="11"/>
+                                                            <rect key="frame" x="314" y="5" width="170" height="11"/>
                                                             <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Downloading… 0 KB / 2.5 GB (0 KB/s)" id="jWF-zq-McK">
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -225,11 +226,11 @@ Gw
                         </textFieldCell>
                     </textField>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dhe-aQ-vQr">
-                        <rect key="frame" x="-1" y="22" width="482" height="2"/>
+                        <rect key="frame" x="-1" y="22" width="490" height="2"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="groovePixels" id="nlg-Am-lDw"/>
                     </imageView>
                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A6t-mk-5zG">
-                        <rect key="frame" x="401" y="-3" width="77" height="27"/>
+                        <rect key="frame" x="409" y="-3" width="77" height="27"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="76R-tT-Tzg"/>
                             <constraint firstAttribute="width" constant="77" placeholder="YES" id="dDi-WQ-HP1"/>
@@ -258,7 +259,7 @@ Gw
                         </popUpButtonCell>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1dv-yB-Kkm">
-                        <rect key="frame" x="159" y="1" width="162" height="17"/>
+                        <rect key="frame" x="154" y="1" width="180" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="24x-ez-V5K"/>
                         </constraints>
