@@ -230,6 +230,10 @@
 	}
 }
 
+- (IBAction)toggleThrottling:(id)sender {
+	[_server setThrottling:_throttleMenuItem.state != NSOnState];
+}
+
 #pragma mark - NewPackageWindowDelegate Methods
 
 - (void) newPackageControllerDidCancel:(NewPackageWindowController *)controller {
@@ -261,6 +265,7 @@
     self.window.title = [NSString stringWithFormat:@"pyLoad — %@", server.address];
     
 	[server checkFreeSpace];
+	[server fetchCoreConfig];
 	[self poll];
 }
 
@@ -314,7 +319,8 @@
 }
 
 - (void) server:(PYLServer *)server didRefreshQueue:(NSArray *)queue {
-	
+	// NOTE: This is only safe because we don't use the list passed in this class
+	[self server:server didRefreshDownloadList:nil];
 }
 
 - (void) server:(PYLServer *)server didUpdateSpeed:(CGFloat)bytesPerSec {
@@ -332,6 +338,10 @@
 	[_logView setString:logText];
 	[logText release];
 	[_logView scrollRangeToVisible:NSMakeRange(_logView.string.length, 0)];
+}
+
+- (void) server:(PYLServer *)server didChangeThrottledState:(BOOL)throttlingEnabled {
+	[_throttleMenuItem setState:throttlingEnabled ? NSOnState : NSOffState];
 }
 
 #pragma mark - NSDrawerDelegate Methods

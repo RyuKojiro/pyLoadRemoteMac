@@ -108,6 +108,10 @@
 			return @"/logs/";
         case PYLRequestTypeAddPackage:
             return @"/json/add_package";
+		case PYLRequestTypeSetGeneralConfigKeyValuePair:
+			return @"/json/save_config/general";
+		case PYLRequestTypeFetchCoreConfig:
+			return @"/api/getConfig";
 		default:
 			return nil;
 	}
@@ -432,6 +436,52 @@
     }];
 }
 
+- (void) fetchCoreConfig {
+	NSMutableURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeFetchCoreConfig];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+		
+		NSError *e = nil;
+		NSDictionary *config = [NSJSONSerialization JSONObjectWithData:data options:0 error:&e];
+		
+		BOOL throttledState = [[PYLServer configValueForName:@"limit_speed" inConfigSection:config[@"download"][@"items"]] boolValue];
+		[_delegate server:self didChangeThrottledState:throttledState];
+	}];
+}
+
+- (void) setThrottling:(BOOL)enabled {
+	NSMutableURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeSetGeneralConfigKeyValuePair];
+	[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
+ 
+	NSMutableData *postBody = [[NSMutableData alloc] init];
+	[postBody appendData:[[NSString stringWithFormat:@"download%%7Climit_speed=%s", enabled ? "True" : "False"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[request setHTTPBody:postBody];
+	[postBody release];
+	
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+		
+		// TODO: Check for OK
+		[_delegate server:self didChangeThrottledState:enabled];
+	}];
+}
+
+- (void) setSpeedLimit:(NSUInteger)newLimit {
+	NSMutableURLRequest *request = [self mutableRequestForRequestType:PYLRequestTypeSetGeneralConfigKeyValuePair];
+	[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
+ 
+	NSMutableData *postBody = [[NSMutableData alloc] init];
+	[postBody appendData:[[NSString stringWithFormat:@"download%%7Cmax_speed=%lu", newLimit] dataUsingEncoding:NSUTF8StringEncoding]];
+	[request setHTTPBody:postBody];
+	[postBody release];
+	
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+		PYLServerAssertConnection;
+		
+		// TODO: Check for OK
+	}];
+}
+
 - (void) restartFileId:(NSUInteger)fileId {
 	// NOTE: This one is a GET for some reason
 	NSString *endpoint = [NSString stringWithFormat:@"/api/restartFile/%lu", fileId];
@@ -475,6 +525,16 @@
 	}
 	
 	return [result autorelease];
+}
+
++ (NSString *) configValueForName:(NSString *)name inConfigSection:(NSArray *)list {
+	for (NSDictionary *entry in list) {
+		if ([entry[@"name"] isEqualToString:name]) {
+			return entry[@"value"];
+		}
+	}
+	
+	return nil;
 }
 
 #pragma mark - Item Correlation Methods

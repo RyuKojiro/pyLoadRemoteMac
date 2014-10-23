@@ -11,6 +11,7 @@
                 <outlet property="outlineView" destination="e3O-kT-Mv1" id="J1S-cw-W4Z"/>
                 <outlet property="playPauseButton" destination="Wdm-Vd-Bc3" id="Tmr-Cw-tLj"/>
                 <outlet property="speedMenuItem" destination="N72-29-0Yg" id="FVY-nH-XcM"/>
+                <outlet property="throttleMenuItem" destination="LJc-F6-AqL" id="jTi-k5-2mT"/>
                 <outlet property="transferCountField" destination="1dv-yB-Kkm" id="M3s-iV-bD7"/>
                 <outlet property="window" destination="PxF-QJ-sAP" id="8cj-nQ-kjO"/>
             </connections>
@@ -219,7 +220,11 @@ Gw
                                     <menuItem title="Zero KB/s" hidden="YES" id="N72-29-0Yg">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
-                                    <menuItem title="Limit Speed" state="on" id="LJc-F6-AqL"/>
+                                    <menuItem title="Limit Speed" state="mixed" id="LJc-F6-AqL">
+                                        <connections>
+                                            <action selector="toggleThrottling:" target="-2" id="x6j-WH-z8h"/>
+                                        </connections>
+                                    </menuItem>
                                     <menuItem isSeparatorItem="YES" id="HrG-tg-oTg"/>
                                     <menuItem title="Set Speed Limit…" id="i01-Jt-tI6">
                                         <connections>

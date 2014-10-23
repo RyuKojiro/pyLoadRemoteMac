@@ -23,6 +23,7 @@
 - (void) server:(PYLServer *)server didUpdatePausedStatus:(BOOL)paused;
 - (void) server:(PYLServer *)server didRefreshLogs:(NSArray *)logData;
 - (void) server:(PYLServer *)server didUpdateActiveCount:(NSUInteger)active queueCount:(NSUInteger)queueCount totalCount:(NSUInteger)totalCount;
+- (void) server:(PYLServer *)server didChangeThrottledState:(BOOL)throttlingEnabled;
 
 @end
 
@@ -41,7 +42,9 @@ typedef enum {
 	PYLRequestTypeUnpauseServer,
 	PYLRequestTypeCancelAll,
 	PYLRequestTypeFetchLogs,
-    PYLRequestTypeAddPackage
+    PYLRequestTypeAddPackage,
+	PYLRequestTypeSetGeneralConfigKeyValuePair,
+	PYLRequestTypeFetchCoreConfig
 } PYLRequestType;
 
 typedef enum {
@@ -90,6 +93,10 @@ typedef enum {
 
 - (void) removePackageId:(NSUInteger)packageId;
 - (void) removeAllCompletePackages;
+
+- (void) fetchCoreConfig;
+- (void) setThrottling:(BOOL)enabled;
+- (void) setSpeedLimit:(NSUInteger)newLimit;
 
 - (void) fetchLogs;
 

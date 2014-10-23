@@ -23,6 +23,7 @@
 @property (assign) IBOutlet NSToolbarItem *playPauseButton;
 @property (assign) IBOutlet NSTextField *transferCountField;
 @property (assign) IBOutlet NSTextView *logView;
+@property (assign) IBOutlet NSMenuItem *throttleMenuItem;
 
 - (IBAction)presentLoginSheet:(id)sender;
 - (IBAction)serverSettings:(id)sender;
