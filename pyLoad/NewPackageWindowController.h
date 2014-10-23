@@ -27,4 +27,6 @@
 
 @property (assign) id <NewPackageWindowDelegate> delegate;
 
+- (IBAction)attemptPasteboardExtraction:(id)sender;
+
 @end

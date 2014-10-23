@@ -145,6 +145,8 @@
 	   didEndSelector:nil
 		  contextInfo:self];
 	
+    [npc attemptPasteboardExtraction:sender];
+    
 	// Released in cancel or add
 }
 
