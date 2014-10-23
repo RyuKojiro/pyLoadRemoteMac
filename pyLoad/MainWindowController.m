@@ -291,7 +291,7 @@
 }
 
 - (void) server:(PYLServer *)server didUpdateActiveCount:(NSUInteger)active queueCount:(NSUInteger)queueCount totalCount:(NSUInteger)totalCount {
-    _transferCountField.stringValue = [NSString stringWithFormat:@"%lu Active | %lu Queued | %lu Total", active, queueCount, totalCount];
+    _transferCountField.stringValue = [NSString stringWithFormat:@"%lu Active | %lu Incomplete | %lu Total", active, queueCount, totalCount];
 }
 
 - (void) serverHasCaptchaWaiting:(PYLServer *)server {
