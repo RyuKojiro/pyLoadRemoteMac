@@ -130,6 +130,7 @@
 	[alert setAccessoryView:speedLimitField];
 	
 	[alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+		[_server setSpeedLimit:[speedLimitField integerValue]];
 		[speedLimitField release];
 	}];
 }
